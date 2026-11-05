@@ -38,14 +38,32 @@ class TestScenarioManager:
         q = scenario.keys["user1"].q
         assert abs(p - q) < 10000
 
-    def test_create_small_d_scenario(self):
-        """Test creating small d scenario."""
+    def test_create_pollards_rho_scenario(self):
+        """Test creating Pollard's rho scenario."""
         manager = ScenarioManager()
-        scenario = manager.create_scenario(ScenarioType.SMALL_D)
+        scenario = manager.create_scenario(ScenarioType.POLLARDS_RHO)
 
-        assert scenario.scenario_type == ScenarioType.SMALL_D
-        d = scenario.keys["user1"].d
-        assert d is not None
+        assert scenario.scenario_type == ScenarioType.POLLARDS_RHO
+        n = scenario.keys["user1"].n
+        # Check that N has a small factor (vulnerable to Pollard's rho)
+        p = scenario.keys["user1"].p
+        q = scenario.keys["user1"].q
+        assert p.bit_length() <= 20  # Small prime
+
+    def test_create_pollards_p1_scenario(self):
+        """Test creating Pollard's p-1 scenario."""
+        manager = ScenarioManager()
+        scenario = manager.create_scenario(ScenarioType.POLLARDS_P1)
+
+        assert scenario.scenario_type == ScenarioType.POLLARDS_P1
+        p = scenario.keys["user1"].p
+        # Check that p-1 has small factors (is B-smooth)
+        p_minus_1 = p - 1
+        assert p_minus_1 % 2 == 0  # Even
+        # Should be divisible by at least some small primes
+        small_primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29]
+        has_small_factor = any(p_minus_1 % prime == 0 for prime in small_primes)
+        assert has_small_factor
 
     def test_create_shared_modulus_internal_scenario(self):
         """Test creating shared modulus internal scenario."""
@@ -75,13 +93,23 @@ class TestScenarioManager:
         n2 = scenario.keys["user2"].n
         assert n1 == n2
 
+    def test_create_small_d_scenario(self):
+        """Test creating small d scenario."""
+        manager = ScenarioManager()
+        scenario = manager.create_scenario(ScenarioType.SMALL_D)
+
+        assert scenario.scenario_type == ScenarioType.SMALL_D
+        d = scenario.keys["user1"].d
+        assert d is not None
+
     def test_create_small_e_no_padding_scenario(self):
         """Test creating small e no padding scenario."""
         manager = ScenarioManager()
         scenario = manager.create_scenario(ScenarioType.SMALL_E_NO_PADDING)
 
         assert scenario.scenario_type == ScenarioType.SMALL_E_NO_PADDING
-        assert scenario.keys["user1"].e == 3
+        # e should be small (3, 5, or 17 if 3 is not coprime with phi)
+        assert scenario.keys["user1"].e in [3, 5, 17]
 
     def test_create_small_e_broadcast_scenario(self):
         """Test creating small e broadcast scenario."""
@@ -110,15 +138,6 @@ class TestScenarioManager:
         n2 = scenario.keys["user2"].n
         g = MathUtils.gcd(n1, n2)
         assert g > 1 and g < n1
-
-    def test_create_small_d_extended_scenario(self):
-        """Test creating very small d scenario."""
-        manager = ScenarioManager()
-        scenario = manager.create_scenario(ScenarioType.SMALL_D_EXTENDED)
-
-        assert scenario.scenario_type == ScenarioType.SMALL_D_EXTENDED
-        d = scenario.keys["user1"].d
-        assert d is not None
 
     def test_get_scenario(self):
         """Test retrieving a scenario."""

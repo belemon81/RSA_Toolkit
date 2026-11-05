@@ -18,13 +18,14 @@ class ScenarioType(Enum):
     SECURE = "S0"  # Secure configuration (baseline)
     SMALL_MODULUS = "S1"  # Small modulus (< 64 bits)
     CLOSE_PRIMES = "S2"  # p and q very close
-    SMALL_D = "S3"  # Small private exponent d
-    SHARED_MODULUS_INTERNAL = "S4"  # Shared modulus (internal attacker)
-    SHARED_MODULUS_EXTERNAL = "S5"  # Shared modulus (external attacker)
-    SMALL_E_NO_PADDING = "S6"  # Small e, no padding
-    SMALL_E_BROADCAST = "S7"  # Small e, broadcast attack
-    SHARED_PRIME = "S8"  # Shared prime factor (GCD attack)
-    SMALL_D_EXTENDED = "S9"  # Very small d for Wiener
+    POLLARDS_RHO = "S3"  # N has small prime factor (Pollard's rho)
+    POLLARDS_P1 = "S4"  # p-1 and q-1 have small factors (Pollard's p-1)
+    SHARED_MODULUS_INTERNAL = "S5"  # Shared modulus (internal attacker)
+    SHARED_MODULUS_EXTERNAL = "S6"  # Shared modulus (external attacker)
+    SMALL_D = "S7"  # Small private exponent d
+    SMALL_E_NO_PADDING = "S8"  # Small e, no padding
+    SMALL_E_BROADCAST = "S9"  # Small e, broadcast attack
+    SHARED_PRIME = "S10"  # Shared prime factor (GCD attack)
 
 
 @dataclass
@@ -57,13 +58,14 @@ class ScenarioManager:
     - S0: Secure configuration (2048-bit, e=65537, OAEP padding)
     - S1: Small modulus (< 64 bits)
     - S2: Close primes (Fermat factorization)
-    - S3: Small d (Wiener attack)
-    - S4: Shared modulus (internal attacker)
-    - S5: Shared modulus (external attacker)
-    - S6: Small e, no padding (cube root attack)
-    - S7: Small e, broadcast (Hastad attack)
-    - S8: Shared prime (GCD attack)
-    - S9: Very small d (extended Wiener)
+    - S3: N has small prime factor (Pollard's rho)
+    - S4: p-1 and q-1 have small factors (Pollard's p-1)
+    - S5: Shared modulus (internal attacker)
+    - S6: Shared modulus (external attacker)
+    - S7: Small d (Wiener attack)
+    - S8: Small e, no padding (cube root attack)
+    - S9: Small e, broadcast (Hastad attack)
+    - S10: Shared prime (GCD attack)
     """
 
     def __init__(self):
@@ -107,20 +109,22 @@ class ScenarioManager:
             return self._create_small_modulus_scenario(scenario_id)
         elif scenario_type == ScenarioType.CLOSE_PRIMES:
             return self._create_close_primes_scenario(scenario_id)
-        elif scenario_type == ScenarioType.SMALL_D:
-            return self._create_small_d_scenario(scenario_id)
+        elif scenario_type == ScenarioType.POLLARDS_RHO:
+            return self._create_pollards_rho_scenario(scenario_id)
+        elif scenario_type == ScenarioType.POLLARDS_P1:
+            return self._create_pollards_p1_scenario(scenario_id)
         elif scenario_type == ScenarioType.SHARED_MODULUS_INTERNAL:
             return self._create_shared_modulus_internal_scenario(scenario_id)
         elif scenario_type == ScenarioType.SHARED_MODULUS_EXTERNAL:
             return self._create_shared_modulus_external_scenario(scenario_id)
+        elif scenario_type == ScenarioType.SMALL_D:
+            return self._create_small_d_scenario(scenario_id)
         elif scenario_type == ScenarioType.SMALL_E_NO_PADDING:
             return self._create_small_e_no_padding_scenario(scenario_id)
         elif scenario_type == ScenarioType.SMALL_E_BROADCAST:
             return self._create_small_e_broadcast_scenario(scenario_id)
         elif scenario_type == ScenarioType.SHARED_PRIME:
             return self._create_shared_prime_scenario(scenario_id)
-        elif scenario_type == ScenarioType.SMALL_D_EXTENDED:
-            return self._create_small_d_extended_scenario(scenario_id)
         else:
             raise ValueError(f"Unknown scenario type: {scenario_type}")
 
@@ -196,7 +200,7 @@ class ScenarioManager:
         return scenario
 
     def _create_small_d_scenario(self, scenario_id: str) -> Scenario:
-        """Create S3: Small d (Wiener attack)."""
+        """Create S7: Small d (Wiener attack)."""
         (n, e, d), (p, q) = RSAUtils.generate_keypair(
             bit_length=128,
             e=65537,
@@ -221,7 +225,7 @@ class ScenarioManager:
         return scenario
 
     def _create_shared_modulus_internal_scenario(self, scenario_id: str) -> Scenario:
-        """Create S4: Shared modulus (internal attacker)."""
+        """Create S5: Shared modulus (internal attacker)."""
         # Generate shared modulus
         (n, e1, d1), (p, q) = RSAUtils.generate_keypair(bit_length=128, e=65537)
 
@@ -251,7 +255,7 @@ class ScenarioManager:
         return scenario
 
     def _create_shared_modulus_external_scenario(self, scenario_id: str) -> Scenario:
-        """Create S5: Shared modulus (external attacker)."""
+        """Create S6: Shared modulus (external attacker)."""
         (n, e1, d1), (p, q) = RSAUtils.generate_keypair(bit_length=128, e=17)
         e2 = 65537
         phi = (p - 1) * (q - 1)
@@ -278,7 +282,7 @@ class ScenarioManager:
         return scenario
 
     def _create_small_e_no_padding_scenario(self, scenario_id: str) -> Scenario:
-        """Create S6: Small e, no padding (cube root attack)."""
+        """Create S8: Small e, no padding (cube root attack)."""
         (n, e, d), (p, q) = RSAUtils.generate_keypair(
             bit_length=128,
             e=3,
@@ -304,7 +308,7 @@ class ScenarioManager:
         return scenario
 
     def _create_small_e_broadcast_scenario(self, scenario_id: str) -> Scenario:
-        """Create S7: Small e, broadcast (Hastad attack)."""
+        """Create S9: Small e, broadcast (Hastad attack)."""
         e = 3
         messages = {}
         ciphertexts = {}
@@ -335,7 +339,7 @@ class ScenarioManager:
         return scenario
 
     def _create_shared_prime_scenario(self, scenario_id: str) -> Scenario:
-        """Create S8: Shared prime (GCD attack)."""
+        """Create S10: Shared prime (GCD attack)."""
         # Generate shared prime
         shared_p = RSAUtils._generate_prime(32)
 
@@ -373,22 +377,67 @@ class ScenarioManager:
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_small_d_extended_scenario(self, scenario_id: str) -> Scenario:
-        """Create S9: Very small d (extended Wiener)."""
-        (n, e, d), (p, q) = RSAUtils.generate_keypair(
-            bit_length=256,
-            e=65537,
-            weak_config='small_d'
-        )
+    def _create_pollards_rho_scenario(self, scenario_id: str) -> Scenario:
+        """Create S3: N has small prime factor (Pollard's rho)."""
+        # Generate N with a small prime factor
+        small_p = RSAUtils._generate_prime(16)  # Small prime (~16 bits)
+        q = RSAUtils._generate_prime(64)  # Larger prime (~64 bits)
+        n = small_p * q
 
-        key = RSAKey(n=n, e=e, d=d, p=p, q=q)
-        message = RSAUtils.message_to_int("Very small d")
+        e = 65537
+        phi = (small_p - 1) * (q - 1)
+        d = MathUtils.mod_inverse(e, phi)
+
+        key = RSAKey(n=n, e=e, d=d, p=small_p, q=q)
+        message = RSAUtils.message_to_int("Pollard's rho")
         ciphertext = RSAUtils.encrypt(message, n, e)
 
         scenario = Scenario(
             scenario_id=scenario_id,
-            scenario_type=ScenarioType.SMALL_D_EXTENDED,
-            description="Very small d - extended Wiener attack",
+            scenario_type=ScenarioType.POLLARDS_RHO,
+            description="N has small prime factor - vulnerable to Pollard's rho",
+            keys={"user1": key},
+            messages={"user1": message},
+            ciphertexts={"user1": ciphertext},
+            seed=self.current_seed or random.randint(0, 2**32)
+        )
+
+        self.scenarios[scenario_id] = scenario
+        return scenario
+
+    def _create_pollards_p1_scenario(self, scenario_id: str) -> Scenario:
+        """Create S4: p-1 and q-1 have small factors (Pollard's p-1)."""
+        # Generate p where p-1 is B-smooth (has only small prime factors)
+        # Build p as product of small primes + 1
+        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+        p_minus_1 = 1
+        for prime in primes:
+            p_minus_1 *= prime
+
+        # Find a prime p of the form k * product + 1
+        k = 1
+        while True:
+            p = k * p_minus_1 + 1
+            if MathUtils.is_prime(p):
+                break
+            k += 1
+
+        # Generate q normally
+        q = RSAUtils._generate_prime(64)
+        n = p * q
+
+        e = 65537
+        phi = (p - 1) * (q - 1)
+        d = MathUtils.mod_inverse(e, phi)
+
+        key = RSAKey(n=n, e=e, d=d, p=p, q=q)
+        message = RSAUtils.message_to_int("Pollard's p-1")
+        ciphertext = RSAUtils.encrypt(message, n, e)
+
+        scenario = Scenario(
+            scenario_id=scenario_id,
+            scenario_type=ScenarioType.POLLARDS_P1,
+            description="p-1 and q-1 have small factors - vulnerable to Pollard's p-1",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},

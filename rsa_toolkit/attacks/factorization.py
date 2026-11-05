@@ -290,6 +290,104 @@ class PollardsRho:
         )
 
 
+class PollardsP1:
+    """
+    Pollard's p-1 algorithm for factorization.
+
+    Effective when p-1 has only small prime factors (B-smooth).
+    Uses the fact that if p-1 is B-smooth, then a^(p-1) ≡ 1 (mod p).
+    """
+
+    def __init__(self, max_iterations: int = 10000, B: int = 100):
+        """
+        Initialize Pollard's p-1.
+
+        Args:
+            max_iterations: Maximum number of iterations to attempt
+            B: Smoothness bound (search for factors where p-1 is B-smooth)
+        """
+        self.max_iterations = max_iterations
+        self.B = B
+
+    def factorize(self, n: int) -> FactorizationResult:
+        """
+        Factorize N using Pollard's p-1 algorithm.
+
+        Args:
+            n: Modulus to factorize
+
+        Returns:
+            FactorizationResult with factors p and q if successful
+        """
+        import time
+        start_time = time.perf_counter()
+
+        if n % 2 == 0:
+            p = 2
+            q = n // 2
+            return FactorizationResult(
+                success=True,
+                p=p,
+                q=q,
+                iterations=1,
+                time_elapsed=time.perf_counter() - start_time,
+                method="Pollard's p-1 (even)"
+            )
+
+        # Check if n is prime
+        if MathUtils.is_prime(n):
+            return FactorizationResult(
+                success=False,
+                method="Pollard's p-1 (N is prime)"
+            )
+
+        iterations = 0
+
+        # Try with different B values
+        for B_multiplier in [1, 2, 5, 10]:
+            B = self.B * B_multiplier
+            iterations += 1
+
+            # Generate primes up to B
+            primes = [p for p in range(2, B + 1) if MathUtils.is_prime(p)]
+
+            # Choose a random base a
+            a = random.randint(2, n - 2)
+
+            # Compute a^M mod n where M = lcm(1, 2, ..., B)
+            M = 1
+            for prime in primes:
+                # Raise to highest power of prime <= B
+                power = prime
+                while power * prime <= B:
+                    power *= prime
+                M = (M * power) % (n - 1)
+
+            a = pow(a, M, n)
+
+            # Compute gcd(a - 1, n)
+            g = MathUtils.gcd(a - 1, n)
+
+            if 1 < g < n:
+                p = g
+                q = n // g
+                return FactorizationResult(
+                    success=True,
+                    p=p,
+                    q=q,
+                    iterations=iterations,
+                    time_elapsed=time.perf_counter() - start_time,
+                    method="Pollard's p-1"
+                )
+
+        return FactorizationResult(
+            success=False,
+            iterations=iterations,
+            time_elapsed=time.perf_counter() - start_time,
+            method="Pollard's p-1"
+        )
+
+
 def factorize_auto(n: int) -> FactorizationResult:
     """
     Automatically select and run the best factorization method.
@@ -316,6 +414,11 @@ def factorize_auto(n: int) -> FactorizationResult:
 
     # Try Pollard's rho (effective for small factors)
     result = PollardsRho().factorize(n)
+    if result.success:
+        return result
+
+    # Try Pollard's p-1 (effective when p-1 is B-smooth)
+    result = PollardsP1().factorize(n)
     if result.success:
         return result
 

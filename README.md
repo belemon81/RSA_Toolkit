@@ -263,13 +263,6 @@ To add a new attack module:
 4. Add the attack to the client's attack planning in `attacker.py`
 5. Write tests in `rsa_toolkit/tests/test_attacks.py`
 
-## References
-
-- Rivest, R., Shamir, A., & Adleman, L. (1978). A Method for Obtaining Digital Signatures and Public-Key Cryptosystems
-- Wiener, M. (1990). Cryptanalysis of short RSA secret exponents
-- Hastad, J. (1988). Solving simultaneous modular equations of low degree
-- Boneh, D. (1999). Twenty Years of Attacks on the RSA Cryptosystem
-
 ## License
 
 This project is for educational purposes. Use responsibly and only with proper authorization.
@@ -280,6 +273,7 @@ Group 3 - Cybersecurity Cryptography Course
 - Đặng Quỳnh Trang
 - Lưu Quý Nhân
 - Trần Hoàng Anh
+- Bùi Hoàng Hải
 
 ## Acknowledgments
 

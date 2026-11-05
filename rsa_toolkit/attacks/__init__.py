@@ -4,6 +4,7 @@ from rsa_toolkit.attacks.factorization import (
     BruteForceFactorization,
     FermatFactorization,
     PollardsRho,
+    PollardsP1,
 )
 from rsa_toolkit.attacks.small_exponent import (
     CubeRootAttack,
