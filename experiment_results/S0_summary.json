@@ -12,10 +12,10 @@
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.051852400065399706,
+    "total_attack_time": 0.024180699954740703,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 1.0210843000095338
+    "total_time": 0.5056384999770671
   },
   {
     "scenario_id": "S0_8347",
@@ -30,10 +30,10 @@
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.04062230000272393,
+    "total_attack_time": 0.019242499954998493,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 1.151197399944067
+    "total_time": 0.3315976000158116
   },
   {
     "scenario_id": "S0_3078",
@@ -48,10 +48,10 @@
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.03443420003168285,
+    "total_attack_time": 0.04647920001298189,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 1.2118988999864087
+    "total_time": 0.9589476999826729
   },
   {
     "scenario_id": "S0_7717",
@@ -66,10 +66,10 @@
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.018033100059255958,
+    "total_attack_time": 0.02160340000409633,
     "run_number": 4,
     "seed": 4000,
-    "total_time": 0.5514418999664485
+    "total_time": 0.8356966000283137
   },
   {
     "scenario_id": "S0_4818",
@@ -84,9 +84,9 @@
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.01583099993877113,
+    "total_attack_time": 0.011774800019338727,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 0.4680146999889985
+    "total_time": 0.47445520001929253
   }
 ]

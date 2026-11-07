@@ -6,14 +6,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "cube_root",
-      "time_elapsed": 9.780004620552063e-05,
+      "time_elapsed": 0.0009492000099271536,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "cube_root",
         "success": true,
-        "time_elapsed": 9.780004620552063e-05,
+        "time_elapsed": 0.0009492000099271536,
         "iterations": 1,
         "error_message": null
       }
@@ -22,12 +22,12 @@
       "user1"
     ],
     "analysis": {
-      "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
+      "user1": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.034699699957855046,
+    "total_attack_time": 0.013791700010187924,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 0.7494344000006095
+    "total_time": 0.4089681999757886
   },
   {
     "scenario_id": "S8_8347",
@@ -36,14 +36,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "cube_root",
-      "time_elapsed": 6.81999372318387e-05,
+      "time_elapsed": 4.8900023102760315e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "cube_root",
         "success": true,
-        "time_elapsed": 6.81999372318387e-05,
+        "time_elapsed": 4.8900023102760315e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -52,12 +52,12 @@
       "user1"
     ],
     "analysis": {
-      "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
+      "user1": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.03657439991366118,
+    "total_attack_time": 0.013735200045630336,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 1.146112299989909
+    "total_time": 0.4033368000527844
   },
   {
     "scenario_id": "S8_3078",
@@ -66,14 +66,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "cube_root",
-      "time_elapsed": 6.330001633614302e-05,
+      "time_elapsed": 2.8499984182417393e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "cube_root",
         "success": true,
-        "time_elapsed": 6.330001633614302e-05,
+        "time_elapsed": 2.8499984182417393e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -84,10 +84,10 @@
     "analysis": {
       "user1": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.03591859992593527,
+    "total_attack_time": 0.010788599960505962,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 1.224055500002578
+    "total_time": 0.31297349999658763
   },
   {
     "scenario_id": "S8_7717",
@@ -96,44 +96,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "cube_root",
-      "time_elapsed": 5.530007183551788e-05,
+      "time_elapsed": 1.5700003132224083e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "cube_root",
         "success": true,
-        "time_elapsed": 5.530007183551788e-05,
-        "iterations": 1,
-        "error_message": null
-      }
-    ],
-    "users": [
-      "user1"
-    ],
-    "analysis": {
-      "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
-    },
-    "total_attack_time": 0.03417040000203997,
-    "run_number": 4,
-    "seed": 4000,
-    "total_time": 1.1324495999142528
-  },
-  {
-    "scenario_id": "S8_4818",
-    "scenario_code": "S8",
-    "scenario_type": "S8",
-    "success": true,
-    "successful_attack": {
-      "attack_name": "cube_root",
-      "time_elapsed": 5.239993333816528e-05,
-      "iterations": 1
-    },
-    "all_attacks": [
-      {
-        "attack_name": "cube_root",
-        "success": true,
-        "time_elapsed": 5.239993333816528e-05,
+        "time_elapsed": 1.5700003132224083e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -144,9 +114,39 @@
     "analysis": {
       "user1": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.03354530001524836,
+    "total_attack_time": 0.0122349999146536,
+    "run_number": 4,
+    "seed": 4000,
+    "total_time": 0.25225580006372184
+  },
+  {
+    "scenario_id": "S8_4818",
+    "scenario_code": "S8",
+    "scenario_type": "S8",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "cube_root",
+      "time_elapsed": 1.680001150816679e-05,
+      "iterations": 1
+    },
+    "all_attacks": [
+      {
+        "attack_name": "cube_root",
+        "success": true,
+        "time_elapsed": 1.680001150816679e-05,
+        "iterations": 1,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small public exponent e=3 - vulnerable to small e attacks"
+    },
+    "total_attack_time": 0.01791079994291067,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 1.2280166998971254
+    "total_time": 0.2929398000705987
   }
 ]

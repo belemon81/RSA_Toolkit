@@ -100,7 +100,7 @@ class SharedModulusAttack:
         External attacker: recover message from two ciphertexts on shared modulus.
 
         When the same message is encrypted with different e values on the same N,
-        we can use the extended Euclidean algorithm to recover the message.
+        we can use the modular inverse method to recover the message.
 
         Args:
             c1: First ciphertext
@@ -115,35 +115,27 @@ class SharedModulusAttack:
         import time
         start_time = time.perf_counter()
 
-        # Find a and b such that: a*e1 + b*e2 = 1
-        g, a, b = MathUtils.extended_gcd(e1, e2)
-
-        if g != 1:
+        # Step 1: Compute r1 = e1^(-1) mod e2
+        r1 = MathUtils.mod_inverse(e1, e2)
+        if r1 is None:
             return SharedModulusResult(
                 success=False,
                 method="Shared Modulus (External) - e1 and e2 not coprime"
             )
 
-        # Compute message: m = c1^a * c2^b (mod N)
-        # Note: one of a or b will be negative
-        if a < 0:
-            c1_inv = MathUtils.mod_inverse(c1, n)
-            if c1_inv is None:
-                return SharedModulusResult(
-                    success=False,
-                    method="Shared Modulus (External) - no inverse for c1"
-                )
-            message = (pow(c1_inv, -a, n) * pow(c2, b, n)) % n
-        elif b < 0:
-            c2_inv = MathUtils.mod_inverse(c2, n)
-            if c2_inv is None:
-                return SharedModulusResult(
-                    success=False,
-                    method="Shared Modulus (External) - no inverse for c2"
-                )
-            message = (pow(c1, a, n) * pow(c2_inv, -b, n)) % n
-        else:
-            message = (pow(c1, a, n) * pow(c2, b, n)) % n
+        # Step 2: Compute r2 = (r1 * e1 - 1) / e2
+        r2 = (r1 * e1 - 1) // e2
+
+        # Step 3: Compute M = C1^r1 * (C2^r2)^(-1) mod N
+        c2_pow_r2 = pow(c2, r2, n)
+        c2_pow_r2_inv = MathUtils.mod_inverse(c2_pow_r2, n)
+        if c2_pow_r2_inv is None:
+            return SharedModulusResult(
+                success=False,
+                method="Shared Modulus (External) - no inverse for C2^r2"
+            )
+
+        message = (pow(c1, r1, n) * c2_pow_r2_inv) % n
 
         return SharedModulusResult(
             success=True,

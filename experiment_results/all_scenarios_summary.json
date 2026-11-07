@@ -1,0 +1,2764 @@
+{
+  "S0": {
+    "scenario_type": "S0",
+    "num_runs": 5,
+    "successful_runs": 0,
+    "results": [
+      {
+        "scenario_id": "S0_8028",
+        "scenario_code": "S0",
+        "success": false,
+        "successful_attack": null,
+        "all_attacks": [],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.30586209998000413
+      },
+      {
+        "scenario_id": "S0_8347",
+        "scenario_code": "S0",
+        "success": false,
+        "successful_attack": null,
+        "all_attacks": [],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.3783189000096172
+      },
+      {
+        "scenario_id": "S0_3078",
+        "scenario_code": "S0",
+        "success": false,
+        "successful_attack": null,
+        "all_attacks": [],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.2938962000189349
+      },
+      {
+        "scenario_id": "S0_7717",
+        "scenario_code": "S0",
+        "success": false,
+        "successful_attack": null,
+        "all_attacks": [],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.28993060009088367
+      },
+      {
+        "scenario_id": "S0_4818",
+        "scenario_code": "S0",
+        "success": false,
+        "successful_attack": null,
+        "all_attacks": [],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.29579390003345907
+      }
+    ]
+  },
+  "S1": {
+    "scenario_type": "S1",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S1_8028",
+        "scenario_code": "S1",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "brute_force",
+          "time_elapsed": 0.07346830004826188,
+          "iterations": 1230
+        },
+        "all_attacks": [
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.07346830004826188,
+            "iterations": 1230,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.012368900002911687,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0005166999762877822,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (47 bits) - vulnerable to brute force"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.4613383000250906
+      },
+      {
+        "scenario_id": "S1_8347",
+        "scenario_code": "S1",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "brute_force",
+          "time_elapsed": 0.06328150001354516,
+          "iterations": 1157
+        },
+        "all_attacks": [
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.06328150001354516,
+            "iterations": 1157,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.001473400043323636,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00019299995619803667,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (48 bits) - vulnerable to brute force"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.46306059998460114
+      },
+      {
+        "scenario_id": "S1_3078",
+        "scenario_code": "S1",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "brute_force",
+          "time_elapsed": 0.0612703999504447,
+          "iterations": 555
+        },
+        "all_attacks": [
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.0612703999504447,
+            "iterations": 555,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0012786999577656388,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00018309999722987413,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (47 bits) - vulnerable to brute force"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.43029699998442084
+      },
+      {
+        "scenario_id": "S1_7717",
+        "scenario_code": "S1",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "brute_force",
+          "time_elapsed": 0.05226050002966076,
+          "iterations": 285
+        },
+        "all_attacks": [
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.05226050002966076,
+            "iterations": 285,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.011798299965448678,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00020239991135895252,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (48 bits) - vulnerable to brute force"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.39143210009206086
+      },
+      {
+        "scenario_id": "S1_4818",
+        "scenario_code": "S1",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "brute_force",
+          "time_elapsed": 0.05004560004454106,
+          "iterations": 747
+        },
+        "all_attacks": [
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.05004560004454106,
+            "iterations": 747,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0001802999759092927,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00011739996261894703,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (47 bits) - vulnerable to brute force"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.3635927999857813
+      }
+    ]
+  },
+  "S2": {
+    "scenario_type": "S2",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S2_8028",
+        "scenario_code": "S2",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "fermat",
+          "time_elapsed": 3.300001844763756e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "fermat",
+            "success": true,
+            "time_elapsed": 3.300001844763756e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.023960900027304888,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.012523700017482042,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00015710003208369017,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.394983800011687
+      },
+      {
+        "scenario_id": "S2_8347",
+        "scenario_code": "S2",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "fermat",
+          "time_elapsed": 2.6700086891651154e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "fermat",
+            "success": true,
+            "time_elapsed": 2.6700086891651154e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.023083000094629824,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.013738300069235265,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00016459997277706861,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.3598413000581786
+      },
+      {
+        "scenario_id": "S2_3078",
+        "scenario_code": "S2",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "fermat",
+          "time_elapsed": 4.199997056275606e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "fermat",
+            "success": true,
+            "time_elapsed": 4.199997056275606e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.07610089995432645,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.04748499998822808,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00035720004234462976,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Medium modulus (127 bits) - may be factorable"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 1.0172780000139028
+      },
+      {
+        "scenario_id": "S2_7717",
+        "scenario_code": "S2",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "fermat",
+          "time_elapsed": 4.2499974370002747e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "fermat",
+            "success": true,
+            "time_elapsed": 4.2499974370002747e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.03596129990182817,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.024364399956539273,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00026030000299215317,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.6205317999701947
+      },
+      {
+        "scenario_id": "S2_4818",
+        "scenario_code": "S2",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "fermat",
+          "time_elapsed": 3.090000245720148e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "fermat",
+            "success": true,
+            "time_elapsed": 3.090000245720148e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.03751149994786829,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.016720500076189637,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00017779995687305927,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "No obvious vulnerabilities"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.551932500093244
+      }
+    ]
+  },
+  "S3": {
+    "scenario_type": "S3",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S3_8028",
+        "scenario_code": "S3",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_rho",
+          "time_elapsed": 0.0008829000871628523,
+          "iterations": 226
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_rho",
+            "success": true,
+            "time_elapsed": 0.0008829000871628523,
+            "iterations": 226,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.09297399991191924,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.015157599933445454,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.000269099953584373,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Medium modulus (64 bits) - may be factorable"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.6031521999975666
+      },
+      {
+        "scenario_id": "S3_8347",
+        "scenario_code": "S3",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_rho",
+          "time_elapsed": 0.0011702000629156828,
+          "iterations": 653
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_rho",
+            "success": true,
+            "time_elapsed": 0.0011702000629156828,
+            "iterations": 653,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.08120030001737177,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0005950999911874533,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00019729998894035816,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Medium modulus (64 bits) - may be factorable"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.45938219991512597
+      },
+      {
+        "scenario_id": "S3_3078",
+        "scenario_code": "S3",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_rho",
+          "time_elapsed": 0.00041630002669990063,
+          "iterations": 125
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_rho",
+            "success": true,
+            "time_elapsed": 0.00041630002669990063,
+            "iterations": 125,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.06304200005251914,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0009750000899657607,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00011680007446557283,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Medium modulus (64 bits) - may be factorable"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.454540399950929
+      },
+      {
+        "scenario_id": "S3_7717",
+        "scenario_code": "S3",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_rho",
+          "time_elapsed": 0.0009309999877586961,
+          "iterations": 320
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_rho",
+            "success": true,
+            "time_elapsed": 0.0009309999877586961,
+            "iterations": 320,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.0805002999259159,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.012327500036917627,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00026590004563331604,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Medium modulus (64 bits) - may be factorable"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.5113309000153095
+      },
+      {
+        "scenario_id": "S3_4818",
+        "scenario_code": "S3",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_rho",
+          "time_elapsed": 0.0012209999840706587,
+          "iterations": 365
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_rho",
+            "success": true,
+            "time_elapsed": 0.0012209999840706587,
+            "iterations": 365,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.0636166000040248,
+            "iterations": 462,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.00022519996855407953,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0001401000190526247,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (63 bits) - vulnerable to brute force"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.5080642000539228
+      }
+    ]
+  },
+  "S4": {
+    "scenario_type": "S4",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S4_8028",
+        "scenario_code": "S4",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_p1",
+          "time_elapsed": 0.0004523999523371458,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0004523999523371458,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.07992789999116212,
+            "iterations": 558,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00027329998556524515,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (49 bits) - vulnerable to brute force"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.5532039999961853
+      },
+      {
+        "scenario_id": "S4_8347",
+        "scenario_code": "S4",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_p1",
+          "time_elapsed": 0.00036149995867162943,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.00036149995867162943,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.059196900110691786,
+            "iterations": 289,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00018470000941306353,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (49 bits) - vulnerable to brute force"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.5118679999141023
+      },
+      {
+        "scenario_id": "S4_3078",
+        "scenario_code": "S4",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_p1",
+          "time_elapsed": 0.00031889998354017735,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.00031889998354017735,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.05887439998332411,
+            "iterations": 447,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00023410003632307053,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (49 bits) - vulnerable to brute force"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.516789700021036
+      },
+      {
+        "scenario_id": "S4_7717",
+        "scenario_code": "S4",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_p1",
+          "time_elapsed": 0.00029900006484240294,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.00029900006484240294,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.0537688999902457,
+            "iterations": 797,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00013459997717291117,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (49 bits) - vulnerable to brute force"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.37965290003921837
+      },
+      {
+        "scenario_id": "S4_4818",
+        "scenario_code": "S4",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "pollards_p1",
+          "time_elapsed": 0.00029740005265921354,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.00029740005265921354,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.05905719997826964,
+            "iterations": 60,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0002335000317543745,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (49 bits) - vulnerable to brute force"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.44424029998481274
+      }
+    ]
+  },
+  "S5": {
+    "scenario_type": "S5",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S5_8028",
+        "scenario_code": "S5",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_internal",
+          "time_elapsed": 0.04351630003657192,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.04351630003657192,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 4.4899992644786835e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": false,
+            "time_elapsed": 1.6400008462369442e-05,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.030396699905395508,
+            "iterations": 187693,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.018105600029230118,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00010679999832063913,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "attacker",
+          "victim"
+        ],
+        "analysis": {
+          "attacker": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=7 - vulnerable to small e attacks; Shared modulus with victim",
+          "victim": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.45904850005172193
+      },
+      {
+        "scenario_id": "S5_8347",
+        "scenario_code": "S5",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_internal",
+          "time_elapsed": 0.04410579998511821,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.04410579998511821,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 2.6600086130201817e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": false,
+            "time_elapsed": 1.8998980522155762e-06,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.03453080006875098,
+            "iterations": 214899,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0006989999674260616,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00010130007285624743,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "attacker",
+          "victim"
+        ],
+        "analysis": {
+          "attacker": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=5 - vulnerable to small e attacks; Shared modulus with victim",
+          "victim": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.38434530002996325
+      },
+      {
+        "scenario_id": "S5_3078",
+        "scenario_code": "S5",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_internal",
+          "time_elapsed": 0.033122200053185225,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.033122200053185225,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 3.839994315057993e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": true,
+            "time_elapsed": 0.0014106000307947397,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.04433299996890128,
+            "iterations": 154239,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0013253999641165137,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00013539998326450586,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "attacker",
+          "victim"
+        ],
+        "analysis": {
+          "attacker": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=3 - vulnerable to small e attacks; Shared modulus with victim",
+          "victim": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.40138380008284
+      },
+      {
+        "scenario_id": "S5_7717",
+        "scenario_code": "S5",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_internal",
+          "time_elapsed": 0.034532199962995946,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.034532199962995946,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 3.2899901270866394e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": true,
+            "time_elapsed": 3.6400044336915016e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.0429511999245733,
+            "iterations": 150655,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.01944439997896552,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0001292000524699688,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "attacker",
+          "victim"
+        ],
+        "analysis": {
+          "attacker": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=3 - vulnerable to small e attacks; Shared modulus with victim",
+          "victim": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.5945130999898538
+      },
+      {
+        "scenario_id": "S5_4818",
+        "scenario_code": "S5",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_internal",
+          "time_elapsed": 0.028743800008669496,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.028743800008669496,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 4.039995837956667e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": false,
+            "time_elapsed": 1.700012944638729e-06,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.03347779996693134,
+            "iterations": 145667,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0001970999874174595,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 9.96999442577362e-05,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "attacker",
+          "victim"
+        ],
+        "analysis": {
+          "attacker": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with victim",
+          "victim": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.46066680003423244
+      }
+    ]
+  },
+  "S6": {
+    "scenario_type": "S6",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S6_8028",
+        "scenario_code": "S6",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_external",
+          "time_elapsed": 4.169996827840805e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 4.169996827840805e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.03398189996369183,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": false,
+            "time_elapsed": 2.800021320581436e-06,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.03132099995855242,
+            "iterations": 187693,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.014500200049951673,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00016099994536489248,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
+          "user2": "Small modulus (40 bits) - vulnerable to brute force; Shared modulus with user1"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.38205680006649345
+      },
+      {
+        "scenario_id": "S6_8347",
+        "scenario_code": "S6",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_external",
+          "time_elapsed": 5.009991582483053e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 5.009991582483053e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.04101479996461421,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": false,
+            "time_elapsed": 2.499902620911598e-06,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.038415800081565976,
+            "iterations": 214899,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0006845999741926789,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00017420004587620497,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
+          "user2": "Small modulus (40 bits) - vulnerable to brute force; Shared modulus with user1"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.41560100007336587
+      },
+      {
+        "scenario_id": "S6_3078",
+        "scenario_code": "S6",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_external",
+          "time_elapsed": 5.049991887062788e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 5.049991887062788e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.036184499971568584,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": false,
+            "time_elapsed": 3.400025889277458e-06,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.04244190000463277,
+            "iterations": 154239,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0008303000358864665,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00021510000806301832,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
+          "user2": "Small modulus (39 bits) - vulnerable to brute force; Shared modulus with user1"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.3956705000018701
+      },
+      {
+        "scenario_id": "S6_7717",
+        "scenario_code": "S6",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_external",
+          "time_elapsed": 5.21000474691391e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 5.21000474691391e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.036946400068700314,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": false,
+            "time_elapsed": 3.400025889277458e-06,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.029902499984018505,
+            "iterations": 150655,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.020356200053356588,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0003432999365031719,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
+          "user2": "Small modulus (39 bits) - vulnerable to brute force; Shared modulus with user1"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.5161296000005677
+      },
+      {
+        "scenario_id": "S6_4818",
+        "scenario_code": "S6",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_modulus_external",
+          "time_elapsed": 4.539999645203352e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_modulus_external",
+            "success": true,
+            "time_elapsed": 4.539999645203352e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "shared_modulus_internal",
+            "success": true,
+            "time_elapsed": 0.03693649999331683,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "cube_root",
+            "success": false,
+            "time_elapsed": 3.00002284348011e-06,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.028728700010105968,
+            "iterations": 145667,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.00032490002922713757,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00028709997422993183,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (39 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
+          "user2": "Small modulus (39 bits) - vulnerable to brute force; Shared modulus with user1"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.44342739996500313
+      }
+    ]
+  },
+  "S7": {
+    "scenario_type": "S7",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S7_8028",
+        "scenario_code": "S7",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "wiener",
+          "time_elapsed": 0.0002891999902203679,
+          "iterations": 2
+        },
+        "all_attacks": [
+          {
+            "attack_name": "wiener",
+            "success": true,
+            "time_elapsed": 0.0002891999902203679,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.00286979996599257,
+            "iterations": 13288,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.00026649993378669024,
+            "iterations": 1,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (32 bits) - vulnerable to brute force"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.42245810001622885
+      },
+      {
+        "scenario_id": "S7_8347",
+        "scenario_code": "S7",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "wiener",
+          "time_elapsed": 0.0003146999515593052,
+          "iterations": 4
+        },
+        "all_attacks": [
+          {
+            "attack_name": "wiener",
+            "success": true,
+            "time_elapsed": 0.0003146999515593052,
+            "iterations": 4,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.0027549000224098563,
+            "iterations": 16559,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.007005400024354458,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (32 bits) - vulnerable to brute force"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.37375139992218465
+      },
+      {
+        "scenario_id": "S7_3078",
+        "scenario_code": "S7",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "wiener",
+          "time_elapsed": 0.00030429998878389597,
+          "iterations": 4
+        },
+        "all_attacks": [
+          {
+            "attack_name": "wiener",
+            "success": true,
+            "time_elapsed": 0.00030429998878389597,
+            "iterations": 4,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.0038657000986859202,
+            "iterations": 13641,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0004097999772056937,
+            "iterations": 1,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (32 bits) - vulnerable to brute force"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.36928260000422597
+      },
+      {
+        "scenario_id": "S7_7717",
+        "scenario_code": "S7",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "wiener",
+          "time_elapsed": 0.00025299994740635157,
+          "iterations": 4
+        },
+        "all_attacks": [
+          {
+            "attack_name": "wiener",
+            "success": true,
+            "time_elapsed": 0.00025299994740635157,
+            "iterations": 4,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.002321799984201789,
+            "iterations": 12393,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0007099000504240394,
+            "iterations": 1,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (32 bits) - vulnerable to brute force"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.39137849991675466
+      },
+      {
+        "scenario_id": "S7_4818",
+        "scenario_code": "S7",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "wiener",
+          "time_elapsed": 0.0003377000102773309,
+          "iterations": 4
+        },
+        "all_attacks": [
+          {
+            "attack_name": "wiener",
+            "success": true,
+            "time_elapsed": 0.0003377000102773309,
+            "iterations": 4,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.00193210004363209,
+            "iterations": 10674,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.012003999901935458,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small modulus (32 bits) - vulnerable to brute force"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.44914030004292727
+      }
+    ]
+  },
+  "S8": {
+    "scenario_type": "S8",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S8_8028",
+        "scenario_code": "S8",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "cube_root",
+          "time_elapsed": 5.410006269812584e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "cube_root",
+            "success": true,
+            "time_elapsed": 5.410006269812584e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.12841210002079606,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.03284470003563911,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.018963900045491755,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00012009998317807913,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.6366630999837071
+      },
+      {
+        "scenario_id": "S8_8347",
+        "scenario_code": "S8",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "cube_root",
+          "time_elapsed": 2.429995220154524e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "cube_root",
+            "success": true,
+            "time_elapsed": 2.429995220154524e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.10572420002426952,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.028040400007739663,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.012163299950771034,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 9.06999921426177e-05,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.49018350010737777
+      },
+      {
+        "scenario_id": "S8_3078",
+        "scenario_code": "S8",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "cube_root",
+          "time_elapsed": 1.9700033590197563e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "cube_root",
+            "success": true,
+            "time_elapsed": 1.9700033590197563e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.09132769994903356,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.025155599927529693,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.011962699936702847,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0002362000523135066,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.4750723000615835
+      },
+      {
+        "scenario_id": "S8_7717",
+        "scenario_code": "S8",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "cube_root",
+          "time_elapsed": 2.5099958293139935e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "cube_root",
+            "success": true,
+            "time_elapsed": 2.5099958293139935e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.0915889999596402,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.023042500019073486,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.015929699991829693,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 9.550002869218588e-05,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.4746038999874145
+      },
+      {
+        "scenario_id": "S8_4818",
+        "scenario_code": "S8",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "cube_root",
+          "time_elapsed": 1.850002445280552e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "cube_root",
+            "success": true,
+            "time_elapsed": 1.850002445280552e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.08817700005602092,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.02523040003143251,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.011815399979241192,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 6.839993875473738e-05,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.44011079997289926
+      }
+    ]
+  },
+  "S9": {
+    "scenario_type": "S9",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S9_8028",
+        "scenario_code": "S9",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "hastad_broadcast",
+          "time_elapsed": 0.0003182999789714813,
+          "iterations": 3
+        },
+        "all_attacks": [
+          {
+            "attack_name": "hastad_broadcast",
+            "success": true,
+            "time_elapsed": 0.0003182999789714813,
+            "iterations": 3,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.3712599000427872,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.09534679993521422,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.04961429990362376,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0002041999250650406,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2",
+          "user3"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user2": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user3": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.8732414999976754
+      },
+      {
+        "scenario_id": "S9_8347",
+        "scenario_code": "S9",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "hastad_broadcast",
+          "time_elapsed": 0.00012769992463290691,
+          "iterations": 3
+        },
+        "all_attacks": [
+          {
+            "attack_name": "hastad_broadcast",
+            "success": true,
+            "time_elapsed": 0.00012769992463290691,
+            "iterations": 3,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.3253964999457821,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.07875529990997165,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.045438400004059076,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00012479990255087614,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2",
+          "user3"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user2": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user3": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.8640731000341475
+      },
+      {
+        "scenario_id": "S9_3078",
+        "scenario_code": "S9",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "hastad_broadcast",
+          "time_elapsed": 0.00023250002413988113,
+          "iterations": 3
+        },
+        "all_attacks": [
+          {
+            "attack_name": "hastad_broadcast",
+            "success": true,
+            "time_elapsed": 0.00023250002413988113,
+            "iterations": 3,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.24391219997778535,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.06558589998167008,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.034603500040248036,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00014819996431469917,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2",
+          "user3"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user2": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user3": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.6963059999980032
+      },
+      {
+        "scenario_id": "S9_7717",
+        "scenario_code": "S9",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "hastad_broadcast",
+          "time_elapsed": 0.00017850007861852646,
+          "iterations": 3
+        },
+        "all_attacks": [
+          {
+            "attack_name": "hastad_broadcast",
+            "success": true,
+            "time_elapsed": 0.00017850007861852646,
+            "iterations": 3,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.27889780001714826,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.07385100005194545,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.03388710005674511,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00012859993148595095,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2",
+          "user3"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user2": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user3": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.7083616000600159
+      },
+      {
+        "scenario_id": "S9_4818",
+        "scenario_code": "S9",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "hastad_broadcast",
+          "time_elapsed": 0.00014490005560219288,
+          "iterations": 3
+        },
+        "all_attacks": [
+          {
+            "attack_name": "hastad_broadcast",
+            "success": true,
+            "time_elapsed": 0.00014490005560219288,
+            "iterations": 3,
+            "error_message": null
+          },
+          {
+            "attack_name": "fermat",
+            "success": false,
+            "time_elapsed": 0.2713921999093145,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_rho",
+            "success": false,
+            "time_elapsed": 0.08236010000109673,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.03624699998181313,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0001273000380024314,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2",
+          "user3"
+        ],
+        "analysis": {
+          "user1": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user2": "Small public exponent e=3 - vulnerable to small e attacks",
+          "user3": "Small public exponent e=3 - vulnerable to small e attacks"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.6871152999810874
+      }
+    ]
+  },
+  "S10": {
+    "scenario_type": "S10",
+    "num_runs": 5,
+    "successful_runs": 5,
+    "results": [
+      {
+        "scenario_id": "S10_8028",
+        "scenario_code": "S10",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_prime",
+          "time_elapsed": 3.370002377778292e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_prime",
+            "success": true,
+            "time_elapsed": 3.370002377778292e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.03347089991439134,
+            "iterations": 187693,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.016567799961194396,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00034659996163100004,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (40 bits) - vulnerable to brute force; Shared prime with user2",
+          "user2": "Small modulus (39 bits) - vulnerable to brute force"
+        },
+        "run_number": 1,
+        "seed": 1000,
+        "total_time": 0.3673509999644011
+      },
+      {
+        "scenario_id": "S10_8347",
+        "scenario_code": "S10",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_prime",
+          "time_elapsed": 4.529999569058418e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_prime",
+            "success": true,
+            "time_elapsed": 4.529999569058418e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.043776300037279725,
+            "iterations": 214899,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0010093000018969178,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00028849998489022255,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (40 bits) - vulnerable to brute force; Shared prime with user2",
+          "user2": "Small modulus (39 bits) - vulnerable to brute force"
+        },
+        "run_number": 2,
+        "seed": 2000,
+        "total_time": 0.38022729998920113
+      },
+      {
+        "scenario_id": "S10_3078",
+        "scenario_code": "S10",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_prime",
+          "time_elapsed": 3.550003748387098e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_prime",
+            "success": true,
+            "time_elapsed": 3.550003748387098e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.03533970005810261,
+            "iterations": 154239,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.0008227999787777662,
+            "iterations": 2,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.00021890003699809313,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (39 bits) - vulnerable to brute force; Shared prime with user2",
+          "user2": "Small modulus (39 bits) - vulnerable to brute force"
+        },
+        "run_number": 3,
+        "seed": 3000,
+        "total_time": 0.4531721000093967
+      },
+      {
+        "scenario_id": "S10_7717",
+        "scenario_code": "S10",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_prime",
+          "time_elapsed": 2.529995981603861e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_prime",
+            "success": true,
+            "time_elapsed": 2.529995981603861e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.04051439999602735,
+            "iterations": 150655,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": false,
+            "time_elapsed": 0.03393310005776584,
+            "iterations": 0,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0013354000402614474,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (39 bits) - vulnerable to brute force; Shared prime with user2",
+          "user2": "Small modulus (39 bits) - vulnerable to brute force"
+        },
+        "run_number": 4,
+        "seed": 4000,
+        "total_time": 0.46732880000490695
+      },
+      {
+        "scenario_id": "S10_4818",
+        "scenario_code": "S10",
+        "success": true,
+        "successful_attack": {
+          "attack_name": "shared_prime",
+          "time_elapsed": 2.9699993319809437e-05,
+          "iterations": 1
+        },
+        "all_attacks": [
+          {
+            "attack_name": "shared_prime",
+            "success": true,
+            "time_elapsed": 2.9699993319809437e-05,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "brute_force",
+            "success": true,
+            "time_elapsed": 0.027364499983377755,
+            "iterations": 145667,
+            "error_message": null
+          },
+          {
+            "attack_name": "pollards_p1",
+            "success": true,
+            "time_elapsed": 0.00021890003699809313,
+            "iterations": 1,
+            "error_message": null
+          },
+          {
+            "attack_name": "wiener",
+            "success": false,
+            "time_elapsed": 0.0002343999221920967,
+            "iterations": 0,
+            "error_message": null
+          }
+        ],
+        "users": [
+          "user1",
+          "user2"
+        ],
+        "analysis": {
+          "user1": "Small modulus (39 bits) - vulnerable to brute force; Shared prime with user2",
+          "user2": "Small modulus (40 bits) - vulnerable to brute force"
+        },
+        "run_number": 5,
+        "seed": 5000,
+        "total_time": 0.454795700032264
+      }
+    ]
+  }
+}

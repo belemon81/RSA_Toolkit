@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "cube_root",
-    "time_elapsed": 5.530007183551788e-05,
+    "time_elapsed": 1.5700003132224083e-05,
     "iterations": 1
   },
   "all_attacks": [
     {
       "attack_name": "cube_root",
       "success": true,
-      "time_elapsed": 5.530007183551788e-05,
+      "time_elapsed": 1.5700003132224083e-05,
       "iterations": 1,
       "error_message": null
     }
@@ -21,10 +21,10 @@
     "user1"
   ],
   "analysis": {
-    "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
+    "user1": "Small public exponent e=3 - vulnerable to small e attacks"
   },
-  "total_attack_time": 0.03417040000203997,
+  "total_attack_time": 0.0122349999146536,
   "run_number": 4,
   "seed": 4000,
-  "total_time": 1.1324495999142528
+  "total_time": 0.25225580006372184
 }

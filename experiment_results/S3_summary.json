@@ -6,15 +6,15 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_rho",
-      "time_elapsed": 0.0011075000511482358,
-      "iterations": 360
+      "time_elapsed": 0.003144899965263903,
+      "iterations": 582
     },
     "all_attacks": [
       {
         "attack_name": "pollards_rho",
         "success": true,
-        "time_elapsed": 0.0011075000511482358,
-        "iterations": 360,
+        "time_elapsed": 0.003144899965263903,
+        "iterations": 582,
         "error_message": null
       }
     ],
@@ -24,10 +24,10 @@
     "analysis": {
       "user1": "Medium modulus (64 bits) - may be factorable"
     },
-    "total_attack_time": 0.03420999995432794,
+    "total_attack_time": 0.02458710002247244,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 0.4898860000539571
+    "total_time": 0.6255210998933762
   },
   {
     "scenario_id": "S3_8347",
@@ -36,15 +36,15 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_rho",
-      "time_elapsed": 0.0010828999802470207,
-      "iterations": 394
+      "time_elapsed": 0.001475399942137301,
+      "iterations": 786
     },
     "all_attacks": [
       {
         "attack_name": "pollards_rho",
         "success": true,
-        "time_elapsed": 0.0010828999802470207,
-        "iterations": 394,
+        "time_elapsed": 0.001475399942137301,
+        "iterations": 786,
         "error_message": null
       }
     ],
@@ -54,10 +54,10 @@
     "analysis": {
       "user1": "Medium modulus (64 bits) - may be factorable"
     },
-    "total_attack_time": 0.025628999923355877,
+    "total_attack_time": 0.01547540002502501,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 0.4674577000550926
+    "total_time": 0.6083879000507295
   },
   {
     "scenario_id": "S3_3078",
@@ -66,15 +66,15 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_rho",
-      "time_elapsed": 0.002296100021339953,
-      "iterations": 353
+      "time_elapsed": 0.0009763999842107296,
+      "iterations": 306
     },
     "all_attacks": [
       {
         "attack_name": "pollards_rho",
         "success": true,
-        "time_elapsed": 0.002296100021339953,
-        "iterations": 353,
+        "time_elapsed": 0.0009763999842107296,
+        "iterations": 306,
         "error_message": null
       }
     ],
@@ -84,10 +84,10 @@
     "analysis": {
       "user1": "Medium modulus (64 bits) - may be factorable"
     },
-    "total_attack_time": 0.03507830004673451,
+    "total_attack_time": 0.018477899953722954,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 1.0063442999962717
+    "total_time": 0.6465295000234619
   },
   {
     "scenario_id": "S3_7717",
@@ -96,15 +96,15 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_rho",
-      "time_elapsed": 0.003656200016848743,
-      "iterations": 554
+      "time_elapsed": 0.0019117000047117472,
+      "iterations": 540
     },
     "all_attacks": [
       {
         "attack_name": "pollards_rho",
         "success": true,
-        "time_elapsed": 0.003656200016848743,
-        "iterations": 554,
+        "time_elapsed": 0.0019117000047117472,
+        "iterations": 540,
         "error_message": null
       }
     ],
@@ -114,10 +114,10 @@
     "analysis": {
       "user1": "Medium modulus (64 bits) - may be factorable"
     },
-    "total_attack_time": 0.0495490999892354,
+    "total_attack_time": 0.018639100017026067,
     "run_number": 4,
     "seed": 4000,
-    "total_time": 0.983479900052771
+    "total_time": 0.6067402000771835
   },
   {
     "scenario_id": "S3_4818",
@@ -126,15 +126,15 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_rho",
-      "time_elapsed": 0.0007386000361293554,
-      "iterations": 254
+      "time_elapsed": 0.00212459999602288,
+      "iterations": 435
     },
     "all_attacks": [
       {
         "attack_name": "pollards_rho",
         "success": true,
-        "time_elapsed": 0.0007386000361293554,
-        "iterations": 254,
+        "time_elapsed": 0.00212459999602288,
+        "iterations": 435,
         "error_message": null
       }
     ],
@@ -144,9 +144,9 @@
     "analysis": {
       "user1": "Small modulus (63 bits) - vulnerable to brute force"
     },
-    "total_attack_time": 0.03617530001793057,
+    "total_attack_time": 0.03534980001859367,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 0.5069585000164807
+    "total_time": 0.5712015000171959
   }
 ]

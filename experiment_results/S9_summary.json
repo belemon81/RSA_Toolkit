@@ -6,14 +6,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "hastad_broadcast",
-      "time_elapsed": 0.00120749999769032,
+      "time_elapsed": 0.00028930010739713907,
       "iterations": 3
     },
     "all_attacks": [
       {
         "attack_name": "hastad_broadcast",
         "success": true,
-        "time_elapsed": 0.00120749999769032,
+        "time_elapsed": 0.00028930010739713907,
         "iterations": 3,
         "error_message": null
       }
@@ -26,12 +26,12 @@
     "analysis": {
       "user1": "Small public exponent e=3 - vulnerable to small e attacks",
       "user2": "Small public exponent e=3 - vulnerable to small e attacks",
-      "user3": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
+      "user3": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.02775329991709441,
+    "total_attack_time": 0.017289399984292686,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 0.38287520001176745
+    "total_time": 0.2536266000242904
   },
   {
     "scenario_id": "S9_8347",
@@ -40,14 +40,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "hastad_broadcast",
-      "time_elapsed": 0.00021950004156678915,
+      "time_elapsed": 0.00012930005323141813,
       "iterations": 3
     },
     "all_attacks": [
       {
         "attack_name": "hastad_broadcast",
         "success": true,
-        "time_elapsed": 0.00021950004156678915,
+        "time_elapsed": 0.00012930005323141813,
         "iterations": 3,
         "error_message": null
       }
@@ -58,14 +58,14 @@
       "user3"
     ],
     "analysis": {
-      "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks",
-      "user2": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks",
-      "user3": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
+      "user1": "Small public exponent e=3 - vulnerable to small e attacks",
+      "user2": "Small public exponent e=3 - vulnerable to small e attacks",
+      "user3": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.029561900068074465,
+    "total_attack_time": 0.023709699977189302,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 0.44011030008550733
+    "total_time": 0.4244348000502214
   },
   {
     "scenario_id": "S9_3078",
@@ -74,14 +74,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "hastad_broadcast",
-      "time_elapsed": 0.000202300027012825,
+      "time_elapsed": 0.00011270004324615002,
       "iterations": 3
     },
     "all_attacks": [
       {
         "attack_name": "hastad_broadcast",
         "success": true,
-        "time_elapsed": 0.000202300027012825,
+        "time_elapsed": 0.00011270004324615002,
         "iterations": 3,
         "error_message": null
       }
@@ -92,14 +92,14 @@
       "user3"
     ],
     "analysis": {
-      "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks",
+      "user1": "Small public exponent e=3 - vulnerable to small e attacks",
       "user2": "Small public exponent e=3 - vulnerable to small e attacks",
       "user3": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.05290909996256232,
+    "total_attack_time": 0.02069809997919947,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 0.6311716999625787
+    "total_time": 0.30483030003961176
   },
   {
     "scenario_id": "S9_7717",
@@ -108,14 +108,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "hastad_broadcast",
-      "time_elapsed": 0.0001990000018849969,
+      "time_elapsed": 0.00010870001278817654,
       "iterations": 3
     },
     "all_attacks": [
       {
         "attack_name": "hastad_broadcast",
         "success": true,
-        "time_elapsed": 0.0001990000018849969,
+        "time_elapsed": 0.00010870001278817654,
         "iterations": 3,
         "error_message": null
       }
@@ -126,14 +126,14 @@
       "user3"
     ],
     "analysis": {
-      "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks",
+      "user1": "Small public exponent e=3 - vulnerable to small e attacks",
       "user2": "Small public exponent e=3 - vulnerable to small e attacks",
       "user3": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.04651030001696199,
+    "total_attack_time": 0.01553470001090318,
     "run_number": 4,
     "seed": 4000,
-    "total_time": 0.5644759999122471
+    "total_time": 0.29336979996878654
   },
   {
     "scenario_id": "S9_4818",
@@ -142,14 +142,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "hastad_broadcast",
-      "time_elapsed": 0.00022759998682886362,
+      "time_elapsed": 8.190004155039787e-05,
       "iterations": 3
     },
     "all_attacks": [
       {
         "attack_name": "hastad_broadcast",
         "success": true,
-        "time_elapsed": 0.00022759998682886362,
+        "time_elapsed": 8.190004155039787e-05,
         "iterations": 3,
         "error_message": null
       }
@@ -160,13 +160,13 @@
       "user3"
     ],
     "analysis": {
-      "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks",
+      "user1": "Small public exponent e=3 - vulnerable to small e attacks",
       "user2": "Small public exponent e=3 - vulnerable to small e attacks",
-      "user3": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
+      "user3": "Small public exponent e=3 - vulnerable to small e attacks"
     },
-    "total_attack_time": 0.03335120005067438,
+    "total_attack_time": 0.022286699968390167,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 0.48320580006111413
+    "total_time": 0.2755186000140384
   }
 ]

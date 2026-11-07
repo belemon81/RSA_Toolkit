@@ -11,8 +11,8 @@
   "analysis": {
     "user1": "No obvious vulnerabilities"
   },
-  "total_attack_time": 0.018033100059255958,
+  "total_attack_time": 0.02160340000409633,
   "run_number": 4,
   "seed": 4000,
-  "total_time": 0.5514418999664485
+  "total_time": 0.8356966000283137
 }

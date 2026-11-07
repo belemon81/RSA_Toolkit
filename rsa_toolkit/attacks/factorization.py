@@ -167,7 +167,11 @@ class FermatFactorization:
                 method="Fermat (N is even)"
             )
 
+        # Fermat requires a = ceil(sqrt(n)) so that b^2 = a^2 - n >= 0
+        # from the first iteration (isqrt returns floor).
         a = math.isqrt(n)
+        if a * a < n:
+            a += 1
         iterations = 0
 
         while iterations < self.max_iterations:
@@ -346,7 +350,11 @@ class PollardsP1:
         iterations = 0
 
         # Try with different B values
-        for B_multiplier in [1, 2, 5, 10]:
+        # According to theory: if g=1, increase B; if g=N, decrease B
+        # We'll try multiple B values in both directions
+        B_multipliers = [1, 2, 5, 10, 20, 50, 100]  # Try increasing B first
+
+        for B_multiplier in B_multipliers:
             B = self.B * B_multiplier
             iterations += 1
 
@@ -366,6 +374,7 @@ class PollardsP1:
                 M *= power
 
             # Try multiple bases
+            found_g_equals_n = False
             for _ in range(10):  # Try up to 10 different bases
                 a = random.randint(2, n - 2)
                 a_pow = pow(a, M, n)
@@ -382,6 +391,45 @@ class PollardsP1:
                         time_elapsed=time.perf_counter() - start_time,
                         method="Pollard's p-1"
                     )
+                elif g == n:
+                    found_g_equals_n = True
+
+            # If g=N occurred with this B, try smaller B values
+            if found_g_equals_n:
+                # Try decreasing B
+                for smaller_B in [self.B // 2, self.B // 5, self.B // 10]:
+                    if smaller_B < 2:
+                        continue
+                    iterations += 1
+
+                    # Generate primes up to smaller_B
+                    smaller_primes = [p for p in range(2, smaller_B + 1) if MathUtils.is_prime(p)]
+
+                    # Compute M for smaller B
+                    smaller_M = 1
+                    for prime in smaller_primes:
+                        power = prime
+                        while power * prime <= smaller_B:
+                            power *= prime
+                        smaller_M *= power
+
+                    # Try bases with smaller B
+                    for _ in range(10):
+                        a = random.randint(2, n - 2)
+                        a_pow = pow(a, smaller_M, n)
+                        g = MathUtils.gcd(a_pow - 1, n)
+
+                        if 1 < g < n:
+                            p = g
+                            q = n // g
+                            return FactorizationResult(
+                                success=True,
+                                p=p,
+                                q=q,
+                                iterations=iterations,
+                                time_elapsed=time.perf_counter() - start_time,
+                                method="Pollard's p-1"
+                            )
 
         return FactorizationResult(
             success=False,

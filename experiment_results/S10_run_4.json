@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "shared_prime",
-    "time_elapsed": 0.00038029998540878296,
+    "time_elapsed": 2.3700064048171043e-05,
     "iterations": 1
   },
   "all_attacks": [
     {
       "attack_name": "shared_prime",
       "success": true,
-      "time_elapsed": 0.00038029998540878296,
+      "time_elapsed": 2.3700064048171043e-05,
       "iterations": 1,
       "error_message": null
     }
@@ -25,8 +25,8 @@
     "user1": "Small modulus (39 bits) - vulnerable to brute force; Shared prime with user2",
     "user2": "Small modulus (39 bits) - vulnerable to brute force"
   },
-  "total_attack_time": 0.04819800006225705,
+  "total_attack_time": 0.01769919996149838,
   "run_number": 4,
   "seed": 4000,
-  "total_time": 1.2309634000994265
+  "total_time": 0.364017799962312
 }

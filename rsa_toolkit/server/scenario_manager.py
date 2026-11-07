@@ -180,7 +180,7 @@ class ScenarioManager:
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.SMALL_MODULUS,
-            description="Small modulus (48 bits) with small prime factor - vulnerable to brute force",
+            description=f"Small modulus ({n.bit_length()} bits) with small prime factor - vulnerable to brute force",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},

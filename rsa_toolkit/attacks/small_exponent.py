@@ -52,12 +52,10 @@ class CubeRootAttack:
         import time
         start_time = time.perf_counter()
 
-        # Check if ciphertext is small enough
-        if ciphertext >= n:
-            return SmallExponentResult(
-                success=False,
-                method="Cube Root (ciphertext >= N)"
-            )
+        # The attack is valid iff m^e < N held before the mod reduction,
+        # i.e. ciphertext == m^e exactly. That is verified directly by
+        # checking whether the e-th root is exact — no separate guard
+        # on ciphertext vs N is needed (c = m^e mod N is always < N).
 
         # Compute e-th root
         message, is_exact = MathUtils.integer_nth_root(ciphertext, self.e)
@@ -122,7 +120,42 @@ class HastadBroadcastAttack:
                 method=f"Hastad (need at least {self.e} ciphertexts)"
             )
 
-        # Check that moduli are pairwise coprime
+        # Non-coprime moduli: if gcd(N_i, N_j) > 1, that shared factor
+        # splits both moduli, so we can compute each private exponent
+        # directly and decrypt the corresponding ciphertext.
+        saw_non_coprime = False
+        for i in range(len(moduli)):
+            for j in range(i + 1, len(moduli)):
+                g = MathUtils.gcd(moduli[i], moduli[j])
+                if g <= 1:
+                    continue
+                saw_non_coprime = True
+                for idx in (i, j):
+                    n_i = moduli[idx]
+                    if not (1 < g < n_i) or n_i % g != 0:
+                        continue
+                    p, q = g, n_i // g
+                    phi = (p - 1) * (q - 1)
+                    d = MathUtils.mod_inverse(self.e, phi)
+                    if d is None:
+                        continue
+                    m = pow(ciphertexts[idx], d, n_i)
+                    if pow(m, self.e, n_i) == ciphertexts[idx]:
+                        return SmallExponentResult(
+                            success=True,
+                            message=m,
+                            iterations=1,
+                            time_elapsed=time.perf_counter() - start_time,
+                            method="Hastad (non-coprime moduli)"
+                        )
+
+        if saw_non_coprime:
+            return SmallExponentResult(
+                success=False,
+                method="Hastad (non-coprime moduli, decryption failed)"
+            )
+
+        # Check that moduli are pairwise coprime (required for CRT)
         for i in range(len(moduli)):
             for j in range(i + 1, len(moduli)):
                 if MathUtils.gcd(moduli[i], moduli[j]) != 1:
