@@ -1,0 +1,18 @@
+{
+  "scenario_id": "S0_8028",
+  "scenario_code": "S0",
+  "scenario_type": "S0",
+  "success": false,
+  "successful_attack": null,
+  "all_attacks": [],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "No obvious vulnerabilities"
+  },
+  "total_attack_time": 0.051852400065399706,
+  "run_number": 1,
+  "seed": 1000,
+  "total_time": 1.0210843000095338
+}

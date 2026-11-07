@@ -140,16 +140,32 @@ class MathUtils:
         if n < 0 and k % 2 == 0:
             return 0, False
 
-        root = int(round(n ** (1.0 / k)))
+        # Use gmpy2.iroot for accurate calculation
+        try:
+            root, exact = gmpy2.iroot(n, k)
+            return int(root), bool(exact)
+        except Exception:
+            # Fallback to binary search for very large numbers
+            if n == 0:
+                return 0, True
+            if n == 1:
+                return 1, True
 
-        # Adjust root to ensure it's the largest integer where root^k <= n
-        while pow(root, k) > n:
-            root -= 1
-        while pow(root + 1, k) <= n:
-            root += 1
+            # Binary search
+            low, high = 0, 1
+            while pow(high, k) <= n:
+                high *= 2
 
-        is_exact = pow(root, k) == n
-        return root, is_exact
+            while low < high:
+                mid = (low + high + 1) // 2
+                if pow(mid, k) <= n:
+                    low = mid
+                else:
+                    high = mid - 1
+
+            root = low
+            is_exact = pow(root, k) == n
+            return root, is_exact
 
     @staticmethod
     def chinese_remainder_theorem(congruences: List[Tuple[int, int]]) -> Optional[int]:
@@ -210,7 +226,9 @@ class MathUtils:
             a = int(math.floor(x))
             result.append(a)
             x = x - a
-            if abs(x) < 1e-10:
+            # Exact termination for rational input (e.g. Fraction); the
+            # epsilon check is only a safeguard for inexact float input.
+            if x == 0 or (isinstance(x, float) and abs(x) < 1e-10):
                 break
             x = 1 / x
         return result

@@ -1,0 +1,34 @@
+{
+  "scenario_id": "S9_8347",
+  "scenario_code": "S9",
+  "scenario_type": "S9",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "hastad_broadcast",
+    "time_elapsed": 0.00021950004156678915,
+    "iterations": 3
+  },
+  "all_attacks": [
+    {
+      "attack_name": "hastad_broadcast",
+      "success": true,
+      "time_elapsed": 0.00021950004156678915,
+      "iterations": 3,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1",
+    "user2",
+    "user3"
+  ],
+  "analysis": {
+    "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks",
+    "user2": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks",
+    "user3": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
+  },
+  "total_attack_time": 0.029561900068074465,
+  "run_number": 2,
+  "seed": 2000,
+  "total_time": 0.44011030008550733
+}

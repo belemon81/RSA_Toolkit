@@ -61,11 +61,14 @@ class RSAUtils:
             while q == p:
                 q = RSAUtils._generate_prime(20)
         else:
-            # Normal secure generation
-            p = RSAUtils._generate_prime(bit_length // 2)
-            q = RSAUtils._generate_prime(bit_length // 2)
-            while q == p:
+            # Normal secure generation. Two k-bit primes can produce a
+            # (2k-1)-bit modulus, so regenerate until n has exactly
+            # bit_length bits.
+            while True:
+                p = RSAUtils._generate_prime(bit_length // 2)
                 q = RSAUtils._generate_prime(bit_length // 2)
+                if q != p and (p * q).bit_length() == bit_length:
+                    break
 
         # Ensure p < q
         if p > q:
@@ -76,14 +79,18 @@ class RSAUtils:
 
         # Ensure e and phi are coprime
         if MathUtils.gcd(e, phi) != 1:
-            # Try different e values
-            for e_candidate in [3, 5, 17, 257, 65537]:
-                if MathUtils.gcd(e_candidate, phi) == 1:
-                    e = e_candidate
-                    break
-            else:
-                # Regenerate primes if no suitable e found
+            if weak_config == 'small_e':
+                # For small_e, we must keep e=3 - regenerate primes if needed
                 return RSAUtils.generate_keypair(bit_length, e, weak_config)
+            else:
+                # Try different e values
+                for e_candidate in [3, 5, 17, 257, 65537]:
+                    if MathUtils.gcd(e_candidate, phi) == 1:
+                        e = e_candidate
+                        break
+                else:
+                    # Regenerate primes if no suitable e found
+                    return RSAUtils.generate_keypair(bit_length, e, weak_config)
 
         d = MathUtils.mod_inverse(e, phi)
 

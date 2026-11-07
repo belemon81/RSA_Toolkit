@@ -1,0 +1,18 @@
+{
+  "scenario_id": "S0_4818",
+  "scenario_code": "S0",
+  "scenario_type": "S0",
+  "success": false,
+  "successful_attack": null,
+  "all_attacks": [],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "No obvious vulnerabilities"
+  },
+  "total_attack_time": 0.01583099993877113,
+  "run_number": 5,
+  "seed": 5000,
+  "total_time": 0.4680146999889985
+}

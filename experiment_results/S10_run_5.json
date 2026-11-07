@@ -1,0 +1,32 @@
+{
+  "scenario_id": "S10_4818",
+  "scenario_code": "S10",
+  "scenario_type": "S10",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "shared_prime",
+    "time_elapsed": 8.530006743967533e-05,
+    "iterations": 1
+  },
+  "all_attacks": [
+    {
+      "attack_name": "shared_prime",
+      "success": true,
+      "time_elapsed": 8.530006743967533e-05,
+      "iterations": 1,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1",
+    "user2"
+  ],
+  "analysis": {
+    "user1": "Small modulus (39 bits) - vulnerable to brute force; Shared prime with user2",
+    "user2": "Small modulus (40 bits) - vulnerable to brute force"
+  },
+  "total_attack_time": 0.07857719995081425,
+  "run_number": 5,
+  "seed": 5000,
+  "total_time": 1.303131000022404
+}

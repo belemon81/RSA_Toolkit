@@ -31,56 +31,59 @@ class SharedModulusAttack:
     @staticmethod
     def internal_attack(
         n: int,
-        e1: int,
-        d1: int,
-        e2: int
+        e2: int,
+        d2: int,
+        e1: int
     ) -> SharedModulusResult:
         """
-        Internal attacker: recover d2 from known d1 on shared modulus.
+        Internal attacker: recover the victim's private exponent d_target
+        on a shared modulus, given the attacker's OWN key pair (e2,
+        d2) and the victim's public exponent e1.
+
+        The attacker does NOT know the victim's private key — that is
+        exactly what this attack recovers.
 
         Args:
             n: Shared modulus
-            e1: Attacker's public exponent
-            d1: Attacker's private exponent (known)
-            e2: Victim's public exponent
+            e2: Attacker's own public exponent
+            d2: Attacker's own private exponent (known)
+            e1: Victim's public exponent
 
         Returns:
-            SharedModulusResult with recovered private key if successful
+            SharedModulusResult with the victim's private exponent
         """
         import time
         start_time = time.perf_counter()
 
-        # From: e1*d1 ≡ 1 (mod φ(N))
-        # => e1*d1 - 1 = k*φ(N)
-        # => φ(N) = (e1*d1 - 1) / k
+        # t = e2*d2 - 1 is a multiple of φ(N). Any d_target
+        # satisfying e1*d_target ≡ 1 (mod t) is also valid mod φ(N),
+        # because t is a multiple of φ(N). If gcd(t, e1) > 1 we may
+        # divide t by that gcd: since gcd(e1, φ(N)) = 1, all common
+        # factors live in the cofactor of φ(N) inside t, so
+        # t/gcd(t, e1) remains a multiple of φ(N). Repeat until
+        # e1 is invertible modulo t.
+        t = e2 * d2 - 1
+        iterations = 0
 
-        # Try small values of k
-        for k in range(1, 100):
-            phi_candidate = (e1 * d1 - 1) // k
-
-            # Check if (e1*d1 - 1) is divisible by k
-            if (e1 * d1 - 1) % k != 0:
-                continue
-
-            # Compute d2 from φ(N)
-            d2 = MathUtils.mod_inverse(e2, phi_candidate)
-
-            if d2 is None:
-                continue
-
-            # Verify the result
-            if (e2 * d2) % phi_candidate == 1:
-                return SharedModulusResult(
-                    success=True,
-                    d=d2,
-                    iterations=k,
-                    time_elapsed=time.perf_counter() - start_time,
-                    method="Shared Modulus (Internal)"
-                )
+        while t > 1:
+            iterations += 1
+            g = MathUtils.gcd(t, e1)
+            if g == 1:
+                d_target = MathUtils.mod_inverse(e1, t)
+                if d_target is not None:
+                    return SharedModulusResult(
+                        success=True,
+                        d=d_target % t,
+                        iterations=iterations,
+                        time_elapsed=time.perf_counter() - start_time,
+                        method="Shared Modulus (Internal)"
+                    )
+                break
+            t //= g
 
         return SharedModulusResult(
             success=False,
-            iterations=100,
+            iterations=iterations,
             time_elapsed=time.perf_counter() - start_time,
             method="Shared Modulus (Internal)"
         )

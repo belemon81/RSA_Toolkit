@@ -1,0 +1,32 @@
+{
+  "scenario_id": "S6_8028",
+  "scenario_code": "S6",
+  "scenario_type": "S6",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "shared_modulus_external",
+    "time_elapsed": 5.8699981309473515e-05,
+    "iterations": 1
+  },
+  "all_attacks": [
+    {
+      "attack_name": "shared_modulus_external",
+      "success": true,
+      "time_elapsed": 5.8699981309473515e-05,
+      "iterations": 1,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1",
+    "user2"
+  ],
+  "analysis": {
+    "user1": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
+    "user2": "Small modulus (40 bits) - vulnerable to brute force; Shared modulus with user1"
+  },
+  "total_attack_time": 0.02314259996637702,
+  "run_number": 1,
+  "seed": 1000,
+  "total_time": 0.42916109994985163
+}

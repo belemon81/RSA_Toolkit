@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S8_3078",
+  "scenario_code": "S8",
+  "scenario_type": "S8",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "cube_root",
+    "time_elapsed": 6.330001633614302e-05,
+    "iterations": 1
+  },
+  "all_attacks": [
+    {
+      "attack_name": "cube_root",
+      "success": true,
+      "time_elapsed": 6.330001633614302e-05,
+      "iterations": 1,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "Small public exponent e=3 - vulnerable to small e attacks"
+  },
+  "total_attack_time": 0.03591859992593527,
+  "run_number": 3,
+  "seed": 3000,
+  "total_time": 1.224055500002578
+}

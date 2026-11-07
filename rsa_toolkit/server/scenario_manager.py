@@ -150,21 +150,37 @@ class ScenarioManager:
         return scenario
 
     def _create_small_modulus_scenario(self, scenario_id: str) -> Scenario:
-        """Create S1: Small modulus (< 64 bits)."""
-        (n, e, d), (p, q) = RSAUtils.generate_keypair(
-            bit_length=48,
-            e=65537,
-            weak_config='small_modulus'
-        )
+        """Create S1: Small modulus (< 64 bits) with small prime factors."""
+        # Generate modulus with one small prime factor for easier brute force
+        # Use a small prime p (e.g., around 20 bits) and a larger q
+        small_p = RSAUtils._generate_prime(20)  # ~20 bits (~1 million)
+        q = RSAUtils._generate_prime(28)  # ~28 bits (~268 million)
+        n = small_p * q  # ~48 bits total
 
-        key = RSAKey(n=n, e=e, d=d, p=p, q=q)
+        e = 65537
+        phi = (small_p - 1) * (q - 1)
+
+        # Ensure e and phi are coprime
+        if MathUtils.gcd(e, phi) != 1:
+            # Try different e values
+            for e_candidate in [3, 5, 17, 257, 65537]:
+                if MathUtils.gcd(e_candidate, phi) == 1:
+                    e = e_candidate
+                    break
+            else:
+                # Regenerate if no suitable e found
+                return self._create_small_modulus_scenario(scenario_id)
+
+        d = MathUtils.mod_inverse(e, phi)
+
+        key = RSAKey(n=n, e=e, d=d, p=small_p, q=q)
         message = RSAUtils.message_to_int("Hi")
         ciphertext = RSAUtils.encrypt(message, n, e)
 
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.SMALL_MODULUS,
-            description="Small modulus (48 bits) - vulnerable to brute force",
+            description="Small modulus (48 bits) with small prime factor - vulnerable to brute force",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
@@ -176,11 +192,38 @@ class ScenarioManager:
 
     def _create_close_primes_scenario(self, scenario_id: str) -> Scenario:
         """Create S2: Close primes (Fermat factorization)."""
-        (n, e, d), (p, q) = RSAUtils.generate_keypair(
-            bit_length=128,
-            e=65537,
-            weak_config='close_primes'
-        )
+        # Generate p and q very close together for Fermat factorization
+        # Start with a base prime, then generate q very close to p
+        p = RSAUtils._generate_prime(64)  # ~64 bits
+        # Generate q within a small range (e.g., offset < 10000)
+        # offset must be EVEN so that q = p + offset stays odd (p is odd);
+        # an odd offset would make q even and the primality loop never ends.
+        offset = random.randint(1, 5000) * 2
+        q = p + offset
+
+        # Ensure q is prime
+        while not MathUtils.is_prime(q):
+            offset += 2
+            q = p + offset
+
+        # Ensure p < q
+        if p > q:
+            p, q = q, p
+
+        n = p * q
+        e = 65537
+        phi = (p - 1) * (q - 1)
+
+        # Ensure e and phi are coprime
+        if MathUtils.gcd(e, phi) != 1:
+            for e_candidate in [3, 5, 17, 257, 65537]:
+                if MathUtils.gcd(e_candidate, phi) == 1:
+                    e = e_candidate
+                    break
+            else:
+                return self._create_close_primes_scenario(scenario_id)
+
+        d = MathUtils.mod_inverse(e, phi)
 
         key = RSAKey(n=n, e=e, d=d, p=p, q=q)
         message = RSAUtils.message_to_int("Close primes")
@@ -189,7 +232,7 @@ class ScenarioManager:
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.CLOSE_PRIMES,
-            description="Close primes - vulnerable to Fermat factorization",
+            description=f"Close primes (offset={offset}) - vulnerable to Fermat factorization",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
@@ -201,50 +244,96 @@ class ScenarioManager:
 
     def _create_small_d_scenario(self, scenario_id: str) -> Scenario:
         """Create S7: Small d (Wiener attack)."""
-        (n, e, d), (p, q) = RSAUtils.generate_keypair(
-            bit_length=128,
-            e=65537,
-            weak_config='small_d'
-        )
+        # Wiener's attack condition: d < N^(1/4) / 3
+        # Correct construction: choose a SMALL d first, then compute
+        # e = d^{-1} mod phi(N). This makes e large while d stays small,
+        # which is exactly the vulnerable configuration Wiener exploits.
+        # (Choosing small e and deriving d = e^{-1} mod phi yields a LARGE d
+        #  and is NOT vulnerable to Wiener.)
 
-        key = RSAKey(n=n, e=e, d=d, p=p, q=q)
-        message = RSAUtils.message_to_int("Small d")
-        ciphertext = RSAUtils.encrypt(message, n, e)
+        import gmpy2
 
-        scenario = Scenario(
-            scenario_id=scenario_id,
-            scenario_type=ScenarioType.SMALL_D,
-            description="Small private exponent d - vulnerable to Wiener attack",
-            keys={"user1": key},
-            messages={"user1": message},
-            ciphertexts={"user1": ciphertext},
-            seed=self.current_seed or random.randint(0, 2**32)
-        )
+        # Two 16-bit primes -> N ~ 32 bits -> N^(1/4)/3 ~ 85
+        while True:
+            p = RSAUtils._generate_prime(16)
+            q = RSAUtils._generate_prime(16)
+            if p == q:
+                continue
+            if p > q:
+                p, q = q, p
 
-        self.scenarios[scenario_id] = scenario
-        return scenario
+            n = p * q
+            phi = (p - 1) * (q - 1)
+            bound = gmpy2.iroot(n, 4)[0] // 3
+
+            # Pick a small d coprime to phi
+            for d in range(3, int(bound)):
+                if MathUtils.gcd(d, phi) == 1:
+                    e = MathUtils.mod_inverse(d, phi)
+                    if e is None or e <= 1:
+                        continue
+                    # Ensure e is usable (odd preferred, coprime already holds)
+                    key = RSAKey(n=n, e=e, d=d, p=p, q=q)
+                    message = RSAUtils.message_to_int("Small d")
+                    ciphertext = RSAUtils.encrypt(message, n, e)
+
+                    scenario = Scenario(
+                        scenario_id=scenario_id,
+                        scenario_type=ScenarioType.SMALL_D,
+                        description=f"Small private exponent d={d} - vulnerable to Wiener attack",
+                        keys={"user1": key},
+                        messages={"user1": message},
+                        ciphertexts={"user1": ciphertext},
+                        seed=self.current_seed or random.randint(0, 2**32)
+                    )
+
+                    self.scenarios[scenario_id] = scenario
+                    return scenario
 
     def _create_shared_modulus_internal_scenario(self, scenario_id: str) -> Scenario:
         """Create S5: Shared modulus (internal attacker)."""
-        # Generate shared modulus
-        (n, e1, d1), (p, q) = RSAUtils.generate_keypair(bit_length=128, e=65537)
+        # Generate shared modulus with small primes for easier factorization
+        # This allows the "attacker" to factorize and get their own d
+        p = RSAUtils._generate_prime(20)  # ~20 bits
+        q = RSAUtils._generate_prime(20)  # ~20 bits
+        while q == p:
+            q = RSAUtils._generate_prime(20)
 
-        # Compute second private key with different e
-        e2 = 17
+        if p > q:
+            p, q = q, p
+
+        n = p * q
         phi = (p - 1) * (q - 1)
+
+        # Use small e values to make k smaller for the attack
+        # First key (attacker knows this)
+        e1 = 3
+        if MathUtils.gcd(e1, phi) != 1:
+            e1 = 5
+            while MathUtils.gcd(e1, phi) != 1:
+                e1 += 2
+        d1 = MathUtils.mod_inverse(e1, phi)
+
+        # Second key (victim, different e)
+        e2 = 17
+        if MathUtils.gcd(e2, phi) != 1:
+            e2 = 5
+            while MathUtils.gcd(e2, phi) != 1 and e2 < 100:
+                e2 += 2
         d2 = MathUtils.mod_inverse(e2, phi)
 
         key1 = RSAKey(n=n, e=e1, d=d1, p=p, q=q)
         key2 = RSAKey(n=n, e=e2, d=d2, p=p, q=q)
 
-        message = RSAUtils.message_to_int("Shared modulus internal")
+        # Use a small integer message for this scenario
+        message = 42
         c1 = RSAUtils.encrypt(message, n, e1)
         c2 = RSAUtils.encrypt(message, n, e2)
 
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.SHARED_MODULUS_INTERNAL,
-            description="Shared modulus - internal attacker knows one private key",
+            description=f"Shared modulus N ({n.bit_length()} bits) - internal attacker knows one private key",
             keys={"attacker": key1, "victim": key2},
             messages={"attacker": message, "victim": message},
             ciphertexts={"attacker": c1, "victim": c2},
@@ -256,22 +345,52 @@ class ScenarioManager:
 
     def _create_shared_modulus_external_scenario(self, scenario_id: str) -> Scenario:
         """Create S6: Shared modulus (external attacker)."""
-        (n, e1, d1), (p, q) = RSAUtils.generate_keypair(bit_length=128, e=17)
-        e2 = 65537
+        # Generate shared modulus with small primes
+        p = RSAUtils._generate_prime(20)  # ~20 bits
+        q = RSAUtils._generate_prime(20)  # ~20 bits
+        while q == p:
+            q = RSAUtils._generate_prime(20)
+
+        if p > q:
+            p, q = q, p
+
+        n = p * q
         phi = (p - 1) * (q - 1)
+
+        # Two keys with different e, both coprime to phi
+        e1 = 17
+        if MathUtils.gcd(e1, phi) != 1:
+            e1 = 3
+            while MathUtils.gcd(e1, phi) != 1:
+                e1 += 2
+        d1 = MathUtils.mod_inverse(e1, phi)
+
+        e2 = 65537
+        if MathUtils.gcd(e2, phi) != 1:
+            e2 = 5
+            while MathUtils.gcd(e2, phi) != 1 and e2 < 100:
+                e2 += 2
         d2 = MathUtils.mod_inverse(e2, phi)
+
+        # Ensure e1 and e2 are coprime (required for external attack)
+        while MathUtils.gcd(e1, e2) != 1:
+            e2 += 2
+            while MathUtils.gcd(e2, phi) != 1:
+                e2 += 2
+            d2 = MathUtils.mod_inverse(e2, phi)
 
         key1 = RSAKey(n=n, e=e1, d=d1, p=p, q=q)
         key2 = RSAKey(n=n, e=e2, d=d2, p=p, q=q)
 
-        message = RSAUtils.message_to_int("Shared modulus external")
+        # Use a small integer message for this scenario
+        message = 42
         c1 = RSAUtils.encrypt(message, n, e1)
         c2 = RSAUtils.encrypt(message, n, e2)
 
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.SHARED_MODULUS_EXTERNAL,
-            description="Shared modulus - external attacker with two ciphertexts",
+            description=f"Shared modulus N ({n.bit_length()} bits), e1={e1}, e2={e2} - external attacker with two ciphertexts",
             keys={"user1": key1, "user2": key2},
             messages={"user1": message, "user2": message},
             ciphertexts={"user1": c1, "user2": c2},
@@ -283,6 +402,10 @@ class ScenarioManager:
 
     def _create_small_e_no_padding_scenario(self, scenario_id: str) -> Scenario:
         """Create S8: Small e, no padding (cube root attack)."""
+        # Generate modulus large enough to encrypt small message
+        # Condition: M^e < N for cube root attack to work
+        # For e=3 and M=42, we need N > 42^3 = 74088
+        # Use larger N to be safe, e.g., 128 bits
         (n, e, d), (p, q) = RSAUtils.generate_keypair(
             bit_length=128,
             e=3,
@@ -292,12 +415,19 @@ class ScenarioManager:
         key = RSAKey(n=n, e=e, d=d, p=p, q=q)
         # Small message so that m^e < n
         message = 42
+        # Verify condition
+        if pow(message, e) >= n:
+            # If condition not met, try smaller message
+            message = 2
+            while pow(message, e) >= n and message < 100:
+                message += 1
+
         ciphertext = RSAUtils.encrypt(message, n, e)
 
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.SMALL_E_NO_PADDING,
-            description="Small e=3, no padding - vulnerable to cube root attack",
+            description=f"Small e=3, no padding, M={message} - vulnerable to cube root attack",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
@@ -314,10 +444,23 @@ class ScenarioManager:
         ciphertexts = {}
         keys = {}
 
+        # Use the same message for all users
+        message = 42  # Small integer for Hastad's attack
+
         for i in range(3):
+            # Generate modulus large enough so that M^e < each N_i
+            # For e=3 and M=42, need N > 74088
             (n, _, d), (p, q) = RSAUtils.generate_keypair(bit_length=128, e=e)
+
+            # Verify condition for Hastad's attack
+            if pow(message, e) >= n:
+                # If condition not met, try smaller message
+                temp_message = 2
+                while pow(temp_message, e) >= n and temp_message < 100:
+                    temp_message += 1
+                message = temp_message  # Update message for all users
+
             key = RSAKey(n=n, e=e, d=d, p=p, q=q)
-            message = RSAUtils.message_to_int("Broadcast")
             ciphertext = RSAUtils.encrypt(message, n, e)
 
             user_id = f"user{i+1}"
@@ -328,7 +471,7 @@ class ScenarioManager:
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.SMALL_E_BROADCAST,
-            description="Small e=3, broadcast to 3 users - Hastad attack",
+            description=f"Small e=3, broadcast M={message} to 3 users - Hastad attack",
             keys=keys,
             messages=messages,
             ciphertexts=ciphertexts,
@@ -340,12 +483,14 @@ class ScenarioManager:
 
     def _create_shared_prime_scenario(self, scenario_id: str) -> Scenario:
         """Create S10: Shared prime (GCD attack)."""
-        # Generate shared prime
-        shared_p = RSAUtils._generate_prime(32)
+        # Generate shared prime (smaller for faster testing)
+        shared_p = RSAUtils._generate_prime(20)  # ~20 bits
 
         # Generate different q values
-        q1 = RSAUtils._generate_prime(32)
-        q2 = RSAUtils._generate_prime(32)
+        q1 = RSAUtils._generate_prime(20)  # ~20 bits
+        q2 = RSAUtils._generate_prime(20)  # ~20 bits
+        while q2 == q1:
+            q2 = RSAUtils._generate_prime(20)
 
         n1 = shared_p * q1
         n2 = shared_p * q2
@@ -353,6 +498,12 @@ class ScenarioManager:
         e = 65537
         phi1 = (shared_p - 1) * (q1 - 1)
         phi2 = (shared_p - 1) * (q2 - 1)
+
+        # Ensure e is coprime to both phis
+        if MathUtils.gcd(e, phi1) != 1 or MathUtils.gcd(e, phi2) != 1:
+            e = 3
+            while MathUtils.gcd(e, phi1) != 1 or MathUtils.gcd(e, phi2) != 1:
+                e += 2
 
         d1 = MathUtils.mod_inverse(e, phi1)
         d2 = MathUtils.mod_inverse(e, phi2)
@@ -367,7 +518,7 @@ class ScenarioManager:
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.SHARED_PRIME,
-            description="Shared prime factor - vulnerable to GCD attack",
+            description=f"Shared prime p={shared_p} - vulnerable to GCD attack",
             keys={"user1": key1, "user2": key2},
             messages={"user1": message, "user2": message},
             ciphertexts={"user1": c1, "user2": c2},
@@ -379,13 +530,24 @@ class ScenarioManager:
 
     def _create_pollards_rho_scenario(self, scenario_id: str) -> Scenario:
         """Create S3: N has small prime factor (Pollard's rho)."""
-        # Generate N with a small prime factor
-        small_p = RSAUtils._generate_prime(16)  # Small prime (~16 bits)
-        q = RSAUtils._generate_prime(64)  # Larger prime (~64 bits)
-        n = small_p * q
+        # Generate N with a small prime factor for Pollard's rho
+        # Use a very small prime (e.g., 16-20 bits) and a larger prime
+        small_p = RSAUtils._generate_prime(18)  # Small prime (~18 bits, ~262k)
+        q = RSAUtils._generate_prime(46)  # Larger prime (~46 bits, ~70 trillion)
+        n = small_p * q  # ~64 bits total
 
         e = 65537
         phi = (small_p - 1) * (q - 1)
+
+        # Ensure e and phi are coprime
+        if MathUtils.gcd(e, phi) != 1:
+            for e_candidate in [3, 5, 17, 257, 65537]:
+                if MathUtils.gcd(e_candidate, phi) == 1:
+                    e = e_candidate
+                    break
+            else:
+                return self._create_pollards_rho_scenario(scenario_id)
+
         d = MathUtils.mod_inverse(e, phi)
 
         key = RSAKey(n=n, e=e, d=d, p=small_p, q=q)
@@ -395,7 +557,7 @@ class ScenarioManager:
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.POLLARDS_RHO,
-            description="N has small prime factor - vulnerable to Pollard's rho",
+            description=f"N has small prime factor p={small_p} - vulnerable to Pollard's rho",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
@@ -408,26 +570,65 @@ class ScenarioManager:
     def _create_pollards_p1_scenario(self, scenario_id: str) -> Scenario:
         """Create S4: p-1 and q-1 have small factors (Pollard's p-1)."""
         # Generate p where p-1 is B-smooth (has only small prime factors)
-        # Build p as product of small primes + 1
-        primes = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47]
+        # Use a simpler approach: construct p-1 directly from small primes
+        primes = [2, 3, 5, 7, 11, 13]
         p_minus_1 = 1
         for prime in primes:
-            p_minus_1 *= prime
+            p_minus_1 *= prime  # p-1 = 2*3*5*7*11*13 = 30030
 
         # Find a prime p of the form k * product + 1
         k = 1
-        while True:
-            p = k * p_minus_1 + 1
-            if MathUtils.is_prime(p):
+        max_attempts = 10000
+        attempts = 0
+        p = None
+        while attempts < max_attempts:
+            candidate = k * p_minus_1 + 1
+            if MathUtils.is_prime(candidate):
+                p = candidate
                 break
             k += 1
+            attempts += 1
 
-        # Generate q normally
-        q = RSAUtils._generate_prime(64)
+        if p is None:
+            # Fallback: use a different set of primes
+            primes = [2, 3, 5, 7, 11]
+            p_minus_1 = 1
+            for prime in primes:
+                p_minus_1 *= prime
+            k = 1
+            while attempts < max_attempts * 2:
+                candidate = k * p_minus_1 + 1
+                if MathUtils.is_prime(candidate):
+                    p = candidate
+                    break
+                k += 1
+                attempts += 1
+
+        if p is None:
+            # Last fallback: generate normal primes
+            p = RSAUtils._generate_prime(32)
+            q = RSAUtils._generate_prime(32)
+            while q == p:
+                q = RSAUtils._generate_prime(32)
+        else:
+            # Generate q normally (not B-smooth)
+            q = RSAUtils._generate_prime(32)
+            while q == p:
+                q = RSAUtils._generate_prime(32)
+
         n = p * q
-
         e = 65537
         phi = (p - 1) * (q - 1)
+
+        # Ensure e and phi are coprime
+        if MathUtils.gcd(e, phi) != 1:
+            for e_candidate in [3, 5, 17, 257, 65537]:
+                if MathUtils.gcd(e_candidate, phi) == 1:
+                    e = e_candidate
+                    break
+            else:
+                return self._create_pollards_p1_scenario(scenario_id)
+
         d = MathUtils.mod_inverse(e, phi)
 
         key = RSAKey(n=n, e=e, d=d, p=p, q=q)
@@ -437,7 +638,7 @@ class ScenarioManager:
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.POLLARDS_P1,
-            description="p-1 and q-1 have small factors - vulnerable to Pollard's p-1",
+            description=f"p-1 constructed from small primes - vulnerable to Pollard's p-1",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},

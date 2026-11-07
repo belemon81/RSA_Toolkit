@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S8_8028",
+  "scenario_code": "S8",
+  "scenario_type": "S8",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "cube_root",
+    "time_elapsed": 9.780004620552063e-05,
+    "iterations": 1
+  },
+  "all_attacks": [
+    {
+      "attack_name": "cube_root",
+      "success": true,
+      "time_elapsed": 9.780004620552063e-05,
+      "iterations": 1,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "Medium modulus (127 bits) - may be factorable; Small public exponent e=3 - vulnerable to small e attacks"
+  },
+  "total_attack_time": 0.034699699957855046,
+  "run_number": 1,
+  "seed": 1000,
+  "total_time": 0.7494344000006095
+}

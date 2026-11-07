@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S2_3078",
+  "scenario_code": "S2",
+  "scenario_type": "S2",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "fermat",
+    "time_elapsed": 6.10999995842576e-05,
+    "iterations": 2
+  },
+  "all_attacks": [
+    {
+      "attack_name": "fermat",
+      "success": true,
+      "time_elapsed": 6.10999995842576e-05,
+      "iterations": 2,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "Medium modulus (127 bits) - may be factorable"
+  },
+  "total_attack_time": 0.08502040000166744,
+  "run_number": 3,
+  "seed": 3000,
+  "total_time": 1.1402899000095204
+}

@@ -55,8 +55,10 @@ class WienerAttack:
         import time
         start_time = time.perf_counter()
 
-        # Compute continued fraction expansion of e/N
-        frac = e / n
+        # Compute continued fraction expansion of e/N using exact rational
+        # arithmetic. A float division would lose precision beyond 53 bits of
+        # mantissa and corrupt the convergent sequence for large N.
+        frac = Fraction(e, n)
         cf_coeffs = MathUtils.continued_fraction(frac, self.max_convergents)
 
         # Get convergents

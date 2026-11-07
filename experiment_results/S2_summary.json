@@ -1,0 +1,152 @@
+[
+  {
+    "scenario_id": "S2_8028",
+    "scenario_code": "S2",
+    "scenario_type": "S2",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "fermat",
+      "time_elapsed": 0.00034829997457563877,
+      "iterations": 2
+    },
+    "all_attacks": [
+      {
+        "attack_name": "fermat",
+        "success": true,
+        "time_elapsed": 0.00034829997457563877,
+        "iterations": 2,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.02968859998509288,
+    "run_number": 1,
+    "seed": 1000,
+    "total_time": 0.4435138999251649
+  },
+  {
+    "scenario_id": "S2_8347",
+    "scenario_code": "S2",
+    "scenario_type": "S2",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "fermat",
+      "time_elapsed": 5.700008478015661e-05,
+      "iterations": 2
+    },
+    "all_attacks": [
+      {
+        "attack_name": "fermat",
+        "success": true,
+        "time_elapsed": 5.700008478015661e-05,
+        "iterations": 2,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.027724800049327314,
+    "run_number": 2,
+    "seed": 2000,
+    "total_time": 0.8034116999479011
+  },
+  {
+    "scenario_id": "S2_3078",
+    "scenario_code": "S2",
+    "scenario_type": "S2",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "fermat",
+      "time_elapsed": 6.10999995842576e-05,
+      "iterations": 2
+    },
+    "all_attacks": [
+      {
+        "attack_name": "fermat",
+        "success": true,
+        "time_elapsed": 6.10999995842576e-05,
+        "iterations": 2,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (127 bits) - may be factorable"
+    },
+    "total_attack_time": 0.08502040000166744,
+    "run_number": 3,
+    "seed": 3000,
+    "total_time": 1.1402899000095204
+  },
+  {
+    "scenario_id": "S2_7717",
+    "scenario_code": "S2",
+    "scenario_type": "S2",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "fermat",
+      "time_elapsed": 4.600000102072954e-05,
+      "iterations": 2
+    },
+    "all_attacks": [
+      {
+        "attack_name": "fermat",
+        "success": true,
+        "time_elapsed": 4.600000102072954e-05,
+        "iterations": 2,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.0269562000175938,
+    "run_number": 4,
+    "seed": 4000,
+    "total_time": 0.8504675000440329
+  },
+  {
+    "scenario_id": "S2_4818",
+    "scenario_code": "S2",
+    "scenario_type": "S2",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "fermat",
+      "time_elapsed": 4.600000102072954e-05,
+      "iterations": 2
+    },
+    "all_attacks": [
+      {
+        "attack_name": "fermat",
+        "success": true,
+        "time_elapsed": 4.600000102072954e-05,
+        "iterations": 2,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.018434899975545704,
+    "run_number": 5,
+    "seed": 5000,
+    "total_time": 0.449409699998796
+  }
+]

@@ -68,8 +68,10 @@ class BruteForceFactorization:
             )
 
         # Trial division with wheel factorization (skip multiples of 2, 3, 5)
-        # Pattern: 1, 7, 11, 13, 17, 19, 23, 29 (mod 30)
-        wheel = [1, 7, 11, 13, 17, 19, 23, 29]
+        # Residues coprime to 30: 1, 7, 11, 13, 17, 19, 23, 29 (mod 30)
+        # wheel_deltas are the GAPS between consecutive residues, starting
+        # from residue 7: 7->11->13->17->19->23->29->31(=1)->37(=7)...
+        wheel_deltas = [4, 2, 4, 2, 4, 6, 2, 6]
         iterations = 0
 
         # Check divisibility by 3 and 5 first
@@ -117,9 +119,9 @@ class BruteForceFactorization:
                     method="Brute Force"
                 )
 
-            # Next divisor using wheel
+            # Next divisor using wheel deltas
+            divisor += wheel_deltas[wheel_index]
             wheel_index = (wheel_index + 1) % 8
-            divisor += wheel[wheel_index]
 
         return FactorizationResult(
             success=False,
@@ -351,34 +353,35 @@ class PollardsP1:
             # Generate primes up to B
             primes = [p for p in range(2, B + 1) if MathUtils.is_prime(p)]
 
-            # Choose a random base a
-            a = random.randint(2, n - 2)
-
-            # Compute a^M mod n where M = lcm(1, 2, ..., B)
+            # Compute M = product of prime powers
+            # M = ∏_{q≤B} q^{⌊log_q B⌋}
+            # M must stay a true multiple of p-1, so it must NOT be
+            # reduced modulo n-1 (that would break divisibility).
             M = 1
             for prime in primes:
                 # Raise to highest power of prime <= B
                 power = prime
                 while power * prime <= B:
                     power *= prime
-                M = (M * power) % (n - 1)
+                M *= power
 
-            a = pow(a, M, n)
+            # Try multiple bases
+            for _ in range(10):  # Try up to 10 different bases
+                a = random.randint(2, n - 2)
+                a_pow = pow(a, M, n)
+                g = MathUtils.gcd(a_pow - 1, n)
 
-            # Compute gcd(a - 1, n)
-            g = MathUtils.gcd(a - 1, n)
-
-            if 1 < g < n:
-                p = g
-                q = n // g
-                return FactorizationResult(
-                    success=True,
-                    p=p,
-                    q=q,
-                    iterations=iterations,
-                    time_elapsed=time.perf_counter() - start_time,
-                    method="Pollard's p-1"
-                )
+                if 1 < g < n:
+                    p = g
+                    q = n // g
+                    return FactorizationResult(
+                        success=True,
+                        p=p,
+                        q=q,
+                        iterations=iterations,
+                        time_elapsed=time.perf_counter() - start_time,
+                        method="Pollard's p-1"
+                    )
 
         return FactorizationResult(
             success=False,
