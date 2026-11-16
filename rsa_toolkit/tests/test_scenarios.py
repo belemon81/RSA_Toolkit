@@ -3,7 +3,12 @@ Tests for scenario manager.
 """
 
 import pytest
-from rsa_toolkit.server.scenario_manager import ScenarioManager, ScenarioType
+from rsa_toolkit.server.scenario_manager import ScenarioManager, ScenarioType, BitConfig
+from rsa_toolkit.utils.rsa_utils import RSAUtils
+
+# S0 defaults to 2048 bits which is too slow for unit tests; use a small
+# modulus that still exercises the secure-generation code path.
+FAST_SECURE = BitConfig(s0_bits=256)
 
 
 class TestScenarioManager:
@@ -12,12 +17,12 @@ class TestScenarioManager:
     def test_create_secure_scenario(self):
         """Test creating secure scenario."""
         manager = ScenarioManager()
-        scenario = manager.create_scenario(ScenarioType.SECURE)
+        scenario = manager.create_scenario(ScenarioType.SECURE, bit_config=FAST_SECURE)
 
         assert scenario.scenario_type == ScenarioType.SECURE
         assert "user1" in scenario.keys
         assert len(scenario.keys) == 1
-        assert scenario.keys["user1"].n.bit_length() == 2048
+        assert scenario.keys["user1"].n.bit_length() == 256
         assert scenario.keys["user1"].e == 65537
 
     def test_create_small_modulus_scenario(self):
@@ -26,7 +31,11 @@ class TestScenarioManager:
         scenario = manager.create_scenario(ScenarioType.SMALL_MODULUS)
 
         assert scenario.scenario_type == ScenarioType.SMALL_MODULUS
-        assert scenario.keys["user1"].n.bit_length() <= 64
+        key = scenario.keys["user1"]
+        assert key.n.bit_length() <= 64
+        # Regression: stored (e, d) must form a valid keypair
+        assert RSAUtils.validate_keypair(key.n, key.e, key.d)
+        assert key.n == key.p * key.q
 
     def test_create_close_primes_scenario(self):
         """Test creating close primes scenario."""
@@ -102,6 +111,19 @@ class TestScenarioManager:
         d = scenario.keys["user1"].d
         assert d is not None
 
+    def test_small_d_scenario_vulnerable_to_wiener(self):
+        """S7 must actually be breakable by Wiener's attack."""
+        from rsa_toolkit.attacks.wiener import WienerAttack
+
+        manager = ScenarioManager()
+        scenario = manager.create_scenario(ScenarioType.SMALL_D)
+        key = scenario.keys["user1"]
+
+        result = WienerAttack().attack(key.n, key.e)
+        assert result.success is True
+        assert result.d == key.d
+        assert {result.p, result.q} == {key.p, key.q}
+
     def test_create_small_e_no_padding_scenario(self):
         """Test creating small e no padding scenario."""
         manager = ScenarioManager()
@@ -119,9 +141,14 @@ class TestScenarioManager:
         assert scenario.scenario_type == ScenarioType.SMALL_E_BROADCAST
         assert len(scenario.keys) >= 3
 
-        # All should have e=3
-        for key in scenario.keys.values():
+        # All should have e=3 and a VALID (e, d) pair — generate_keypair
+        # may bump e when gcd(3, phi) != 1, which used to store a d that
+        # did not match the advertised e.
+        for user_id, key in scenario.keys.items():
             assert key.e == 3
+            assert RSAUtils.validate_keypair(key.n, key.e, key.d)
+            # Hastad requires the same message encrypted under each modulus
+            assert pow(scenario.messages[user_id], key.e, key.n) == scenario.ciphertexts[user_id]
 
     def test_create_shared_prime_scenario(self):
         """Test creating shared prime scenario."""
@@ -142,7 +169,7 @@ class TestScenarioManager:
     def test_get_scenario(self):
         """Test retrieving a scenario."""
         manager = ScenarioManager()
-        created = manager.create_scenario(ScenarioType.SECURE)
+        created = manager.create_scenario(ScenarioType.SECURE, bit_config=FAST_SECURE)
 
         retrieved = manager.get_scenario(created.scenario_id)
         assert retrieved is not None
@@ -151,7 +178,7 @@ class TestScenarioManager:
     def test_list_scenarios(self):
         """Test listing scenarios."""
         manager = ScenarioManager()
-        manager.create_scenario(ScenarioType.SECURE)
+        manager.create_scenario(ScenarioType.SECURE, bit_config=FAST_SECURE)
         manager.create_scenario(ScenarioType.SMALL_MODULUS)
 
         scenarios = manager.list_scenarios()
@@ -160,7 +187,7 @@ class TestScenarioManager:
     def test_verify_private_key(self):
         """Test private key verification."""
         manager = ScenarioManager()
-        scenario = manager.create_scenario(ScenarioType.SECURE)
+        scenario = manager.create_scenario(ScenarioType.SECURE, bit_config=FAST_SECURE)
 
         user_id = "user1"
         correct_d = scenario.keys[user_id].d
@@ -174,7 +201,7 @@ class TestScenarioManager:
     def test_verify_message(self):
         """Test message verification."""
         manager = ScenarioManager()
-        scenario = manager.create_scenario(ScenarioType.SECURE)
+        scenario = manager.create_scenario(ScenarioType.SECURE, bit_config=FAST_SECURE)
 
         user_id = "user1"
         correct_message = scenario.messages[user_id]
@@ -189,11 +216,11 @@ class TestScenarioManager:
         """Test that scenarios are reproducible with seed."""
         manager1 = ScenarioManager()
         manager1.set_seed(12345)
-        scenario1 = manager1.create_scenario(ScenarioType.SECURE)
+        scenario1 = manager1.create_scenario(ScenarioType.SECURE, bit_config=FAST_SECURE)
 
         manager2 = ScenarioManager()
         manager2.set_seed(12345)
-        scenario2 = manager2.create_scenario(ScenarioType.SECURE)
+        scenario2 = manager2.create_scenario(ScenarioType.SECURE, bit_config=FAST_SECURE)
 
         # Should produce same keys
         assert scenario1.keys["user1"].n == scenario2.keys["user1"].n

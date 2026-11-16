@@ -54,6 +54,14 @@ class BruteForceFactorization:
         import time
         start_time = time.perf_counter()
 
+        if n < 2:
+            return FactorizationResult(
+                success=False,
+                iterations=0,
+                time_elapsed=time.perf_counter() - start_time,
+                method="Brute Force"
+            )
+
         # Check if n is even
         if n % 2 == 0:
             p = 2
@@ -161,10 +169,24 @@ class FermatFactorization:
         import time
         start_time = time.perf_counter()
 
-        if n % 2 == 0:
+        if n < 2:
             return FactorizationResult(
                 success=False,
-                method="Fermat (N is even)"
+                iterations=0,
+                time_elapsed=time.perf_counter() - start_time,
+                method="Fermat"
+            )
+
+        if n % 2 == 0:
+            p = 2
+            q = n // 2
+            return FactorizationResult(
+                success=True,
+                p=p,
+                q=q,
+                iterations=1,
+                time_elapsed=time.perf_counter() - start_time,
+                method="Fermat (even)"
             )
 
         # Fermat requires a = ceil(sqrt(n)) so that b^2 = a^2 - n >= 0
@@ -232,6 +254,16 @@ class PollardsRho:
         """
         import time
         start_time = time.perf_counter()
+
+        # Pollard's rho needs an odd composite n > 3; smaller inputs
+        # would make random.randint(2, n - 1) raise ValueError.
+        if n < 4:
+            return FactorizationResult(
+                success=False,
+                iterations=0,
+                time_elapsed=time.perf_counter() - start_time,
+                method="Pollard's Rho"
+            )
 
         if n % 2 == 0:
             p = 2
@@ -327,6 +359,16 @@ class PollardsP1:
         """
         import time
         start_time = time.perf_counter()
+
+        # Pollard's p-1 needs an odd composite n > 3; smaller inputs
+        # would make random.randint(2, n - 2) raise ValueError.
+        if n < 4:
+            return FactorizationResult(
+                success=False,
+                iterations=0,
+                time_elapsed=time.perf_counter() - start_time,
+                method="Pollard's p-1"
+            )
 
         if n % 2 == 0:
             p = 2

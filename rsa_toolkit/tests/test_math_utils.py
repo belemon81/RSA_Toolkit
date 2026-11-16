@@ -94,15 +94,7 @@ class TestMathUtils:
         assert MathUtils.lcm(5, 7) == 35
         assert MathUtils.lcm(12, 18) == 36
 
-    def test_euler_totient(self):
-        """Test Euler's totient function."""
-        assert MathUtils.euler_totient(1) == 1
-        assert MathUtils.euler_totient(7) == 6  # 7 is prime
-        assert MathUtils.euler_totient(12) == 4  # φ(12) = 4
-        assert MathUtils.euler_totient(13) == 12  # 13 is prime
-
-    def test_carmichael_function(self):
-        """Test Carmichael function."""
-        assert MathUtils.carmichael_function(1) == 1
-        assert MathUtils.carmichael_function(7) == 6  # Prime
-        assert MathUtils.carmichael_function(8) == 2  # 2^3
+    def test_lcm_zero(self):
+        """LCM with a zero operand is defined as 0 (no crash)."""
+        assert MathUtils.lcm(0, 5) == 0
+        assert MathUtils.lcm(0, 0) == 0

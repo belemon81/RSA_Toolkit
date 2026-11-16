@@ -9,7 +9,7 @@ from pathlib import Path
 from typing import Dict, List, Optional
 from rsa_toolkit.client.attacker import AttackerClient
 
-SERVER_URL = "http://127.0.0.1:8001"
+SERVER_URL = "http://127.0.0.1:8000"
 
 class ExperimentRunner:
     def __init__(self, server_url: str = SERVER_URL):
@@ -17,13 +17,27 @@ class ExperimentRunner:
         self.results_dir = Path("experiment_results")
         self.results_dir.mkdir(exist_ok=True)
 
-    def create_scenario(self, scenario_type: str, seed: int = None) -> Dict:
-        """Create a new scenario."""
+    def create_scenario(self, scenario_type: str, seed: int = None, bit_config: Optional[Dict] = None) -> Dict:
+        """
+        Create a new scenario.
+
+        Args:
+            scenario_type: Type of scenario to create
+            seed: Optional seed for reproducibility
+            bit_config: Optional dictionary with bit configuration (e.g., {"s1_p_bits": 24})
+
+        Returns:
+            Scenario response
+        """
         client = httpx.Client(timeout=120.0)
         try:
+            payload = {"scenario_type": scenario_type, "seed": seed}
+            if bit_config:
+                payload.update(bit_config)
+
             response = client.post(
                 f"{self.server_url}/scenarios/create",
-                json={"scenario_type": scenario_type, "seed": seed}
+                json=payload
             )
             response.raise_for_status()
             return response.json()
@@ -142,9 +156,8 @@ if __name__ == "__main__":
 
     runner = ExperimentRunner()
 
-    # All scenarios S0-S10
+    # All scenarios S1-S10 (S0 secure baseline is impractical to run)
     scenarios = [
-        ("S0", "S0"),
         ("S1", "S1"),
         ("S2", "S2"),
         ("S3", "S3"),
@@ -167,7 +180,7 @@ if __name__ == "__main__":
 
     for scenario_code, scenario_type in scenarios:
         try:
-            runner.run_scenario_experiment(scenario_code, scenario_type, num_runs=5)
+            runner.run_scenario_experiment(scenario_code, scenario_type, num_runs=10)
         except Exception as e:
             print(f"ERROR running scenario {scenario_code}: {e}")
             import traceback

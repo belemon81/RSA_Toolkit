@@ -50,12 +50,40 @@ class Scenario:
     seed: int
 
 
+@dataclass
+class BitConfig:
+    """Bit length configuration for scenario generation."""
+    # S0: Secure baseline (default 2048; lower values allowed for testing)
+    s0_bits: int = 2048
+    # S1: Small modulus
+    s1_p_bits: int = 20  # Default: ~20 bits (~1 million)
+    s1_q_bits: int = 28  # Default: ~28 bits (~268 million)
+    # S2: Close primes
+    s2_pq_bits: int = 64  # Default: ~64 bits
+    s2_max_offset: int = 5000  # Default: offset < 10000
+    # S3: Pollard's rho
+    s3_p_bits: int = 18  # Default: ~18 bits (~262k)
+    s3_q_bits: int = 46  # Default: ~46 bits (~70 trillion)
+    # S4: Pollard's p-1 (p is constructed with B-smooth p-1, ~s4_p_bits)
+    s4_p_bits: int = 24  # Default: ~24 bits
+    s4_q_bits: int = 32  # Default: ~32 bits
+    # S5, S6: Shared modulus
+    s_shared_pq_bits: int = 20  # Default: ~20 bits
+    # S7: Small d
+    s7_pq_bits: int = 16  # Default: ~16 bits
+    # S8, S9: Small e
+    s_small_e_bits: int = 128  # Default: 128 bits
+    # S10: Shared prime
+    s10_p_bits: int = 20  # Default: ~20 bits
+    s10_q_bits: int = 20  # Default: ~20 bits
+
+
 class ScenarioManager:
     """
     Manager for creating and managing attack scenarios.
 
     Implements the scenarios described in the report:
-    - S0: Secure configuration (2048-bit, e=65537, OAEP padding)
+    - S0: Secure configuration (2048-bit, e=65537, textbook RSA)
     - S1: Small modulus (< 64 bits)
     - S2: Close primes (Fermat factorization)
     - S3: N has small prime factor (Pollard's rho)
@@ -86,7 +114,8 @@ class ScenarioManager:
     def create_scenario(
         self,
         scenario_type: ScenarioType,
-        seed: Optional[int] = None
+        seed: Optional[int] = None,
+        bit_config: Optional[BitConfig] = None
     ) -> Scenario:
         """
         Create a specific attack scenario.
@@ -94,6 +123,7 @@ class ScenarioManager:
         Args:
             scenario_type: Type of scenario to create
             seed: Optional seed for reproducibility
+            bit_config: Optional bit length configuration (uses defaults if not provided)
 
         Returns:
             Created Scenario object
@@ -101,36 +131,39 @@ class ScenarioManager:
         if seed is not None:
             self.set_seed(seed)
 
+        if bit_config is None:
+            bit_config = BitConfig()
+
         scenario_id = f"{scenario_type.value}_{random.randint(1000, 9999)}"
 
         if scenario_type == ScenarioType.SECURE:
-            return self._create_secure_scenario(scenario_id)
+            return self._create_secure_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.SMALL_MODULUS:
-            return self._create_small_modulus_scenario(scenario_id)
+            return self._create_small_modulus_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.CLOSE_PRIMES:
-            return self._create_close_primes_scenario(scenario_id)
+            return self._create_close_primes_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.POLLARDS_RHO:
-            return self._create_pollards_rho_scenario(scenario_id)
+            return self._create_pollards_rho_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.POLLARDS_P1:
-            return self._create_pollards_p1_scenario(scenario_id)
+            return self._create_pollards_p1_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.SHARED_MODULUS_INTERNAL:
-            return self._create_shared_modulus_internal_scenario(scenario_id)
+            return self._create_shared_modulus_internal_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.SHARED_MODULUS_EXTERNAL:
-            return self._create_shared_modulus_external_scenario(scenario_id)
+            return self._create_shared_modulus_external_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.SMALL_D:
-            return self._create_small_d_scenario(scenario_id)
+            return self._create_small_d_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.SMALL_E_NO_PADDING:
-            return self._create_small_e_no_padding_scenario(scenario_id)
+            return self._create_small_e_no_padding_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.SMALL_E_BROADCAST:
-            return self._create_small_e_broadcast_scenario(scenario_id)
+            return self._create_small_e_broadcast_scenario(scenario_id, bit_config)
         elif scenario_type == ScenarioType.SHARED_PRIME:
-            return self._create_shared_prime_scenario(scenario_id)
+            return self._create_shared_prime_scenario(scenario_id, bit_config)
         else:
             raise ValueError(f"Unknown scenario type: {scenario_type}")
 
-    def _create_secure_scenario(self, scenario_id: str) -> Scenario:
+    def _create_secure_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S0: Secure configuration."""
-        (n, e, d), (p, q) = RSAUtils.generate_keypair(bit_length=2048, e=65537)
+        (n, e, d), (p, q) = RSAUtils.generate_keypair(bit_length=bit_config.s0_bits, e=65537)
 
         key = RSAKey(n=n, e=e, d=d, p=p, q=q)
         message = RSAUtils.message_to_int("This is a secure message")
@@ -139,26 +172,31 @@ class ScenarioManager:
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.SECURE,
-            description="Secure RSA configuration (2048-bit, e=65537)",
+            description=f"Secure RSA configuration ({bit_config.s0_bits}-bit, e=65537)",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_small_modulus_scenario(self, scenario_id: str) -> Scenario:
+    def _create_small_modulus_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S1: Small modulus (< 64 bits) with small prime factors."""
         # Generate modulus with one small prime factor for easier brute force
-        # Use a small prime p (e.g., around 20 bits) and a larger q
-        small_p = RSAUtils._generate_prime(20)  # ~20 bits (~1 million)
-        q = RSAUtils._generate_prime(28)  # ~28 bits (~268 million)
-        n = small_p * q  # ~48 bits total
+        # Ensure p is always the smaller one (small_p < q)
+        p = RSAUtils._generate_prime(bit_config.s1_p_bits)
+        q = RSAUtils._generate_prime(bit_config.s1_q_bits)
+
+        # Ensure p < q (so p is always the small factor)
+        if p > q:
+            p, q = q, p
+
+        n = p * q
 
         e = 65537
-        phi = (small_p - 1) * (q - 1)
+        phi = (p - 1) * (q - 1)
 
         # Ensure e and phi are coprime
         if MathUtils.gcd(e, phi) != 1:
@@ -169,11 +207,11 @@ class ScenarioManager:
                     break
             else:
                 # Regenerate if no suitable e found
-                return self._create_small_modulus_scenario(scenario_id)
+                return self._create_small_modulus_scenario(scenario_id, bit_config)
 
         d = MathUtils.mod_inverse(e, phi)
 
-        key = RSAKey(n=n, e=e, d=d, p=small_p, q=q)
+        key = RSAKey(n=n, e=e, d=d, p=p, q=q)
         message = RSAUtils.message_to_int("Hi")
         ciphertext = RSAUtils.encrypt(message, n, e)
 
@@ -184,21 +222,21 @@ class ScenarioManager:
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_close_primes_scenario(self, scenario_id: str) -> Scenario:
+    def _create_close_primes_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S2: Close primes (Fermat factorization)."""
         # Generate p and q very close together for Fermat factorization
         # Start with a base prime, then generate q very close to p
-        p = RSAUtils._generate_prime(64)  # ~64 bits
-        # Generate q within a small range (e.g., offset < 10000)
+        p = RSAUtils._generate_prime(bit_config.s2_pq_bits)
+        # Generate q within a small range using bit_config.s2_max_offset
         # offset must be EVEN so that q = p + offset stays odd (p is odd);
         # an odd offset would make q even and the primality loop never ends.
-        offset = random.randint(1, 5000) * 2
+        offset = random.randint(1, bit_config.s2_max_offset) * 2
         q = p + offset
 
         # Ensure q is prime
@@ -221,7 +259,7 @@ class ScenarioManager:
                     e = e_candidate
                     break
             else:
-                return self._create_close_primes_scenario(scenario_id)
+                return self._create_close_primes_scenario(scenario_id, bit_config)
 
         d = MathUtils.mod_inverse(e, phi)
 
@@ -236,13 +274,13 @@ class ScenarioManager:
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_small_d_scenario(self, scenario_id: str) -> Scenario:
+    def _create_small_d_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S7: Small d (Wiener attack)."""
         # Wiener's attack condition: d < N^(1/4) / 3
         # Correct construction: choose a SMALL d first, then compute
@@ -253,10 +291,12 @@ class ScenarioManager:
 
         import gmpy2
 
-        # Two 16-bit primes -> N ~ 32 bits -> N^(1/4)/3 ~ 85
-        while True:
-            p = RSAUtils._generate_prime(16)
-            q = RSAUtils._generate_prime(16)
+        # Use bit_config.s7_pq_bits for both primes. The attempt cap prevents
+        # an infinite loop when s7_pq_bits is set absurdly small: then
+        # bound <= 3, the d-range is empty, and no keypair can ever be built.
+        for _attempt in range(1000):
+            p = RSAUtils._generate_prime(bit_config.s7_pq_bits)
+            q = RSAUtils._generate_prime(bit_config.s7_pq_bits)
             if p == q:
                 continue
             if p > q:
@@ -284,20 +324,24 @@ class ScenarioManager:
                         keys={"user1": key},
                         messages={"user1": message},
                         ciphertexts={"user1": ciphertext},
-                        seed=self.current_seed or random.randint(0, 2**32)
+                        seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
                     )
 
                     self.scenarios[scenario_id] = scenario
                     return scenario
 
-    def _create_shared_modulus_internal_scenario(self, scenario_id: str) -> Scenario:
+        raise RuntimeError(
+            "Failed to generate small-d keypair: try larger s7_pq_bits"
+        )
+
+    def _create_shared_modulus_internal_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S5: Shared modulus (internal attacker)."""
         # Generate shared modulus with small primes for easier factorization
         # This allows the "attacker" to factorize and get their own d
-        p = RSAUtils._generate_prime(20)  # ~20 bits
-        q = RSAUtils._generate_prime(20)  # ~20 bits
+        p = RSAUtils._generate_prime(bit_config.s_shared_pq_bits)
+        q = RSAUtils._generate_prime(bit_config.s_shared_pq_bits)
         while q == p:
-            q = RSAUtils._generate_prime(20)
+            q = RSAUtils._generate_prime(bit_config.s_shared_pq_bits)
 
         if p > q:
             p, q = q, p
@@ -318,7 +362,10 @@ class ScenarioManager:
         e2 = 17
         if MathUtils.gcd(e2, phi) != 1:
             e2 = 5
-            while MathUtils.gcd(e2, phi) != 1 and e2 < 100:
+            # Unbounded: phi has finitely many prime factors, so an odd
+            # e2 coprime to phi always exists. A bounded loop could exit
+            # with gcd(e2, phi) != 1 and leave d2 = None.
+            while MathUtils.gcd(e2, phi) != 1:
                 e2 += 2
         d2 = MathUtils.mod_inverse(e2, phi)
 
@@ -337,19 +384,19 @@ class ScenarioManager:
             keys={"attacker": key1, "victim": key2},
             messages={"attacker": message, "victim": message},
             ciphertexts={"attacker": c1, "victim": c2},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_shared_modulus_external_scenario(self, scenario_id: str) -> Scenario:
+    def _create_shared_modulus_external_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S6: Shared modulus (external attacker)."""
         # Generate shared modulus with small primes
-        p = RSAUtils._generate_prime(20)  # ~20 bits
-        q = RSAUtils._generate_prime(20)  # ~20 bits
+        p = RSAUtils._generate_prime(bit_config.s_shared_pq_bits)
+        q = RSAUtils._generate_prime(bit_config.s_shared_pq_bits)
         while q == p:
-            q = RSAUtils._generate_prime(20)
+            q = RSAUtils._generate_prime(bit_config.s_shared_pq_bits)
 
         if p > q:
             p, q = q, p
@@ -368,7 +415,7 @@ class ScenarioManager:
         e2 = 65537
         if MathUtils.gcd(e2, phi) != 1:
             e2 = 5
-            while MathUtils.gcd(e2, phi) != 1 and e2 < 100:
+            while MathUtils.gcd(e2, phi) != 1:
                 e2 += 2
         d2 = MathUtils.mod_inverse(e2, phi)
 
@@ -394,33 +441,30 @@ class ScenarioManager:
             keys={"user1": key1, "user2": key2},
             messages={"user1": message, "user2": message},
             ciphertexts={"user1": c1, "user2": c2},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_small_e_no_padding_scenario(self, scenario_id: str) -> Scenario:
+    def _create_small_e_no_padding_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S8: Small e, no padding (cube root attack)."""
         # Generate modulus large enough to encrypt small message
         # Condition: M^e < N for cube root attack to work
         # For e=3 and M=42, we need N > 42^3 = 74088
-        # Use larger N to be safe, e.g., 128 bits
+        # Use bit_config.s_small_e_bits
         (n, e, d), (p, q) = RSAUtils.generate_keypair(
-            bit_length=128,
+            bit_length=bit_config.s_small_e_bits,
             e=3,
             weak_config='small_e'
         )
 
         key = RSAKey(n=n, e=e, d=d, p=p, q=q)
-        # Small message so that m^e < n
+        # Small message so that m^e < n; shrink until the condition holds
+        # (always terminates: 1^e = 1 < n for any RSA modulus)
         message = 42
-        # Verify condition
-        if pow(message, e) >= n:
-            # If condition not met, try smaller message
-            message = 2
-            while pow(message, e) >= n and message < 100:
-                message += 1
+        while pow(message, e) >= n and message > 1:
+            message -= 1
 
         ciphertext = RSAUtils.encrypt(message, n, e)
 
@@ -431,42 +475,47 @@ class ScenarioManager:
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_small_e_broadcast_scenario(self, scenario_id: str) -> Scenario:
+    def _create_small_e_broadcast_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S9: Small e, broadcast (Hastad attack)."""
         e = 3
         messages = {}
         ciphertexts = {}
         keys = {}
+        moduli = []
 
-        # Use the same message for all users
-        message = 42  # Small integer for Hastad's attack
-
+        # Generate all keys first so the shared message can be chosen to
+        # satisfy m^e < n for EVERY modulus (Hastad requires the same m
+        # under all moduli). weak_config='small_e' keeps e=3 by
+        # regenerating primes when gcd(3, phi) != 1; without it,
+        # generate_keypair silently bumps e and the stored (e, d) pair
+        # would not match.
         for i in range(3):
-            # Generate modulus large enough so that M^e < each N_i
-            # For e=3 and M=42, need N > 74088
-            (n, _, d), (p, q) = RSAUtils.generate_keypair(bit_length=128, e=e)
+            (n, key_e, d), (p, q) = RSAUtils.generate_keypair(
+                bit_length=bit_config.s_small_e_bits,
+                e=e,
+                weak_config='small_e'
+            )
 
-            # Verify condition for Hastad's attack
-            if pow(message, e) >= n:
-                # If condition not met, try smaller message
-                temp_message = 2
-                while pow(temp_message, e) >= n and temp_message < 100:
-                    temp_message += 1
-                message = temp_message  # Update message for all users
-
-            key = RSAKey(n=n, e=e, d=d, p=p, q=q)
-            ciphertext = RSAUtils.encrypt(message, n, e)
-
+            key = RSAKey(n=n, e=key_e, d=d, p=p, q=q)
             user_id = f"user{i+1}"
             keys[user_id] = key
+            moduli.append(n)
+
+        # Same message for all users; shrink it until m^e < every n
+        message = 42
+        min_n = min(moduli)
+        while pow(message, e) >= min_n and message > 1:
+            message -= 1
+
+        for user_id, key in keys.items():
             messages[user_id] = message
-            ciphertexts[user_id] = ciphertext
+            ciphertexts[user_id] = RSAUtils.encrypt(message, key.n, key.e)
 
         scenario = Scenario(
             scenario_id=scenario_id,
@@ -475,22 +524,22 @@ class ScenarioManager:
             keys=keys,
             messages=messages,
             ciphertexts=ciphertexts,
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_shared_prime_scenario(self, scenario_id: str) -> Scenario:
+    def _create_shared_prime_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S10: Shared prime (GCD attack)."""
         # Generate shared prime (smaller for faster testing)
-        shared_p = RSAUtils._generate_prime(20)  # ~20 bits
+        shared_p = RSAUtils._generate_prime(bit_config.s10_p_bits)
 
         # Generate different q values
-        q1 = RSAUtils._generate_prime(20)  # ~20 bits
-        q2 = RSAUtils._generate_prime(20)  # ~20 bits
+        q1 = RSAUtils._generate_prime(bit_config.s10_q_bits)
+        q2 = RSAUtils._generate_prime(bit_config.s10_q_bits)
         while q2 == q1:
-            q2 = RSAUtils._generate_prime(20)
+            q2 = RSAUtils._generate_prime(bit_config.s10_q_bits)
 
         n1 = shared_p * q1
         n2 = shared_p * q2
@@ -522,19 +571,19 @@ class ScenarioManager:
             keys={"user1": key1, "user2": key2},
             messages={"user1": message, "user2": message},
             ciphertexts={"user1": c1, "user2": c2},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_pollards_rho_scenario(self, scenario_id: str) -> Scenario:
+    def _create_pollards_rho_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
         """Create S3: N has small prime factor (Pollard's rho)."""
         # Generate N with a small prime factor for Pollard's rho
-        # Use a very small prime (e.g., 16-20 bits) and a larger prime
-        small_p = RSAUtils._generate_prime(18)  # Small prime (~18 bits, ~262k)
-        q = RSAUtils._generate_prime(46)  # Larger prime (~46 bits, ~70 trillion)
-        n = small_p * q  # ~64 bits total
+        # Use bit_config.s3_p_bits for small prime and bit_config.s3_q_bits for larger prime
+        small_p = RSAUtils._generate_prime(bit_config.s3_p_bits)
+        q = RSAUtils._generate_prime(bit_config.s3_q_bits)
+        n = small_p * q
 
         e = 65537
         phi = (small_p - 1) * (q - 1)
@@ -546,7 +595,7 @@ class ScenarioManager:
                     e = e_candidate
                     break
             else:
-                return self._create_pollards_rho_scenario(scenario_id)
+                return self._create_pollards_rho_scenario(scenario_id, bit_config)
 
         d = MathUtils.mod_inverse(e, phi)
 
@@ -561,60 +610,57 @@ class ScenarioManager:
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario
         return scenario
 
-    def _create_pollards_p1_scenario(self, scenario_id: str) -> Scenario:
-        """Create S4: p-1 and q-1 have small factors (Pollard's p-1)."""
-        # Generate p where p-1 is B-smooth (has only small prime factors)
-        # Use a simpler approach: construct p-1 directly from small primes
-        primes = [2, 3, 5, 7, 11, 13]
-        p_minus_1 = 1
-        for prime in primes:
-            p_minus_1 *= prime  # p-1 = 2*3*5*7*11*13 = 30030
-
-        # Find a prime p of the form k * product + 1
-        k = 1
-        max_attempts = 10000
-        attempts = 0
+    def _create_pollards_p1_scenario(self, scenario_id: str, bit_config: BitConfig) -> Scenario:
+        """Create S4: p-1 is B-smooth (Pollard's p-1)."""
+        # p-1 must be B-smooth for Pollard's p-1. Build a RANDOM smooth
+        # base M = product of small prime powers (~s4_p_bits bits) so that
+        # p = M + 1 is prime. Per-prime exponents are capped so every prime
+        # power dividing p-1 stays <= 10000 — the attack's largest B bound
+        # (PollardsP1.B * max multiplier). Without the cap, combined
+        # exponents (e.g. 2^15 | p-1) could exceed B and the attack fails.
+        smooth_primes = [2, 3, 5, 7, 11, 13, 17, 19]
+        max_exp = {2: 13, 3: 8, 5: 5, 7: 4, 11: 3, 13: 3, 17: 3, 19: 3}
         p = None
-        while attempts < max_attempts:
-            candidate = k * p_minus_1 + 1
-            if MathUtils.is_prime(candidate):
-                p = candidate
+
+        for _attempt in range(2000):
+            need = bit_config.s4_p_bits
+            M = 2  # factor 2 keeps p = M + 1 odd
+            exponents = {r: 1 if r == 2 else 0 for r in smooth_primes}
+            picks = 0
+
+            while M.bit_length() < need and picks < 500:
+                picks += 1
+                r = random.choice(smooth_primes)
+                e = random.randint(1, 3)
+                if exponents[r] + e > max_exp[r]:
+                    continue
+                exponents[r] += e
+                M *= r ** e
+
+            # Reject M that undershot (exponent caps hit) or overshot
+            # the target size, then test p = M + 1 for primality.
+            if not (need <= M.bit_length() <= need + 4):
+                continue
+
+            if MathUtils.is_prime(M + 1):
+                p = M + 1
                 break
-            k += 1
-            attempts += 1
 
         if p is None:
-            # Fallback: use a different set of primes
-            primes = [2, 3, 5, 7, 11]
-            p_minus_1 = 1
-            for prime in primes:
-                p_minus_1 *= prime
-            k = 1
-            while attempts < max_attempts * 2:
-                candidate = k * p_minus_1 + 1
-                if MathUtils.is_prime(candidate):
-                    p = candidate
-                    break
-                k += 1
-                attempts += 1
+            raise RuntimeError(
+                "Failed to generate B-smooth p for S4; try larger s4_p_bits"
+            )
 
-        if p is None:
-            # Last fallback: generate normal primes
-            p = RSAUtils._generate_prime(32)
-            q = RSAUtils._generate_prime(32)
-            while q == p:
-                q = RSAUtils._generate_prime(32)
-        else:
-            # Generate q normally (not B-smooth)
-            q = RSAUtils._generate_prime(32)
-            while q == p:
-                q = RSAUtils._generate_prime(32)
+        # Generate q normally (not B-smooth)
+        q = RSAUtils._generate_prime(bit_config.s4_q_bits)
+        while q == p:
+            q = RSAUtils._generate_prime(bit_config.s4_q_bits)
 
         n = p * q
         e = 65537
@@ -627,7 +673,7 @@ class ScenarioManager:
                     e = e_candidate
                     break
             else:
-                return self._create_pollards_p1_scenario(scenario_id)
+                return self._create_pollards_p1_scenario(scenario_id, bit_config)
 
         d = MathUtils.mod_inverse(e, phi)
 
@@ -638,11 +684,11 @@ class ScenarioManager:
         scenario = Scenario(
             scenario_id=scenario_id,
             scenario_type=ScenarioType.POLLARDS_P1,
-            description=f"p-1 constructed from small primes - vulnerable to Pollard's p-1",
+            description=f"p-1 is B-smooth (p={p}, {p.bit_length()} bits) - vulnerable to Pollard's p-1",
             keys={"user1": key},
             messages={"user1": message},
             ciphertexts={"user1": ciphertext},
-            seed=self.current_seed or random.randint(0, 2**32)
+            seed=self.current_seed if self.current_seed is not None else random.randint(0, 2**32)
         )
 
         self.scenarios[scenario_id] = scenario

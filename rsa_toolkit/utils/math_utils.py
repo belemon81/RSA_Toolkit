@@ -5,8 +5,7 @@ This module provides core mathematical functions used in various RSA attack scen
 """
 
 import math
-import random
-from typing import Tuple, Optional, List
+from typing import Tuple, Optional, List, Union
 from fractions import Fraction
 import gmpy2
 
@@ -40,14 +39,21 @@ class MathUtils:
         Returns:
             Tuple (g, x, y) where g = gcd(a, b) and ax + by = g
         """
-        if b == 0:
-            return a, 1, 0
+        # Iterative form: the recursive version can exceed Python's
+        # recursion limit (~1000 frames) for operands of a few hundred
+        # bits, since the Euclidean algorithm needs ~1.44 * bit_length
+        # division steps.
+        old_r, r = a, b
+        old_s, s = 1, 0
+        old_t, t = 0, 1
 
-        g, x1, y1 = MathUtils.extended_gcd(b, a % b)
-        x = y1
-        y = x1 - (a // b) * y1
+        while r != 0:
+            quotient = old_r // r
+            old_r, r = r, old_r - quotient * r
+            old_s, s = s, old_s - quotient * s
+            old_t, t = t, old_t - quotient * t
 
-        return g, x, y
+        return old_r, old_s, old_t
 
     @staticmethod
     def mod_inverse(a: int, m: int) -> Optional[int]:
@@ -137,6 +143,9 @@ class MathUtils:
         Returns:
             Tuple (root, is_exact) where is_exact is True if root^k == n
         """
+        if k < 1:
+            raise ValueError(f"k must be >= 1, got {k}")
+
         if n < 0 and k % 2 == 0:
             return 0, False
 
@@ -210,7 +219,7 @@ class MathUtils:
         return result % mod_product
 
     @staticmethod
-    def continued_fraction(x: float, max_iterations: int = 1000) -> List[int]:
+    def continued_fraction(x: Union[float, Fraction], max_iterations: int = 1000) -> List[int]:
         """
         Compute continued fraction expansion of x.
 
@@ -290,80 +299,6 @@ class MathUtils:
         Returns:
             LCM of a and b
         """
+        if a == 0 or b == 0:
+            return 0
         return abs(a * b) // MathUtils.gcd(a, b)
-
-    @staticmethod
-    def euler_totient(n: int) -> int:
-        """
-        Compute Euler's totient function φ(n).
-
-        Args:
-            n: Positive integer
-
-        Returns:
-            Value of φ(n)
-        """
-        if n <= 0:
-            return 0
-
-        result = n
-        p = 2
-
-        while p * p <= n:
-            if n % p == 0:
-                while n % p == 0:
-                    n //= p
-                result -= result // p
-            p += 1
-
-        if n > 1:
-            result -= result // n
-
-        return result
-
-    @staticmethod
-    def carmichael_function(n: int) -> int:
-        """
-        Compute Carmichael function λ(n).
-
-        Args:
-            n: Positive integer
-
-        Returns:
-            Value of λ(n)
-        """
-        if n <= 0:
-            return 0
-        if n == 1:
-            return 1
-
-        # Factorize n
-        factors = {}
-        temp = n
-        p = 2
-        while p * p <= temp:
-            while temp % p == 0:
-                factors[p] = factors.get(p, 0) + 1
-                temp //= p
-            p += 1
-        if temp > 1:
-            factors[temp] = factors.get(temp, 0) + 1
-
-        # Compute λ(n) = lcm(λ(p1^a1), λ(p2^a2), ...)
-        lambda_values = []
-        for p, exp in factors.items():
-            if p == 2:
-                if exp == 1:
-                    lambda_values.append(1)
-                elif exp == 2:
-                    lambda_values.append(2)
-                else:
-                    lambda_values.append(2 ** (exp - 2))
-            else:
-                lambda_values.append((p - 1) * p ** (exp - 1))
-
-        result = 1
-        for val in lambda_values:
-            result = MathUtils.lcm(result, val)
-
-        return result

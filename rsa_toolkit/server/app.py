@@ -5,13 +5,15 @@ This module provides REST API endpoints for interacting with attack scenarios.
 """
 
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from typing import Dict, List, Optional
 import uvicorn
 
-from rsa_toolkit.server.scenario_manager import ScenarioManager, ScenarioType
+from dataclasses import fields
 
+from rsa_toolkit.server.scenario_manager import ScenarioManager, ScenarioType, BitConfig
+
+_BIT_CONFIG_FIELDS = {f.name for f in fields(BitConfig)}
 
 app = FastAPI(
     title="RSA Attack Toolkit - Vulnerable Server",
@@ -26,6 +28,21 @@ class ScenarioCreateRequest(BaseModel):
     """Request model for creating a scenario."""
     scenario_type: str
     seed: Optional[int] = None
+    # Optional bit configuration (all fields optional, uses defaults if not provided)
+    s0_bits: Optional[int] = None
+    s1_p_bits: Optional[int] = None
+    s1_q_bits: Optional[int] = None
+    s2_pq_bits: Optional[int] = None
+    s2_max_offset: Optional[int] = None
+    s3_p_bits: Optional[int] = None
+    s3_q_bits: Optional[int] = None
+    s4_p_bits: Optional[int] = None
+    s4_q_bits: Optional[int] = None
+    s_shared_pq_bits: Optional[int] = None
+    s7_pq_bits: Optional[int] = None
+    s_small_e_bits: Optional[int] = None
+    s10_p_bits: Optional[int] = None
+    s10_q_bits: Optional[int] = None
 
 
 class ScenarioResponse(BaseModel):
@@ -93,7 +110,7 @@ async def create_scenario(request: ScenarioCreateRequest):
     Create a new attack scenario.
 
     Args:
-        request: ScenarioCreateRequest with scenario type and optional seed
+        request: ScenarioCreateRequest with scenario type, optional seed, and optional bit configuration
 
     Returns:
         Scenario information
@@ -107,7 +124,17 @@ async def create_scenario(request: ScenarioCreateRequest):
             detail=f"Invalid scenario type. Available: {available}"
         )
 
-    scenario = scenario_manager.create_scenario(scenario_type, request.seed)
+    # Build BitConfig from request; fields left as None must fall back to
+    # the dataclass defaults, not override them with None.
+    bit_config = BitConfig(
+        **{
+            k: v
+            for k, v in request.model_dump().items()
+            if v is not None and k in _BIT_CONFIG_FIELDS
+        }
+    )
+
+    scenario = scenario_manager.create_scenario(scenario_type, request.seed, bit_config)
 
     return ScenarioResponse(
         scenario_id=scenario.scenario_id,

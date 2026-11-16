@@ -13,7 +13,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich import print as rprint
 from typing import Optional
 
-from rsa_toolkit.client.attacker import AttackerClient, AttackReport
+from rsa_toolkit.client.attacker import AttackerClient
 
 app = typer.Typer(
     name="rsa-attack-toolkit",
@@ -142,27 +142,107 @@ def list_scenarios(
 
 @app.command()
 def create_scenario(
-    scenario_type: str = typer.Argument(..., help="Scenario type (S0-S9)"),
+    scenario_type: str = typer.Argument(..., help="Scenario type (S0-S10)"),
     server_url: str = typer.Option("http://127.0.0.1:8000", "--server", "-s", help="Server URL"),
-    seed: Optional[int] = typer.Option(None, "--seed", help="Random seed for reproducibility")
+    seed: Optional[int] = typer.Option(None, "--seed", help="Random seed for reproducibility"),
+    # S0: Secure baseline
+    s0_bits: Optional[int] = typer.Option(None, "--s0-bits", help="S0: modulus bit length (default: 2048)"),
+    # S1: Small modulus
+    s1_p_bits: Optional[int] = typer.Option(None, "--s1-p-bits", help="S1: p bit length (default: 20)"),
+    s1_q_bits: Optional[int] = typer.Option(None, "--s1-q-bits", help="S1: q bit length (default: 28)"),
+    # S2: Close primes
+    s2_pq_bits: Optional[int] = typer.Option(None, "--s2-pq-bits", help="S2: p,q bit length (default: 64)"),
+    s2_max_offset: Optional[int] = typer.Option(None, "--s2-max-offset", help="S2: max offset (default: 5000)"),
+    # S3: Pollard's rho
+    s3_p_bits: Optional[int] = typer.Option(None, "--s3-p-bits", help="S3: p bit length (default: 18)"),
+    s3_q_bits: Optional[int] = typer.Option(None, "--s3-q-bits", help="S3: q bit length (default: 46)"),
+    # S4: Pollard's p-1
+    s4_p_bits: Optional[int] = typer.Option(None, "--s4-p-bits", help="S4: p bit length (default: 24)"),
+    s4_q_bits: Optional[int] = typer.Option(None, "--s4-q-bits", help="S4: q bit length (default: 32)"),
+    # S5, S6: Shared modulus
+    s_shared_pq_bits: Optional[int] = typer.Option(None, "--s-shared-pq-bits", help="S5,S6: p,q bit length (default: 20)"),
+    # S7: Small d
+    s7_pq_bits: Optional[int] = typer.Option(None, "--s7-pq-bits", help="S7: p,q bit length (default: 16)"),
+    # S8, S9: Small e
+    s_small_e_bits: Optional[int] = typer.Option(None, "--s-small-e-bits", help="S8,S9: modulus bit length (default: 128)"),
+    # S10: Shared prime
+    s10_p_bits: Optional[int] = typer.Option(None, "--s10-p-bits", help="S10: p bit length (default: 20)"),
+    s10_q_bits: Optional[int] = typer.Option(None, "--s10-q-bits", help="S10: q bit length (default: 20)")
 ):
     """
     Create a new scenario on the server.
 
     Args:
-        scenario_type: Type of scenario (S0-S9)
+        scenario_type: Type of scenario (S0-S10)
         server_url: URL of the vulnerable server
         seed: Optional random seed
+        s0_bits: S0: modulus bit length (default: 2048)
+        s1_p_bits: S1: p bit length (default: 20)
+        s1_q_bits: S1: q bit length (default: 28)
+        s2_pq_bits: S2: p,q bit length (default: 64)
+        s2_max_offset: S2: max offset (default: 5000)
+        s3_p_bits: S3: p bit length (default: 18)
+        s3_q_bits: S3: q bit length (default: 46)
+        s4_p_bits: S4: p bit length (default: 24)
+        s4_q_bits: S4: q bit length (default: 32)
+        s_shared_pq_bits: S5,S6: p,q bit length (default: 20)
+        s7_pq_bits: S7: p,q bit length (default: 16)
+        s_small_e_bits: S8,S9: modulus bit length (default: 128)
+        s10_p_bits: S10: p bit length (default: 20)
+        s10_q_bits: S10: q bit length (default: 20)
+
+    Examples:
+        # Create S1 with default bits
+        python main.py client create-scenario S1
+
+        # Create S1 with custom bits
+        python main.py client create-scenario S1 --s1-p-bits 24 --s1-q-bits 32
+
+        # Create S2 with larger primes
+        python main.py client create-scenario S2 --s2-pq-bits 96 --s2-max-offset 50000
     """
     import httpx
 
     rprint(Panel.fit(f"[bold blue]RSA Attack Toolkit[/bold blue]\nCreating scenario: {scenario_type}"))
 
     try:
+        # Build payload with bit config
+        payload = {"scenario_type": scenario_type, "seed": seed}
+
+        # Add bit config if provided
+        if s0_bits is not None:
+            payload["s0_bits"] = s0_bits
+        if s1_p_bits is not None:
+            payload["s1_p_bits"] = s1_p_bits
+        if s1_q_bits is not None:
+            payload["s1_q_bits"] = s1_q_bits
+        if s2_pq_bits is not None:
+            payload["s2_pq_bits"] = s2_pq_bits
+        if s2_max_offset is not None:
+            payload["s2_max_offset"] = s2_max_offset
+        if s3_p_bits is not None:
+            payload["s3_p_bits"] = s3_p_bits
+        if s3_q_bits is not None:
+            payload["s3_q_bits"] = s3_q_bits
+        if s4_p_bits is not None:
+            payload["s4_p_bits"] = s4_p_bits
+        if s4_q_bits is not None:
+            payload["s4_q_bits"] = s4_q_bits
+        if s_shared_pq_bits is not None:
+            payload["s_shared_pq_bits"] = s_shared_pq_bits
+        if s7_pq_bits is not None:
+            payload["s7_pq_bits"] = s7_pq_bits
+        if s_small_e_bits is not None:
+            payload["s_small_e_bits"] = s_small_e_bits
+        if s10_p_bits is not None:
+            payload["s10_p_bits"] = s10_p_bits
+        if s10_q_bits is not None:
+            payload["s10_q_bits"] = s10_q_bits
+
         with httpx.Client(timeout=30.0) as client:
             response = client.post(
                 f"{server_url}/scenarios/create",
-                json={"scenario_type": scenario_type, "seed": seed}
+                json=payload
             )
             response.raise_for_status()
             data = response.json()

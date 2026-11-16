@@ -20,6 +20,7 @@ setup(
     long_description_content_type="text/markdown",
     url="https://github.com/yourusername/rsa-attack-toolkit",
     packages=find_packages(),
+    py_modules=["main"],
     classifiers=[
         "Development Status :: 4 - Beta",
         "Intended Audience :: Education",

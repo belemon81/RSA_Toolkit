@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "fermat",
-    "time_elapsed": 3.160000778734684e-05,
+    "time_elapsed": 1.8799968529492617e-05,
     "iterations": 1
   },
   "all_attacks": [
     {
       "attack_name": "fermat",
       "success": true,
-      "time_elapsed": 3.160000778734684e-05,
+      "time_elapsed": 1.8799968529492617e-05,
       "iterations": 1,
       "error_message": null
     }
@@ -23,8 +23,8 @@
   "analysis": {
     "user1": "No obvious vulnerabilities"
   },
-  "total_attack_time": 0.029826899990439415,
+  "total_attack_time": 0.006911500007845461,
   "run_number": 5,
   "seed": 5000,
-  "total_time": 0.5407411999767646
+  "total_time": 0.2215180000057444
 }

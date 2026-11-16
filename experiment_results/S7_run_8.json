@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S7_6790",
+  "scenario_code": "S7",
+  "scenario_type": "S7",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "wiener",
+    "time_elapsed": 0.0003462000167928636,
+    "iterations": 4
+  },
+  "all_attacks": [
+    {
+      "attack_name": "wiener",
+      "success": true,
+      "time_elapsed": 0.0003462000167928636,
+      "iterations": 4,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "Small modulus (32 bits) - vulnerable to brute force"
+  },
+  "total_attack_time": 0.014336499967612326,
+  "run_number": 8,
+  "seed": 8000,
+  "total_time": 0.7068563999491744
+}

@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S3_6790",
+  "scenario_code": "S3",
+  "scenario_type": "S3",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "pollards_rho",
+    "time_elapsed": 0.0010097000049427152,
+    "iterations": 404
+  },
+  "all_attacks": [
+    {
+      "attack_name": "pollards_rho",
+      "success": true,
+      "time_elapsed": 0.0010097000049427152,
+      "iterations": 404,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "Small modulus (63 bits) - vulnerable to brute force"
+  },
+  "total_attack_time": 0.010418199992273003,
+  "run_number": 8,
+  "seed": 8000,
+  "total_time": 0.39074830000754446
+}

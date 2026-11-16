@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S4_5887",
+  "scenario_code": "S4",
+  "scenario_type": "S4",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "pollards_p1",
+    "time_elapsed": 0.002539200009778142,
+    "iterations": 3
+  },
+  "all_attacks": [
+    {
+      "attack_name": "pollards_p1",
+      "success": true,
+      "time_elapsed": 0.002539200009778142,
+      "iterations": 3,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "Small modulus (58 bits) - vulnerable to brute force"
+  },
+  "total_attack_time": 0.01728869997896254,
+  "run_number": 10,
+  "seed": 10000,
+  "total_time": 0.3843050000141375
+}

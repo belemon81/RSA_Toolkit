@@ -11,7 +11,6 @@ from dataclasses import dataclass
 import httpx
 
 from rsa_toolkit.attacks.factorization import (
-    BruteForceFactorization,
     FermatFactorization,
     PollardsRho,
     factorize_auto,
@@ -348,7 +347,13 @@ class AttackerClient:
                 return AttackResult(
                     attack_name="brute_force",
                     success=True,
-                    result={"user_id": user_id, "d": d, "p": result.p, "q": result.q},
+                    result={
+                        "user_id": user_id,
+                        "d": d,
+                        "p": result.p,
+                        "q": result.q,
+                        "method": result.method  # factorize_auto may use Fermat/Rho/p-1
+                    },
                     iterations=result.iterations,
                     time_elapsed=time.perf_counter() - start_time
                 )
@@ -449,51 +454,39 @@ class AttackerClient:
 
     def _attack_hastad(self, recon: ReconnaissanceResult, start_time: float) -> AttackResult:
         """Execute Hastad's broadcast attack."""
-        if len(recon.users) < 3:
-            return AttackResult(
-                attack_name="hastad_broadcast",
-                success=False,
-                error_message="Need at least 3 users for Hastad attack",
-                time_elapsed=time.perf_counter() - start_time
-            )
-
-        # Get first 3 users with e=3
-        ciphertexts = []
-        moduli = []
-        e = None
-
-        for user_id in recon.users[:3]:
+        # Hastad needs >= e ciphertexts of the SAME message under the SAME
+        # public exponent e but DIFFERENT moduli. Group users by e first —
+        # taking the first 3 users blindly fails when their exponents differ.
+        by_e: Dict[int, Tuple[List[int], List[int], List[str]]] = {}
+        for user_id in recon.users:
             n, curr_e = recon.public_keys[user_id]
-            if e is None:
-                e = curr_e
-            if curr_e != e:
-                continue
-
+            ciphertexts, moduli, user_ids = by_e.setdefault(curr_e, ([], [], []))
             ciphertexts.append(recon.ciphertexts[user_id])
             moduli.append(n)
+            user_ids.append(user_id)
 
-        if len(ciphertexts) < 3:
-            return AttackResult(
-                attack_name="hastad_broadcast",
-                success=False,
-                error_message="Need 3 users with same e",
-                time_elapsed=time.perf_counter() - start_time
+        for curr_e in sorted(by_e):
+            ciphertexts, moduli, user_ids = by_e[curr_e]
+            if len(ciphertexts) < curr_e:
+                continue
+
+            result = HastadBroadcastAttack(e=curr_e).attack(
+                ciphertexts[:curr_e], moduli[:curr_e]
             )
 
-        result = HastadBroadcastAttack(e=e).attack(ciphertexts, moduli)
-
-        if result.success:
-            return AttackResult(
-                attack_name="hastad_broadcast",
-                success=True,
-                result={"user_id": recon.users[0], "message": result.message},
-                iterations=result.iterations,
-                time_elapsed=time.perf_counter() - start_time
-            )
+            if result.success:
+                return AttackResult(
+                    attack_name="hastad_broadcast",
+                    success=True,
+                    result={"user_id": user_ids[0], "message": result.message},
+                    iterations=result.iterations,
+                    time_elapsed=time.perf_counter() - start_time
+                )
 
         return AttackResult(
             attack_name="hastad_broadcast",
             success=False,
+            error_message="Need >= e ciphertexts sharing the same public exponent",
             time_elapsed=time.perf_counter() - start_time
         )
 
@@ -579,7 +572,7 @@ class AttackerClient:
 
         if result.success:
             # Factorize using shared prime
-            for i, (idx1, idx2, shared_prime) in enumerate(result.vulnerabilities):
+            for idx1, idx2, shared_prime in result.vulnerabilities:
                 user1 = recon.users[idx1]
                 n1 = recon.public_keys[user1][0]
                 e1 = recon.public_keys[user1][1]

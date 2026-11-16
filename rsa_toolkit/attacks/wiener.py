@@ -135,19 +135,3 @@ class WienerAttack:
             time_elapsed=time.perf_counter() - start_time,
             method="Wiener's Attack"
         )
-
-
-def is_vulnerable_to_wiener(n: int, d: int) -> bool:
-    """
-    Check if a key is vulnerable to Wiener's attack.
-
-    Args:
-        n: Modulus
-        d: Private exponent
-
-    Returns:
-        True if vulnerable (d < N^(1/4) / 3)
-    """
-    import gmpy2
-    n_pow_quarter = gmpy2.iroot(n, 4)[0]
-    return d < n_pow_quarter // 3

@@ -1,0 +1,32 @@
+{
+  "scenario_id": "S5_6790",
+  "scenario_code": "S5",
+  "scenario_type": "S5",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "shared_modulus_internal",
+    "time_elapsed": 0.06966410001041368,
+    "iterations": 1
+  },
+  "all_attacks": [
+    {
+      "attack_name": "shared_modulus_internal",
+      "success": true,
+      "time_elapsed": 0.06966410001041368,
+      "iterations": 1,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "attacker",
+    "victim"
+  ],
+  "analysis": {
+    "attacker": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with victim",
+    "victim": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
+  },
+  "total_attack_time": 0.1269911999697797,
+  "run_number": 8,
+  "seed": 8000,
+  "total_time": 0.752589599986095
+}

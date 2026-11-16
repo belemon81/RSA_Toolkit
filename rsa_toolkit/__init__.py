@@ -14,5 +14,7 @@ Author: Group 3 - Cybersecurity Cryptography Course
 __version__ = "1.0.0"
 __author__ = "Group 3"
 
-from rsa_toolkit.utils.math_utils import *
-from rsa_toolkit.utils.rsa_utils import *
+from rsa_toolkit.utils.math_utils import MathUtils
+from rsa_toolkit.utils.rsa_utils import RSAUtils
+
+__all__ = ["MathUtils", "RSAUtils", "__version__", "__author__"]

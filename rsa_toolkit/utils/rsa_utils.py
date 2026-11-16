@@ -4,9 +4,6 @@ RSA utility functions for key generation, encryption, and decryption.
 
 import random
 from typing import Tuple, Optional
-from cryptography.hazmat.primitives.asymmetric import rsa, padding
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.backends import default_backend
 import gmpy2
 
 from rsa_toolkit.utils.math_utils import MathUtils
@@ -39,6 +36,9 @@ class RSAUtils:
             Tuple of ((n, e, d), (p, q)) where (n, e, d) is public/private key,
             and (p, q) are the prime factors
         """
+        if bit_length < 8:
+            raise ValueError(f"bit_length must be >= 8, got {bit_length}")
+
         if weak_config == 'small_modulus':
             # Generate small modulus for brute force testing
             bit_length = min(bit_length, 64)
@@ -47,10 +47,11 @@ class RSAUtils:
 
         # Generate primes
         if weak_config == 'close_primes':
-            # Generate p and q very close together
+            # Generate p and q very close together. The offset must be EVEN:
+            # p is odd, so an odd offset would make q even and the
+            # primality loop below would never terminate.
             p = RSAUtils._generate_prime(bit_length // 2)
-            # Generate q close to p
-            offset = random.randint(1, 10000)
+            offset = random.randint(1, 5000) * 2
             q = p + offset
             while not MathUtils.is_prime(q):
                 q += 2
@@ -61,12 +62,16 @@ class RSAUtils:
             while q == p:
                 q = RSAUtils._generate_prime(20)
         else:
-            # Normal secure generation. Two k-bit primes can produce a
-            # (2k-1)-bit modulus, so regenerate until n has exactly
-            # bit_length bits.
+            # Normal secure generation. Two primes of bit_length//2 and
+            # bit_length - bit_length//2 bits can produce a modulus of
+            # exactly bit_length bits (for odd bit_length the factors must
+            # differ in size, otherwise the product can never reach it and
+            # this loop would never terminate).
+            p_bits = bit_length // 2
+            q_bits = bit_length - p_bits
             while True:
-                p = RSAUtils._generate_prime(bit_length // 2)
-                q = RSAUtils._generate_prime(bit_length // 2)
+                p = RSAUtils._generate_prime(p_bits)
+                q = RSAUtils._generate_prime(q_bits)
                 if q != p and (p * q).bit_length() == bit_length:
                     break
 
@@ -107,6 +112,9 @@ class RSAUtils:
         Returns:
             Prime number
         """
+        if bit_length < 2:
+            raise ValueError(f"bit_length must be >= 2, got {bit_length}")
+
         while True:
             # Generate random odd number
             candidate = random.getrandbits(bit_length)
@@ -144,50 +152,6 @@ class RSAUtils:
             Plaintext message as integer
         """
         return pow(ciphertext, d, n)
-
-    @staticmethod
-    def encrypt_with_oaep(message: bytes, public_key) -> bytes:
-        """
-        Encrypt message using RSA-OAEP padding (secure).
-
-        Args:
-            message: Plaintext message as bytes
-            public_key: RSA public key object
-
-        Returns:
-            Ciphertext as bytes
-        """
-        ciphertext = public_key.encrypt(
-            message,
-            padding.OAEP(
-                mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                algorithm=hashes.SHA256(),
-                label=None
-            )
-        )
-        return ciphertext
-
-    @staticmethod
-    def decrypt_with_oaep(ciphertext: bytes, private_key) -> bytes:
-        """
-        Decrypt message using RSA-OAEP padding (secure).
-
-        Args:
-            ciphertext: Ciphertext as bytes
-            private_key: RSA private key object
-
-        Returns:
-            Plaintext message as bytes
-        """
-        plaintext = private_key.decrypt(
-            ciphertext,
-            padding.OAEP(
-                mgf=padding.MGF1(algorithm=hashes.SHA256()),
-                algorithm=hashes.SHA256(),
-                label=None
-            )
-        )
-        return plaintext
 
     @staticmethod
     def message_to_int(message: str, encoding: str = 'utf-8') -> int:
