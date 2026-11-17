@@ -56,26 +56,26 @@ class BitConfig:
     # S0: Secure baseline (default 2048; lower values allowed for testing)
     s0_bits: int = 2048
     # S1: Small modulus
-    s1_p_bits: int = 20  # Default: ~20 bits (~1 million)
-    s1_q_bits: int = 28  # Default: ~28 bits (~268 million)
+    s1_p_bits: int = 24  # Default: ~20 bits (~1 million)
+    s1_q_bits: int = 32  # Default: ~28 bits (~268 million)
     # S2: Close primes
-    s2_pq_bits: int = 64  # Default: ~64 bits
-    s2_max_offset: int = 5000  # Default: offset < 10000
+    s2_pq_bits: int = 128  # Default: ~64 bits
+    s2_max_offset: int = 8000  # Default: offset < 10000
     # S3: Pollard's rho
-    s3_p_bits: int = 18  # Default: ~18 bits (~262k)
-    s3_q_bits: int = 46  # Default: ~46 bits (~70 trillion)
+    s3_p_bits: int = 24  # Default: ~18 bits (~262k)
+    s3_q_bits: int = 64  # Default: ~46 bits (~70 trillion)
     # S4: Pollard's p-1 (p is constructed with B-smooth p-1, ~s4_p_bits)
-    s4_p_bits: int = 24  # Default: ~24 bits
-    s4_q_bits: int = 32  # Default: ~32 bits
+    s4_p_bits: int = 82  # Default: ~24 bits
+    s4_q_bits: int = 103  # Default: ~32 bits
     # S5, S6: Shared modulus
-    s_shared_pq_bits: int = 20  # Default: ~20 bits
+    s_shared_pq_bits: int = 128  # Default: ~20 bits
     # S7: Small d
-    s7_pq_bits: int = 16  # Default: ~16 bits
+    s7_pq_bits: int = 114  # Default: ~16 bits
     # S8, S9: Small e
-    s_small_e_bits: int = 128  # Default: 128 bits
+    s_small_e_bits: int = 584  # Default: 128 bits
     # S10: Shared prime
-    s10_p_bits: int = 20  # Default: ~20 bits
-    s10_q_bits: int = 20  # Default: ~20 bits
+    s10_p_bits: int = 256  # Default: ~20 bits
+    s10_q_bits: int = 256  # Default: ~20 bits
 
 
 class ScenarioManager:

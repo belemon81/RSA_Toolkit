@@ -148,26 +148,26 @@ def create_scenario(
     # S0: Secure baseline
     s0_bits: Optional[int] = typer.Option(None, "--s0-bits", help="S0: modulus bit length (default: 2048)"),
     # S1: Small modulus
-    s1_p_bits: Optional[int] = typer.Option(None, "--s1-p-bits", help="S1: p bit length (default: 20)"),
-    s1_q_bits: Optional[int] = typer.Option(None, "--s1-q-bits", help="S1: q bit length (default: 28)"),
+    s1_p_bits: Optional[int] = typer.Option(None, "--s1-p-bits", help="S1: p bit length (default: 24)"),
+    s1_q_bits: Optional[int] = typer.Option(None, "--s1-q-bits", help="S1: q bit length (default: 32)"),
     # S2: Close primes
-    s2_pq_bits: Optional[int] = typer.Option(None, "--s2-pq-bits", help="S2: p,q bit length (default: 64)"),
-    s2_max_offset: Optional[int] = typer.Option(None, "--s2-max-offset", help="S2: max offset (default: 5000)"),
+    s2_pq_bits: Optional[int] = typer.Option(None, "--s2-pq-bits", help="S2: p,q bit length (default: 128)"),
+    s2_max_offset: Optional[int] = typer.Option(None, "--s2-max-offset", help="S2: max offset (default: 8000)"),
     # S3: Pollard's rho
-    s3_p_bits: Optional[int] = typer.Option(None, "--s3-p-bits", help="S3: p bit length (default: 18)"),
-    s3_q_bits: Optional[int] = typer.Option(None, "--s3-q-bits", help="S3: q bit length (default: 46)"),
+    s3_p_bits: Optional[int] = typer.Option(None, "--s3-p-bits", help="S3: p bit length (default: 24)"),
+    s3_q_bits: Optional[int] = typer.Option(None, "--s3-q-bits", help="S3: q bit length (default: 64)"),
     # S4: Pollard's p-1
-    s4_p_bits: Optional[int] = typer.Option(None, "--s4-p-bits", help="S4: p bit length (default: 24)"),
-    s4_q_bits: Optional[int] = typer.Option(None, "--s4-q-bits", help="S4: q bit length (default: 32)"),
+    s4_p_bits: Optional[int] = typer.Option(None, "--s4-p-bits", help="S4: p bit length (default: 82)"),
+    s4_q_bits: Optional[int] = typer.Option(None, "--s4-q-bits", help="S4: q bit length (default: 103)"),
     # S5, S6: Shared modulus
-    s_shared_pq_bits: Optional[int] = typer.Option(None, "--s-shared-pq-bits", help="S5,S6: p,q bit length (default: 20)"),
+    s_shared_pq_bits: Optional[int] = typer.Option(None, "--s-shared-pq-bits", help="S5,S6: p,q bit length (default: 128)"),
     # S7: Small d
-    s7_pq_bits: Optional[int] = typer.Option(None, "--s7-pq-bits", help="S7: p,q bit length (default: 16)"),
+    s7_pq_bits: Optional[int] = typer.Option(None, "--s7-pq-bits", help="S7: p,q bit length (default: 114)"),
     # S8, S9: Small e
-    s_small_e_bits: Optional[int] = typer.Option(None, "--s-small-e-bits", help="S8,S9: modulus bit length (default: 128)"),
+    s_small_e_bits: Optional[int] = typer.Option(None, "--s-small-e-bits", help="S8,S9: modulus bit length (default: 584)"),
     # S10: Shared prime
-    s10_p_bits: Optional[int] = typer.Option(None, "--s10-p-bits", help="S10: p bit length (default: 20)"),
-    s10_q_bits: Optional[int] = typer.Option(None, "--s10-q-bits", help="S10: q bit length (default: 20)")
+    s10_p_bits: Optional[int] = typer.Option(None, "--s10-p-bits", help="S10: p bit length (default: 256)"),
+    s10_q_bits: Optional[int] = typer.Option(None, "--s10-q-bits", help="S10: q bit length (default: 256)")
 ):
     """
     Create a new scenario on the server.
@@ -177,19 +177,19 @@ def create_scenario(
         server_url: URL of the vulnerable server
         seed: Optional random seed
         s0_bits: S0: modulus bit length (default: 2048)
-        s1_p_bits: S1: p bit length (default: 20)
-        s1_q_bits: S1: q bit length (default: 28)
-        s2_pq_bits: S2: p,q bit length (default: 64)
-        s2_max_offset: S2: max offset (default: 5000)
-        s3_p_bits: S3: p bit length (default: 18)
-        s3_q_bits: S3: q bit length (default: 46)
-        s4_p_bits: S4: p bit length (default: 24)
-        s4_q_bits: S4: q bit length (default: 32)
-        s_shared_pq_bits: S5,S6: p,q bit length (default: 20)
-        s7_pq_bits: S7: p,q bit length (default: 16)
-        s_small_e_bits: S8,S9: modulus bit length (default: 128)
-        s10_p_bits: S10: p bit length (default: 20)
-        s10_q_bits: S10: q bit length (default: 20)
+        s1_p_bits: S1: p bit length (default: 24)
+        s1_q_bits: S1: q bit length (default: 32)
+        s2_pq_bits: S2: p,q bit length (default: 128)
+        s2_max_offset: S2: max offset (default: 9000)
+        s3_p_bits: S3: p bit length (default: 24)
+        s3_q_bits: S3: q bit length (default: 64)
+        s4_p_bits: S4: p bit length (default: 82)
+        s4_q_bits: S4: q bit length (default: 103)
+        s_shared_pq_bits: S5,S6: p,q bit length (default: 128)
+        s7_pq_bits: S7: p,q bit length (default: 114)
+        s_small_e_bits: S8,S9: modulus bit length (default: 584)
+        s10_p_bits: S10: p bit length (default: 256)
+        s10_q_bits: S10: q bit length (default: 256)
 
     Examples:
         # Create S1 with default bits
