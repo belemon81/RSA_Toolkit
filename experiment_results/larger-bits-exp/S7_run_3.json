@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "wiener",
-    "time_elapsed": 0.0023051449097692966,
+    "time_elapsed": 0.002300660591572523,
     "iterations": 4
   },
   "all_attacks": [
     {
       "attack_name": "wiener",
       "success": true,
-      "time_elapsed": 0.0023051449097692966,
+      "time_elapsed": 0.002300660591572523,
       "iterations": 4,
       "error_message": null
     }
@@ -20,11 +20,14 @@
   "users": [
     "user1"
   ],
+  "bit_lengths": {
+    "user1": 228
+  },
   "analysis": {
     "user1": "No obvious vulnerabilities"
   },
-  "total_attack_time": 0.011593412142246962,
+  "total_attack_time": 0.007704033050686121,
   "run_number": 3,
   "seed": 3000,
-  "total_time": 0.021734242793172598
+  "total_time": 0.01788211101666093
 }

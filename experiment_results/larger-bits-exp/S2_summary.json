@@ -6,14 +6,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 2.1880026906728745e-05,
+      "time_elapsed": 2.0869076251983643e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 2.1880026906728745e-05,
+        "time_elapsed": 2.0869076251983643e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -21,13 +21,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 256
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.006956540979444981,
+    "total_attack_time": 0.006645864341408014,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 0.013754015322774649
+    "total_time": 0.01347997086122632
   },
   {
     "scenario_id": "S2_8347",
@@ -36,14 +39,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 2.008723095059395e-05,
+      "time_elapsed": 1.8374063074588776e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 2.008723095059395e-05,
+        "time_elapsed": 1.8374063074588776e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -51,13 +54,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 255
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.004049446899443865,
+    "total_attack_time": 0.00409271102398634,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 0.010243580210953951
+    "total_time": 0.010299194138497114
   },
   {
     "scenario_id": "S2_3078",
@@ -66,14 +72,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 1.6961246728897095e-05,
+      "time_elapsed": 1.7191749066114426e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 1.6961246728897095e-05,
+        "time_elapsed": 1.7191749066114426e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -81,13 +87,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 256
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.005561938043683767,
+    "total_attack_time": 0.005512265022844076,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 0.011735412757843733
+    "total_time": 0.011698371265083551
   },
   {
     "scenario_id": "S2_7717",
@@ -96,14 +105,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 2.598809078335762e-05,
+      "time_elapsed": 2.6108697056770325e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 2.598809078335762e-05,
+        "time_elapsed": 2.6108697056770325e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -111,13 +120,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 256
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.005180499982088804,
+    "total_attack_time": 0.0055821556597948074,
     "run_number": 4,
     "seed": 4000,
-    "total_time": 0.01569986203685403
+    "total_time": 0.015723626129329205
   },
   {
     "scenario_id": "S2_4818",
@@ -126,14 +138,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 2.7840957045555115e-05,
+      "time_elapsed": 3.6498066037893295e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 2.7840957045555115e-05,
+        "time_elapsed": 3.6498066037893295e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -141,13 +153,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 256
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.005530159920454025,
+    "total_attack_time": 0.005685809068381786,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 0.016653445083647966
+    "total_time": 0.016842918004840612
   },
   {
     "scenario_id": "S2_3849",
@@ -156,14 +171,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 2.727145329117775e-05,
+      "time_elapsed": 2.8512906283140182e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 2.727145329117775e-05,
+        "time_elapsed": 2.8512906283140182e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -171,13 +186,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 256
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.005456361919641495,
+    "total_attack_time": 0.005578579846769571,
     "run_number": 6,
     "seed": 6000,
-    "total_time": 0.015785831958055496
+    "total_time": 0.016054814215749502
   },
   {
     "scenario_id": "S2_6283",
@@ -186,14 +204,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 2.7620699256658554e-05,
+      "time_elapsed": 2.8082169592380524e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 2.7620699256658554e-05,
+        "time_elapsed": 2.8082169592380524e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -201,13 +219,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 256
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.005507076159119606,
+    "total_attack_time": 0.0055494653061032295,
     "run_number": 7,
     "seed": 7000,
-    "total_time": 0.015745576936751604
+    "total_time": 0.01585973985493183
   },
   {
     "scenario_id": "S2_6790",
@@ -216,14 +237,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 3.123795613646507e-05,
+      "time_elapsed": 2.9585324227809906e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 3.123795613646507e-05,
+        "time_elapsed": 2.9585324227809906e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -231,13 +252,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 255
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.010177798103541136,
+    "total_attack_time": 0.009863920975476503,
     "run_number": 8,
     "seed": 8000,
-    "total_time": 0.02130211517214775
+    "total_time": 0.0209748730994761
   },
   {
     "scenario_id": "S2_6635",
@@ -246,14 +270,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 2.8371810913085938e-05,
+      "time_elapsed": 2.8512906283140182e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 2.8371810913085938e-05,
+        "time_elapsed": 2.8512906283140182e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -261,13 +285,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 255
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.005478964187204838,
+    "total_attack_time": 0.005490182898938656,
     "run_number": 9,
     "seed": 9000,
-    "total_time": 0.015901146922260523
+    "total_time": 0.015898823272436857
   },
   {
     "scenario_id": "S2_5887",
@@ -276,14 +303,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "fermat",
-      "time_elapsed": 2.5477726012468338e-05,
+      "time_elapsed": 2.792198210954666e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "fermat",
         "success": true,
-        "time_elapsed": 2.5477726012468338e-05,
+        "time_elapsed": 2.792198210954666e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -291,12 +318,15 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 256
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.008177869953215122,
+    "total_attack_time": 0.00827720481902361,
     "run_number": 10,
     "seed": 10000,
-    "total_time": 0.01848806394264102
+    "total_time": 0.018484686966985464
   }
 ]

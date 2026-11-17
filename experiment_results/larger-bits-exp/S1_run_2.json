@@ -5,26 +5,29 @@
   "success": true,
   "successful_attack": {
     "attack_name": "brute_force",
-    "time_elapsed": 0.037985123228281736,
-    "iterations": 3650
+    "time_elapsed": 0.3509984100237489,
+    "iterations": 3376
   },
   "all_attacks": [
     {
       "attack_name": "brute_force",
       "success": true,
-      "time_elapsed": 0.037985123228281736,
-      "iterations": 3650,
+      "time_elapsed": 0.3509984100237489,
+      "iterations": 3376,
       "error_message": null
     }
   ],
   "users": [
     "user1"
   ],
+  "bit_lengths": {
+    "user1": 55
+  },
   "analysis": {
     "user1": "Small modulus (55 bits) - vulnerable to brute force"
   },
-  "total_attack_time": 0.04486578283831477,
+  "total_attack_time": 0.35760702518746257,
   "run_number": 2,
   "seed": 2000,
-  "total_time": 0.05177204869687557
+  "total_time": 0.36464420100674033
 }

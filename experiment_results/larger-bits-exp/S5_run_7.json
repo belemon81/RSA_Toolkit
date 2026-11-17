@@ -4,22 +4,15 @@
   "scenario_type": "S5",
   "success": true,
   "successful_attack": {
-    "attack_name": "shared_modulus_external",
-    "time_elapsed": 7.734401151537895e-05,
+    "attack_name": "shared_modulus_internal",
+    "time_elapsed": 0.0013034259900450706,
     "iterations": 1
   },
   "all_attacks": [
     {
       "attack_name": "shared_modulus_internal",
-      "success": false,
-      "time_elapsed": 0.284137770999223,
-      "iterations": 0,
-      "error_message": null
-    },
-    {
-      "attack_name": "shared_modulus_external",
       "success": true,
-      "time_elapsed": 7.734401151537895e-05,
+      "time_elapsed": 0.0013034259900450706,
       "iterations": 1,
       "error_message": null
     }
@@ -28,12 +21,16 @@
     "attacker",
     "victim"
   ],
+  "bit_lengths": {
+    "attacker": 256,
+    "victim": 256
+  },
   "analysis": {
     "attacker": "Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with victim",
     "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
   },
-  "total_attack_time": 0.2900680648162961,
+  "total_attack_time": 0.011509247124195099,
   "run_number": 7,
   "seed": 7000,
-  "total_time": 0.29645118908956647
+  "total_time": 0.021846522111445665
 }

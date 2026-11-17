@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "pollards_p1",
-    "time_elapsed": 0.056475653778761625,
+    "time_elapsed": 0.045061551965773106,
     "iterations": 6
   },
   "all_attacks": [
     {
       "attack_name": "pollards_p1",
       "success": true,
-      "time_elapsed": 0.056475653778761625,
+      "time_elapsed": 0.045061551965773106,
       "iterations": 6,
       "error_message": null
     }
@@ -20,11 +20,14 @@
   "users": [
     "user1"
   ],
+  "bit_lengths": {
+    "user1": 186
+  },
   "analysis": {
     "user1": "No obvious vulnerabilities"
   },
-  "total_attack_time": 0.061009741853922606,
+  "total_attack_time": 0.049350340850651264,
   "run_number": 4,
   "seed": 4000,
-  "total_time": 0.06732494989410043
+  "total_time": 0.05571170337498188
 }

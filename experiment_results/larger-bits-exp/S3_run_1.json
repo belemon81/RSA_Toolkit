@@ -5,26 +5,29 @@
   "success": true,
   "successful_attack": {
     "attack_name": "pollards_rho",
-    "time_elapsed": 0.006288769189268351,
-    "iterations": 3058
+    "time_elapsed": 0.0055405679158866405,
+    "iterations": 2711
   },
   "all_attacks": [
     {
       "attack_name": "pollards_rho",
       "success": true,
-      "time_elapsed": 0.006288769189268351,
-      "iterations": 3058,
+      "time_elapsed": 0.0055405679158866405,
+      "iterations": 2711,
       "error_message": null
     }
   ],
   "users": [
     "user1"
   ],
+  "bit_lengths": {
+    "user1": 88
+  },
   "analysis": {
     "user1": "Medium modulus (88 bits) - may be factorable"
   },
-  "total_attack_time": 0.011784473899751902,
+  "total_attack_time": 0.01123117608949542,
   "run_number": 1,
   "seed": 1000,
-  "total_time": 0.022012545727193356
+  "total_time": 0.02153303613886237
 }

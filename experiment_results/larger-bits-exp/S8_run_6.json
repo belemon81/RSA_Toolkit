@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "cube_root",
-    "time_elapsed": 2.085929736495018e-05,
+    "time_elapsed": 2.18111090362072e-05,
     "iterations": 1
   },
   "all_attacks": [
     {
       "attack_name": "cube_root",
       "success": true,
-      "time_elapsed": 2.085929736495018e-05,
+      "time_elapsed": 2.18111090362072e-05,
       "iterations": 1,
       "error_message": null
     }
@@ -20,11 +20,14 @@
   "users": [
     "user1"
   ],
+  "bit_lengths": {
+    "user1": 584
+  },
   "analysis": {
     "user1": "Small public exponent e=3 - vulnerable to small e attacks"
   },
-  "total_attack_time": 0.00569342402741313,
+  "total_attack_time": 0.012313128914684057,
   "run_number": 6,
   "seed": 6000,
-  "total_time": 0.019138517789542675
+  "total_time": 0.027157220989465714
 }

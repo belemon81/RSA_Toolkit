@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "hastad_broadcast",
-    "time_elapsed": 0.000959313940256834,
+    "time_elapsed": 0.0009658550843596458,
     "iterations": 3
   },
   "all_attacks": [
     {
       "attack_name": "hastad_broadcast",
       "success": true,
-      "time_elapsed": 0.000959313940256834,
+      "time_elapsed": 0.0009658550843596458,
       "iterations": 3,
       "error_message": null
     }
@@ -22,13 +22,18 @@
     "user2",
     "user3"
   ],
+  "bit_lengths": {
+    "user1": 584,
+    "user2": 584,
+    "user3": 584
+  },
   "analysis": {
     "user1": "Small public exponent e=3 - vulnerable to small e attacks",
     "user2": "Small public exponent e=3 - vulnerable to small e attacks",
     "user3": "Small public exponent e=3 - vulnerable to small e attacks"
   },
-  "total_attack_time": 0.01444368064403534,
+  "total_attack_time": 0.009504518937319517,
   "run_number": 2,
   "seed": 2000,
-  "total_time": 0.027873398270457983
+  "total_time": 0.02277990709990263
 }

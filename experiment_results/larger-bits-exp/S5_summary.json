@@ -3,56 +3,18 @@
     "scenario_id": "S5_8028",
     "scenario_code": "S5",
     "scenario_type": "S5",
-    "success": false,
-    "successful_attack": null,
+    "success": true,
+    "successful_attack": {
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.0013118218630552292,
+      "iterations": 1
+    },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.2688634591177106,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
-        "success": false,
-        "time_elapsed": 1.2231990694999695e-05,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "cube_root",
-        "success": false,
-        "time_elapsed": 1.4528632164001465e-06,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "fermat",
-        "success": false,
-        "time_elapsed": 0.17243310529738665,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "pollards_rho",
-        "success": false,
-        "time_elapsed": 0.05548383202403784,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "pollards_p1",
-        "success": false,
-        "time_elapsed": 0.3148350897245109,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "wiener",
-        "success": false,
-        "time_elapsed": 0.00014017987996339798,
-        "iterations": 0,
+        "success": true,
+        "time_elapsed": 0.0013118218630552292,
+        "iterations": 1,
         "error_message": null
       }
     ],
@@ -60,14 +22,18 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 255,
+      "victim": 255
+    },
     "analysis": {
       "attacker": "Small public exponent e=5 - vulnerable to small e attacks; Shared modulus with victim",
-      "victim": "Small public exponent e=5 - vulnerable to small e attacks; Shared modulus with attacker"
+      "victim": "Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.8163731088861823,
+    "total_attack_time": 0.007236589211970568,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 0.8232874921523035
+    "total_time": 0.013457047753036022
   },
   {
     "scenario_id": "S5_8347",
@@ -75,22 +41,15 @@
     "scenario_type": "S5",
     "success": true,
     "successful_attack": {
-      "attack_name": "shared_modulus_external",
-      "time_elapsed": 8.694082498550415e-05,
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.0008872388862073421,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.2718227682635188,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
         "success": true,
-        "time_elapsed": 8.694082498550415e-05,
+        "time_elapsed": 0.0008872388862073421,
         "iterations": 1,
         "error_message": null
       }
@@ -99,14 +58,18 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 255,
+      "victim": 255
+    },
     "analysis": {
       "attacker": "Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with victim",
       "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.28008028864860535,
+    "total_attack_time": 0.009128485806286335,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 0.2864858154207468
+    "total_time": 0.015292949974536896
   },
   {
     "scenario_id": "S5_3078",
@@ -114,22 +77,15 @@
     "scenario_type": "S5",
     "success": true,
     "successful_attack": {
-      "attack_name": "shared_modulus_external",
-      "time_elapsed": 6.238743662834167e-05,
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.0012626810930669308,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.2690276438370347,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
         "success": true,
-        "time_elapsed": 6.238743662834167e-05,
+        "time_elapsed": 0.0012626810930669308,
         "iterations": 1,
         "error_message": null
       }
@@ -138,69 +94,35 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 256,
+      "victim": 256
+    },
     "analysis": {
       "attacker": "Small public exponent e=7 - vulnerable to small e attacks; Shared modulus with victim",
       "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.2749226209707558,
+    "total_attack_time": 0.007186876144260168,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 0.28143724007532
+    "total_time": 0.013696494977921247
   },
   {
     "scenario_id": "S5_7717",
     "scenario_code": "S5",
     "scenario_type": "S5",
-    "success": false,
-    "successful_attack": null,
+    "success": true,
+    "successful_attack": {
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.001248875167220831,
+      "iterations": 1
+    },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.28360285283997655,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
-        "success": false,
-        "time_elapsed": 8.134637027978897e-06,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "cube_root",
-        "success": false,
-        "time_elapsed": 1.9441358745098114e-06,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "fermat",
-        "success": false,
-        "time_elapsed": 0.16809040494263172,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "pollards_rho",
-        "success": false,
-        "time_elapsed": 0.05822568293660879,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "pollards_p1",
-        "success": false,
-        "time_elapsed": 0.33635702822357416,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "wiener",
-        "success": false,
-        "time_elapsed": 5.882885307073593e-05,
-        "iterations": 0,
+        "success": true,
+        "time_elapsed": 0.001248875167220831,
+        "iterations": 1,
         "error_message": null
       }
     ],
@@ -208,14 +130,18 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 255,
+      "victim": 255
+    },
     "analysis": {
       "attacker": "Small public exponent e=7 - vulnerable to small e attacks; Shared modulus with victim",
-      "victim": "Small public exponent e=7 - vulnerable to small e attacks; Shared modulus with attacker"
+      "victim": "Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.851163815241307,
+    "total_attack_time": 0.008785383775830269,
     "run_number": 4,
     "seed": 4000,
-    "total_time": 0.8597549237310886
+    "total_time": 0.01912860106676817
   },
   {
     "scenario_id": "S5_4818",
@@ -223,22 +149,15 @@
     "scenario_type": "S5",
     "success": true,
     "successful_attack": {
-      "attack_name": "shared_modulus_external",
-      "time_elapsed": 3.813067451119423e-05,
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.0012663369998335838,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.28591535706073046,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
         "success": true,
-        "time_elapsed": 3.813067451119423e-05,
+        "time_elapsed": 0.0012663369998335838,
         "iterations": 1,
         "error_message": null
       }
@@ -247,14 +166,18 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 256,
+      "victim": 256
+    },
     "analysis": {
       "attacker": "Small public exponent e=3 - vulnerable to small e attacks; Shared modulus with victim",
       "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.2923145620152354,
+    "total_attack_time": 0.008834875654429197,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 0.2987272231839597
+    "total_time": 0.020953452214598656
   },
   {
     "scenario_id": "S5_3849",
@@ -262,22 +185,15 @@
     "scenario_type": "S5",
     "success": true,
     "successful_attack": {
-      "attack_name": "shared_modulus_external",
-      "time_elapsed": 5.141599103808403e-05,
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.0012615080922842026,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.2788460738956928,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
         "success": true,
-        "time_elapsed": 5.141599103808403e-05,
+        "time_elapsed": 0.0012615080922842026,
         "iterations": 1,
         "error_message": null
       }
@@ -286,14 +202,18 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 256,
+      "victim": 256
+    },
     "analysis": {
       "attacker": "Small public exponent e=5 - vulnerable to small e attacks; Shared modulus with victim",
       "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.28671100409701467,
+    "total_attack_time": 0.008965691085904837,
     "run_number": 6,
     "seed": 6000,
-    "total_time": 0.2930563800036907
+    "total_time": 0.01933564804494381
   },
   {
     "scenario_id": "S5_6283",
@@ -301,22 +221,15 @@
     "scenario_type": "S5",
     "success": true,
     "successful_attack": {
-      "attack_name": "shared_modulus_external",
-      "time_elapsed": 7.734401151537895e-05,
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.0013034259900450706,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.284137770999223,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
         "success": true,
-        "time_elapsed": 7.734401151537895e-05,
+        "time_elapsed": 0.0013034259900450706,
         "iterations": 1,
         "error_message": null
       }
@@ -325,14 +238,18 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 256,
+      "victim": 256
+    },
     "analysis": {
       "attacker": "Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with victim",
       "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.2900680648162961,
+    "total_attack_time": 0.011509247124195099,
     "run_number": 7,
     "seed": 7000,
-    "total_time": 0.29645118908956647
+    "total_time": 0.021846522111445665
   },
   {
     "scenario_id": "S5_6790",
@@ -340,22 +257,15 @@
     "scenario_type": "S5",
     "success": true,
     "successful_attack": {
-      "attack_name": "shared_modulus_external",
-      "time_elapsed": 8.287420496344566e-05,
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.0012646042741835117,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.2820575241930783,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
         "success": true,
-        "time_elapsed": 8.287420496344566e-05,
+        "time_elapsed": 0.0012646042741835117,
         "iterations": 1,
         "error_message": null
       }
@@ -364,14 +274,18 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 255,
+      "victim": 255
+    },
     "analysis": {
       "attacker": "Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with victim",
       "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.2904172642156482,
+    "total_attack_time": 0.008936355821788311,
     "run_number": 8,
     "seed": 8000,
-    "total_time": 0.2968031349591911
+    "total_time": 0.01917808409780264
   },
   {
     "scenario_id": "S5_6635",
@@ -379,22 +293,15 @@
     "scenario_type": "S5",
     "success": true,
     "successful_attack": {
-      "attack_name": "shared_modulus_external",
-      "time_elapsed": 3.5075005143880844e-05,
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.0013030562549829483,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.27917894208803773,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
         "success": true,
-        "time_elapsed": 3.5075005143880844e-05,
+        "time_elapsed": 0.0013030562549829483,
         "iterations": 1,
         "error_message": null
       }
@@ -403,14 +310,18 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 256,
+      "victim": 256
+    },
     "analysis": {
       "attacker": "Small public exponent e=3 - vulnerable to small e attacks; Shared modulus with victim",
       "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.28495926782488823,
+    "total_attack_time": 0.011676569934934378,
     "run_number": 9,
     "seed": 9000,
-    "total_time": 0.2913869461044669
+    "total_time": 0.022122398018836975
   },
   {
     "scenario_id": "S5_5887",
@@ -418,22 +329,15 @@
     "scenario_type": "S5",
     "success": true,
     "successful_attack": {
-      "attack_name": "shared_modulus_external",
-      "time_elapsed": 7.71842896938324e-05,
+      "attack_name": "shared_modulus_internal",
+      "time_elapsed": 0.001273812260478735,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_modulus_internal",
-        "success": false,
-        "time_elapsed": 0.28639370389282703,
-        "iterations": 0,
-        "error_message": null
-      },
-      {
-        "attack_name": "shared_modulus_external",
         "success": true,
-        "time_elapsed": 7.71842896938324e-05,
+        "time_elapsed": 0.001273812260478735,
         "iterations": 1,
         "error_message": null
       }
@@ -442,13 +346,17 @@
       "attacker",
       "victim"
     ],
+    "bit_lengths": {
+      "attacker": 256,
+      "victim": 256
+    },
     "analysis": {
       "attacker": "Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with victim",
       "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
     },
-    "total_attack_time": 0.29418972600251436,
+    "total_attack_time": 0.00882430700585246,
     "run_number": 10,
     "seed": 10000,
-    "total_time": 0.30050896294414997
+    "total_time": 0.019194583874195814
   }
 ]

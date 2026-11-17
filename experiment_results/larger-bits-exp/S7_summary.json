@@ -6,14 +6,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.002134577836841345,
+      "time_elapsed": 0.00456133671104908,
       "iterations": 2
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.002134577836841345,
+        "time_elapsed": 0.00456133671104908,
         "iterations": 2,
         "error_message": null
       }
@@ -21,13 +21,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 227
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.0076507022604346275,
+    "total_attack_time": 0.010512623004615307,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 0.017977449111640453
+    "total_time": 0.020740595180541277
   },
   {
     "scenario_id": "S7_8347",
@@ -36,14 +39,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.002421701792627573,
+      "time_elapsed": 0.0024227690882980824,
       "iterations": 4
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.002421701792627573,
+        "time_elapsed": 0.0024227690882980824,
         "iterations": 4,
         "error_message": null
       }
@@ -51,13 +54,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 228
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.007828263100236654,
+    "total_attack_time": 0.00790519779548049,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 0.018014407716691494
+    "total_time": 0.018164137843996286
   },
   {
     "scenario_id": "S7_3078",
@@ -66,14 +72,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.0023051449097692966,
+      "time_elapsed": 0.002300660591572523,
       "iterations": 4
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.0023051449097692966,
+        "time_elapsed": 0.002300660591572523,
         "iterations": 4,
         "error_message": null
       }
@@ -81,13 +87,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 228
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.011593412142246962,
+    "total_attack_time": 0.007704033050686121,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 0.021734242793172598
+    "total_time": 0.01788211101666093
   },
   {
     "scenario_id": "S7_7717",
@@ -96,14 +105,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.0013228096067905426,
+      "time_elapsed": 0.0013044178485870361,
       "iterations": 4
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.0013228096067905426,
+        "time_elapsed": 0.0013044178485870361,
         "iterations": 4,
         "error_message": null
       }
@@ -111,13 +120,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 228
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.005251641850918531,
+    "total_attack_time": 0.005243091844022274,
     "run_number": 4,
     "seed": 4000,
-    "total_time": 0.011491952929645777
+    "total_time": 0.011503494810312986
   },
   {
     "scenario_id": "S7_4818",
@@ -126,14 +138,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.005455631762742996,
+      "time_elapsed": 0.001227324828505516,
       "iterations": 4
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.005455631762742996,
+        "time_elapsed": 0.001227324828505516,
         "iterations": 4,
         "error_message": null
       }
@@ -141,13 +153,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 228
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.01033264771103859,
+    "total_attack_time": 0.0052201091311872005,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 0.016746362205594778
+    "total_time": 0.011380345094949007
   },
   {
     "scenario_id": "S7_3849",
@@ -156,14 +171,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.0024535907432436943,
+      "time_elapsed": 0.0014661611057817936,
       "iterations": 4
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.0024535907432436943,
+        "time_elapsed": 0.0014661611057817936,
         "iterations": 4,
         "error_message": null
       }
@@ -171,13 +186,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 227
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.007131458260118961,
+    "total_attack_time": 0.008115540724247694,
     "run_number": 6,
     "seed": 6000,
-    "total_time": 0.013571149203926325
+    "total_time": 0.014260861091315746
   },
   {
     "scenario_id": "S7_6283",
@@ -186,14 +204,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.0021543349139392376,
+      "time_elapsed": 0.0012720376253128052,
       "iterations": 4
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.0021543349139392376,
+        "time_elapsed": 0.0012720376253128052,
         "iterations": 4,
         "error_message": null
       }
@@ -201,13 +219,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 227
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.007710111793130636,
+    "total_attack_time": 0.005248331930488348,
     "run_number": 7,
     "seed": 7000,
-    "total_time": 0.017938346602022648
+    "total_time": 0.011551134753972292
   },
   {
     "scenario_id": "S7_6790",
@@ -216,14 +237,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.001399270724505186,
+      "time_elapsed": 0.0014100759290158749,
       "iterations": 4
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.001399270724505186,
+        "time_elapsed": 0.0014100759290158749,
         "iterations": 4,
         "error_message": null
       }
@@ -231,13 +252,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 228
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.0054270485416054726,
+    "total_attack_time": 0.005550336092710495,
     "run_number": 8,
     "seed": 8000,
-    "total_time": 0.011699869763106108
+    "total_time": 0.011796724051237106
   },
   {
     "scenario_id": "S7_6635",
@@ -246,14 +270,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.0012505953200161457,
+      "time_elapsed": 0.0012428630143404007,
       "iterations": 6
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.0012505953200161457,
+        "time_elapsed": 0.0012428630143404007,
         "iterations": 6,
         "error_message": null
       }
@@ -261,13 +285,16 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 227
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.005190629046410322,
+    "total_attack_time": 0.005958599969744682,
     "run_number": 9,
     "seed": 9000,
-    "total_time": 0.011423585936427116
+    "total_time": 0.012569768819957972
   },
   {
     "scenario_id": "S7_5887",
@@ -276,14 +303,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "wiener",
-      "time_elapsed": 0.0012270007282495499,
+      "time_elapsed": 0.0012325737625360489,
       "iterations": 4
     },
     "all_attacks": [
       {
         "attack_name": "wiener",
         "success": true,
-        "time_elapsed": 0.0012270007282495499,
+        "time_elapsed": 0.0012325737625360489,
         "iterations": 4,
         "error_message": null
       }
@@ -291,12 +318,15 @@
     "users": [
       "user1"
     ],
+    "bit_lengths": {
+      "user1": 227
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.00791595596820116,
+    "total_attack_time": 0.005633961874991655,
     "run_number": 10,
     "seed": 10000,
-    "total_time": 0.014063933864235878
+    "total_time": 0.011965479236096144
   }
 ]

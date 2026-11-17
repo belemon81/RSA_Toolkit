@@ -6,14 +6,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 5.300808697938919e-05,
+      "time_elapsed": 5.5143143981695175e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 5.300808697938919e-05,
+        "time_elapsed": 5.5143143981695175e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -22,14 +22,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 511,
+      "user2": 512
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.0072079012170434,
+    "total_attack_time": 0.01122389268130064,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 0.020492139272391796
+    "total_time": 0.02465895004570484
   },
   {
     "scenario_id": "S10_8347",
@@ -38,14 +42,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 4.3851789087057114e-05,
+      "time_elapsed": 4.904111847281456e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 4.3851789087057114e-05,
+        "time_elapsed": 4.904111847281456e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -54,14 +58,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 512
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.00862353341653943,
+    "total_attack_time": 0.008988154120743275,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 0.027142814826220274
+    "total_time": 0.024127778131514788
   },
   {
     "scenario_id": "S10_3078",
@@ -70,14 +78,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 3.5936012864112854e-05,
+      "time_elapsed": 4.1357241570949554e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 3.5936012864112854e-05,
+        "time_elapsed": 4.1357241570949554e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -86,14 +94,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 511
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.008410756941884756,
+    "total_attack_time": 0.012668794021010399,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 0.023564772680401802
+    "total_time": 0.02771561359986663
   },
   {
     "scenario_id": "S10_7717",
@@ -102,14 +114,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 3.7088990211486816e-05,
+      "time_elapsed": 4.103686660528183e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 3.7088990211486816e-05,
+        "time_elapsed": 4.103686660528183e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -118,14 +130,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 512
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.012124471832066774,
+    "total_attack_time": 0.009057011920958757,
     "run_number": 4,
     "seed": 4000,
-    "total_time": 0.02705786656588316
+    "total_time": 0.024310158099979162
   },
   {
     "scenario_id": "S10_4818",
@@ -134,14 +150,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 3.551598638296127e-05,
+      "time_elapsed": 3.8883183151483536e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 3.551598638296127e-05,
+        "time_elapsed": 3.8883183151483536e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -150,14 +166,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 512
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.008545909076929092,
+    "total_attack_time": 0.013977009803056717,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 0.02270382223650813
+    "total_time": 0.029122885782271624
   },
   {
     "scenario_id": "S10_3849",
@@ -166,14 +186,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 3.789970651268959e-05,
+      "time_elapsed": 4.313001409173012e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 3.789970651268959e-05,
+        "time_elapsed": 4.313001409173012e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -182,14 +202,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 511
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.011056806892156601,
+    "total_attack_time": 0.007886994164437056,
     "run_number": 6,
     "seed": 6000,
-    "total_time": 0.024366172961890697
+    "total_time": 0.021436205133795738
   },
   {
     "scenario_id": "S10_6283",
@@ -198,14 +222,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 3.8912054151296616e-05,
+      "time_elapsed": 4.0356069803237915e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 3.8912054151296616e-05,
+        "time_elapsed": 4.0356069803237915e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -214,14 +238,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 512
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.008120467886328697,
+    "total_attack_time": 0.01193115534260869,
     "run_number": 7,
     "seed": 7000,
-    "total_time": 0.021496087312698364
+    "total_time": 0.025360621977597475
   },
   {
     "scenario_id": "S10_6790",
@@ -230,14 +258,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 3.5144854336977005e-05,
+      "time_elapsed": 3.626802936196327e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 3.5144854336977005e-05,
+        "time_elapsed": 3.626802936196327e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -246,14 +274,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 512
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.011882543098181486,
+    "total_attack_time": 0.006878990214318037,
     "run_number": 8,
     "seed": 8000,
-    "total_time": 0.02522764401510358
+    "total_time": 0.020271067041903734
   },
   {
     "scenario_id": "S10_6635",
@@ -262,14 +294,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 3.6368146538734436e-05,
+      "time_elapsed": 3.805197775363922e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 3.6368146538734436e-05,
+        "time_elapsed": 3.805197775363922e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -278,14 +310,18 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 511
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.008280044887214899,
+    "total_attack_time": 0.011925806291401386,
     "run_number": 9,
     "seed": 9000,
-    "total_time": 0.021601152140647173
+    "total_time": 0.025251487735658884
   },
   {
     "scenario_id": "S10_5887",
@@ -294,14 +330,14 @@
     "success": true,
     "successful_attack": {
       "attack_name": "shared_prime",
-      "time_elapsed": 4.022521898150444e-05,
+      "time_elapsed": 3.7208665162324905e-05,
       "iterations": 1
     },
     "all_attacks": [
       {
         "attack_name": "shared_prime",
         "success": true,
-        "time_elapsed": 4.022521898150444e-05,
+        "time_elapsed": 3.7208665162324905e-05,
         "iterations": 1,
         "error_message": null
       }
@@ -310,13 +346,17 @@
       "user1",
       "user2"
     ],
+    "bit_lengths": {
+      "user1": 512,
+      "user2": 512
+    },
     "analysis": {
       "user1": "No obvious vulnerabilities; Shared prime with user2",
       "user2": "No obvious vulnerabilities"
     },
-    "total_attack_time": 0.011723628267645836,
+    "total_attack_time": 0.008507694583386183,
     "run_number": 10,
     "seed": 10000,
-    "total_time": 0.026773388031870127
+    "total_time": 0.023694736883044243
   }
 ]
