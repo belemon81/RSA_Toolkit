@@ -491,8 +491,15 @@ class AttackerClient:
         )
 
     def _attack_shared_modulus_internal(self, recon: ReconnaissanceResult, start_time: float) -> AttackResult:
-        """Execute shared modulus attack (internal)."""
-        # Find users with shared modulus
+        """Execute shared modulus attack (internal).
+
+        The internal attacker is a legitimate user on the shared modulus
+        who owns their own key pair (e_a, d_a) — the server exposes d_a
+        only for the "attacker" user. Given t = e_a*d_a - 1 (a multiple
+        of phi(N)), the attacker recovers a valid private exponent for
+        the victim via the Bezout/GCD reduction — no factorization of N
+        required.
+        """
         moduli_map = {}
         for user_id in recon.users:
             n, e = recon.public_keys[user_id]
@@ -501,32 +508,48 @@ class AttackerClient:
             moduli_map[n].append((user_id, e))
 
         for n, users_info in moduli_map.items():
-            if len(users_info) >= 2:
-                # Assume first user is the "attacker" who knows their own d
-                # For testing, we'll need to factorize one key first
-                user1, e1 = users_info[0]
-                user2, e2 = users_info[1]
+            if len(users_info) < 2:
+                continue
 
-                # Try to factorize to get d1
-                factor_result = factorize_auto(n)
-                if factor_result.success:
-                    d1 = RSAUtils.compute_d_from_p_q_e(factor_result.p, factor_result.q, e1)
-                    result = SharedModulusAttack.internal_attack(n, e1, d1, e2)
+            # The attacker is the user literally named "attacker"
+            # (S5); fall back to the first user otherwise.
+            attacker_entry = next(
+                (u for u in users_info if u[0] == "attacker"),
+                users_info[0]
+            )
+            a_user, a_e = attacker_entry
+            victim_entry = next(u for u in users_info if u is not attacker_entry)
+            v_user, v_e = victim_entry
 
-                    if result.success:
-                        # The recovered d2 is a valid private exponent but may
-                        # differ from the canonical d = e2^-1 mod phi(N).
-                        # Use it to decrypt the victim's ciphertext instead;
-                        # the server verifies the recovered message.
-                        c2 = recon.ciphertexts[user2]
-                        message = pow(c2, result.d, n)
-                        return AttackResult(
-                            attack_name="shared_modulus_internal",
-                            success=True,
-                            result={"user_id": user2, "message": message},
-                            iterations=result.iterations,
-                            time_elapsed=time.perf_counter() - start_time
-                        )
+            # Fetch the attacker's OWN private key from the server.
+            try:
+                resp = self.client.get(
+                    f"{self.server_url}/scenarios/{recon.scenario_id}"
+                    f"/users/{a_user}/private_key"
+                )
+                if resp.status_code != 200:
+                    continue
+                d_a = resp.json()["d"]
+            except Exception:
+                continue
+
+            result = SharedModulusAttack.internal_attack(n, a_e, d_a, v_e)
+
+            if result.success:
+                # result.d is a valid private exponent for the victim's
+                # e_v on this modulus; use it to decrypt the victim's
+                # ciphertext. The recovered d may differ from the
+                # canonical d = e_v^-1 mod phi(N), so verify via the
+                # decrypted message rather than verify_d.
+                c_v = recon.ciphertexts[v_user]
+                message = pow(c_v, result.d, n)
+                return AttackResult(
+                    attack_name="shared_modulus_internal",
+                    success=True,
+                    result={"user_id": v_user, "message": message},
+                    iterations=result.iterations,
+                    time_elapsed=time.perf_counter() - start_time
+                )
 
         return AttackResult(
             attack_name="shared_modulus_internal",

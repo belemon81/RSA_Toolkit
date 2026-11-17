@@ -32,7 +32,7 @@ class TestFactorizationAttacks:
         phi = (p - 1) * (q - 1)
         d = RSAUtils.compute_d_from_p_q_e(p, q, e)
 
-        result = BruteForceFactorization(max_iterations=100000).factorize(n)
+        result = BruteForceFactorization(max_iterations=1000000).factorize(n)
         assert result.success is True
         assert result.p == p or result.p == q
         assert result.q == q or result.q == p

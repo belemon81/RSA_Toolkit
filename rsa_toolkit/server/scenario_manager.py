@@ -369,6 +369,15 @@ class ScenarioManager:
                 e2 += 2
         d2 = MathUtils.mod_inverse(e2, phi)
 
+        # Ensure e1 and e2 are coprime (required for external attack).
+        # Without this, both e's can converge to the same small prime
+        # when phi has small prime factors, making e1 == e2.
+        while MathUtils.gcd(e1, e2) != 1:
+            e2 += 2
+            while MathUtils.gcd(e2, phi) != 1:
+                e2 += 2
+            d2 = MathUtils.mod_inverse(e2, phi)
+
         key1 = RSAKey(n=n, e=e1, d=d1, p=p, q=q)
         key2 = RSAKey(n=n, e=e2, d=d2, p=p, q=q)
 

@@ -6,28 +6,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.00039089994970709085,
-      "iterations": 1
+      "time_elapsed": 0.050862700038123876,
+      "iterations": 6
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.00039089994970709085,
-        "iterations": 1,
+        "time_elapsed": 0.050862700038123876,
+        "iterations": 6,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (57 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 187
     },
-    "total_attack_time": 0.015540099993813783,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.06429650000063702,
     "run_number": 1,
     "seed": 1000,
-    "total_time": 0.25982949999161065
+    "total_time": 0.39588110003387555
   },
   {
     "scenario_id": "S4_8347",
@@ -36,28 +39,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.0014612999511882663,
-      "iterations": 2
+      "time_elapsed": 0.08013439999194816,
+      "iterations": 7
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.0014612999511882663,
-        "iterations": 2,
+        "time_elapsed": 0.08013439999194816,
+        "iterations": 7,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 185
     },
-    "total_attack_time": 0.01718080003047362,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.09179440001025796,
     "run_number": 2,
     "seed": 2000,
-    "total_time": 0.2724255999783054
+    "total_time": 0.3385296000051312
   },
   {
     "scenario_id": "S4_3078",
@@ -66,28 +72,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.006096400029491633,
-      "iterations": 4
+      "time_elapsed": 0.09358610003255308,
+      "iterations": 7
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.006096400029491633,
-        "iterations": 4,
+        "time_elapsed": 0.09358610003255308,
+        "iterations": 7,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 185
     },
-    "total_attack_time": 0.01892889995360747,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.10788200004026294,
     "run_number": 3,
     "seed": 3000,
-    "total_time": 0.35922659997595474
+    "total_time": 0.37298159999772906
   },
   {
     "scenario_id": "S4_7717",
@@ -96,28 +105,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.0009749999735504389,
-      "iterations": 2
+      "time_elapsed": 0.07139509997796267,
+      "iterations": 6
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.0009749999735504389,
-        "iterations": 2,
+        "time_elapsed": 0.07139509997796267,
+        "iterations": 6,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 186
     },
-    "total_attack_time": 0.012001299997791648,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.08498980000149459,
     "run_number": 4,
     "seed": 4000,
-    "total_time": 0.2739327999879606
+    "total_time": 0.37009039998520166
   },
   {
     "scenario_id": "S4_4818",
@@ -126,28 +138,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.0028534000157378614,
-      "iterations": 3
+      "time_elapsed": 0.041808500012848526,
+      "iterations": 6
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.0028534000157378614,
-        "iterations": 3,
+        "time_elapsed": 0.041808500012848526,
+        "iterations": 6,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (58 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 185
     },
-    "total_attack_time": 0.01369589997921139,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.05257820000406355,
     "run_number": 5,
     "seed": 5000,
-    "total_time": 0.25087920000078157
+    "total_time": 0.29498449998209253
   },
   {
     "scenario_id": "S4_3849",
@@ -156,28 +171,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.002512899984139949,
-      "iterations": 3
+      "time_elapsed": 0.03910970001015812,
+      "iterations": 6
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.002512899984139949,
-        "iterations": 3,
+        "time_elapsed": 0.03910970001015812,
+        "iterations": 6,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (58 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 187
     },
-    "total_attack_time": 0.0123726999736391,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.052115999977104366,
     "run_number": 6,
     "seed": 6000,
-    "total_time": 0.2493619000306353
+    "total_time": 0.2868157000048086
   },
   {
     "scenario_id": "S4_6283",
@@ -186,28 +204,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.00016430002870038152,
-      "iterations": 1
+      "time_elapsed": 0.05560189997777343,
+      "iterations": 6
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.00016430002870038152,
-        "iterations": 1,
+        "time_elapsed": 0.05560189997777343,
+        "iterations": 6,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (55 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 186
     },
-    "total_attack_time": 0.02883939997991547,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.06843790004495531,
     "run_number": 7,
     "seed": 7000,
-    "total_time": 0.2864735000184737
+    "total_time": 0.30836180003825575
   },
   {
     "scenario_id": "S4_6790",
@@ -216,28 +237,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.0010097000049427152,
-      "iterations": 2
+      "time_elapsed": 0.09158040001057088,
+      "iterations": 7
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.0010097000049427152,
-        "iterations": 2,
+        "time_elapsed": 0.09158040001057088,
+        "iterations": 7,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 185
     },
-    "total_attack_time": 0.020842600031755865,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.10237599996617064,
     "run_number": 8,
     "seed": 8000,
-    "total_time": 0.2812172999838367
+    "total_time": 0.3846890999702737
   },
   {
     "scenario_id": "S4_6635",
@@ -246,28 +270,31 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.0007878000033088028,
-      "iterations": 2
+      "time_elapsed": 0.08396000001812354,
+      "iterations": 7
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.0007878000033088028,
-        "iterations": 2,
+        "time_elapsed": 0.08396000001812354,
+        "iterations": 7,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (55 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 186
     },
-    "total_attack_time": 0.03752140002325177,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.09837989998050034,
     "run_number": 9,
     "seed": 9000,
-    "total_time": 0.30196169996634126
+    "total_time": 0.3497456000186503
   },
   {
     "scenario_id": "S4_5887",
@@ -276,27 +303,30 @@
     "success": true,
     "successful_attack": {
       "attack_name": "pollards_p1",
-      "time_elapsed": 0.002539200009778142,
-      "iterations": 3
+      "time_elapsed": 0.11845180002273992,
+      "iterations": 7
     },
     "all_attacks": [
       {
         "attack_name": "pollards_p1",
         "success": true,
-        "time_elapsed": 0.002539200009778142,
-        "iterations": 3,
+        "time_elapsed": 0.11845180002273992,
+        "iterations": 7,
         "error_message": null
       }
     ],
     "users": [
       "user1"
     ],
-    "analysis": {
-      "user1": "Small modulus (58 bits) - vulnerable to brute force"
+    "bit_lengths": {
+      "user1": 186
     },
-    "total_attack_time": 0.01728869997896254,
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.13712739996844903,
     "run_number": 10,
     "seed": 10000,
-    "total_time": 0.3843050000141375
+    "total_time": 0.4471505000256002
   }
 ]

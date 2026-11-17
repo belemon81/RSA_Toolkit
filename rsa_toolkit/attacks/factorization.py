@@ -147,7 +147,7 @@ class FermatFactorization:
     Uses the identity: N = a^2 - b^2 = (a-b)(a+b)
     """
 
-    def __init__(self, max_iterations: int = 100000):
+    def __init__(self, max_iterations: int = 1000000):
         """
         Initialize Fermat factorization.
 
@@ -233,7 +233,7 @@ class PollardsRho:
     Uses Floyd's cycle detection and the function f(x) = x^2 + c (mod N).
     """
 
-    def __init__(self, max_iterations: int = 10000):
+    def __init__(self, max_iterations: int = 1000000):
         """
         Initialize Pollard's rho.
 
@@ -336,7 +336,7 @@ class PollardsP1:
     Uses the fact that if p-1 is B-smooth, then a^(p-1) ≡ 1 (mod p).
     """
 
-    def __init__(self, max_iterations: int = 10000, B: int = 100):
+    def __init__(self, max_iterations: int = 1000000, B: int = 100):
         """
         Initialize Pollard's p-1.
 

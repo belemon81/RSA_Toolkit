@@ -80,6 +80,7 @@ class ExperimentRunner:
                 "successful_attack": successful_attack,
                 "all_attacks": attacks,
                 "users": recon.users,
+                "bit_lengths": recon.bit_lengths,
                 "analysis": recon.analysis,
                 "total_attack_time": report.total_time
             }
@@ -115,6 +116,7 @@ class ExperimentRunner:
                 result["seed"] = seed
                 result["total_time"] = total_time
 
+                print(f"N bit lengths: {result.get('bit_lengths')}")
                 print(f"Success: {result['success']}")
                 if result['success']:
                     attack = result['successful_attack']

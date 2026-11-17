@@ -64,6 +64,11 @@ class CiphertextResponse(BaseModel):
     ciphertext: int
 
 
+class PrivateKeyResponse(BaseModel):
+    """Response model for private key (internal attacker only)."""
+    d: int
+
+
 class VerificationRequest(BaseModel):
     """Request model for verification."""
     user_id: str
@@ -86,6 +91,7 @@ async def root():
             "create": "/scenarios/create",
             "public_key": "/scenarios/{scenario_id}/users/{user_id}/public_key",
             "ciphertext": "/scenarios/{scenario_id}/users/{user_id}/ciphertext",
+            "private_key": "/scenarios/{scenario_id}/users/{user_id}/private_key",
             "verify_d": "/scenarios/{scenario_id}/users/{user_id}/verify_d",
             "verify_message": "/scenarios/{scenario_id}/users/{user_id}/verify_message"
         }
@@ -211,6 +217,39 @@ async def get_ciphertext(scenario_id: str, user_id: str):
         raise HTTPException(status_code=404, detail="User not found")
 
     return CiphertextResponse(ciphertext=ciphertext)
+
+
+@app.get("/scenarios/{scenario_id}/users/{user_id}/private_key")
+async def get_private_key(scenario_id: str, user_id: str):
+    """
+    Get the private exponent d for a user.
+
+    Only the "attacker" user may retrieve their own private key — this
+    models an internal attacker who legitimately owns a key pair on the
+    shared modulus. Other users' private keys are never exposed.
+
+    Args:
+        scenario_id: Scenario identifier
+        user_id: User identifier
+
+    Returns:
+        Private exponent d
+    """
+    scenario = scenario_manager.get_scenario(scenario_id)
+    if scenario is None:
+        raise HTTPException(status_code=404, detail="Scenario not found")
+
+    if user_id != "attacker":
+        raise HTTPException(
+            status_code=403,
+            detail="Private key is only available for the attacker user"
+        )
+
+    key = scenario.keys.get(user_id)
+    if key is None or key.d is None:
+        raise HTTPException(status_code=404, detail="User not found")
+
+    return PrivateKeyResponse(d=key.d)
 
 
 @app.get("/scenarios/{scenario_id}/users")

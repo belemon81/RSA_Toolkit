@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "wiener",
-    "time_elapsed": 0.0005553000373765826,
+    "time_elapsed": 0.0030728999990969896,
     "iterations": 4
   },
   "all_attacks": [
     {
       "attack_name": "wiener",
       "success": true,
-      "time_elapsed": 0.0005553000373765826,
+      "time_elapsed": 0.0030728999990969896,
       "iterations": 4,
       "error_message": null
     }
@@ -20,11 +20,14 @@
   "users": [
     "user1"
   ],
-  "analysis": {
-    "user1": "Small modulus (32 bits) - vulnerable to brute force"
+  "bit_lengths": {
+    "user1": 228
   },
-  "total_attack_time": 0.021334799996111542,
+  "analysis": {
+    "user1": "No obvious vulnerabilities"
+  },
+  "total_attack_time": 0.020216899982187897,
   "run_number": 3,
   "seed": 3000,
-  "total_time": 0.7428673999966122
+  "total_time": 0.4607191999675706
 }

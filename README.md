@@ -205,6 +205,7 @@ When the server is running, you can access the interactive API documentation at:
 - `GET /scenarios/{scenario_id}/users` - List users in scenario
 - `GET /scenarios/{scenario_id}/users/{user_id}/public_key` - Get public key
 - `GET /scenarios/{scenario_id}/users/{user_id}/ciphertext` - Get ciphertext
+- `GET /scenarios/{scenario_id}/users/{user_id}/private_key` - Get private exponent `d` (**internal attacker only**: returns `d` solely for the `attacker` user in S5 — the attacker legitimately owns their own key pair on the shared modulus; all other users get `403 Forbidden`)
 - `POST /scenarios/{scenario_id}/users/{user_id}/verify_d` - Verify private key
 - `POST /scenarios/{scenario_id}/users/{user_id}/verify_message` - Verify message
 

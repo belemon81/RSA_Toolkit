@@ -5,26 +5,29 @@
   "success": true,
   "successful_attack": {
     "attack_name": "pollards_p1",
-    "time_elapsed": 0.00039089994970709085,
-    "iterations": 1
+    "time_elapsed": 0.050862700038123876,
+    "iterations": 6
   },
   "all_attacks": [
     {
       "attack_name": "pollards_p1",
       "success": true,
-      "time_elapsed": 0.00039089994970709085,
-      "iterations": 1,
+      "time_elapsed": 0.050862700038123876,
+      "iterations": 6,
       "error_message": null
     }
   ],
   "users": [
     "user1"
   ],
-  "analysis": {
-    "user1": "Small modulus (57 bits) - vulnerable to brute force"
+  "bit_lengths": {
+    "user1": 187
   },
-  "total_attack_time": 0.015540099993813783,
+  "analysis": {
+    "user1": "No obvious vulnerabilities"
+  },
+  "total_attack_time": 0.06429650000063702,
   "run_number": 1,
   "seed": 1000,
-  "total_time": 0.25982949999161065
+  "total_time": 0.39588110003387555
 }

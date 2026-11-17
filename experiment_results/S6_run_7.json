@@ -5,14 +5,14 @@
   "success": true,
   "successful_attack": {
     "attack_name": "shared_modulus_external",
-    "time_elapsed": 5.1600043661892414e-05,
+    "time_elapsed": 0.0002133999951183796,
     "iterations": 1
   },
   "all_attacks": [
     {
       "attack_name": "shared_modulus_external",
       "success": true,
-      "time_elapsed": 5.1600043661892414e-05,
+      "time_elapsed": 0.0002133999951183796,
       "iterations": 1,
       "error_message": null
     }
@@ -21,12 +21,16 @@
     "user1",
     "user2"
   ],
-  "analysis": {
-    "user1": "Small modulus (40 bits) - vulnerable to brute force; Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
-    "user2": "Small modulus (40 bits) - vulnerable to brute force; Shared modulus with user1"
+  "bit_lengths": {
+    "user1": 256,
+    "user2": 256
   },
-  "total_attack_time": 0.027998299978207797,
+  "analysis": {
+    "user1": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
+    "user2": "Shared modulus with user1"
+  },
+  "total_attack_time": 0.019405600032769144,
   "run_number": 7,
   "seed": 7000,
-  "total_time": 0.7497749999747612
+  "total_time": 0.3278821000130847
 }
