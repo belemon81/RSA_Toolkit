@@ -202,11 +202,14 @@ When the server is running, you can access the interactive API documentation at:
 - `GET /scenarios` - List all scenarios
 - `POST /scenarios/create` - Create a new scenario
 - `GET /scenarios/{scenario_id}` - Get scenario details
+- `GET /admin/scenarios/{scenario_id}` - Get all scenario parameters (localhost only; includes private key values)
 - `GET /scenarios/{scenario_id}/users` - List users in scenario
 - `GET /scenarios/{scenario_id}/users/{user_id}/public_key` - Get public key
 - `GET /scenarios/{scenario_id}/users/{user_id}/ciphertext` - Get ciphertext
 - `POST /scenarios/{scenario_id}/users/{user_id}/verify_d` - Verify private key
 - `POST /scenarios/{scenario_id}/users/{user_id}/verify_message` - Verify message
+
+The admin endpoint returns each user's RSA values (`n`, `e`, `d`, `p`, `q`), message, and ciphertext. It is restricted to loopback clients; do not remove this restriction or expose private key data on a network-facing server.
 
 ## Security Recommendations
 

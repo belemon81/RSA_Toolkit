@@ -4,9 +4,11 @@ FastAPI application for Vulnerable RSA Server.
 This module provides REST API endpoints for interacting with attack scenarios.
 """
 
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
+from ipaddress import ip_address
 from typing import Dict, List, Optional
+
+from fastapi import FastAPI, HTTPException, Request
+from pydantic import BaseModel
 import uvicorn
 
 from dataclasses import fields
@@ -84,6 +86,7 @@ async def root():
         "endpoints": {
             "scenarios": "/scenarios",
             "create": "/scenarios/create",
+            "admin_scenario": "/admin/scenarios/{scenario_id} (localhost only)",
             "public_key": "/scenarios/{scenario_id}/users/{user_id}/public_key",
             "ciphertext": "/scenarios/{scenario_id}/users/{user_id}/ciphertext",
             "verify_d": "/scenarios/{scenario_id}/users/{user_id}/verify_d",
@@ -165,6 +168,42 @@ async def get_scenario(scenario_id: str):
         description=scenario.description,
         users=list(scenario.keys.keys())
     )
+
+
+@app.get("/admin/scenarios/{scenario_id}")
+async def get_admin_scenario(scenario_id: str, request: Request):
+    """Return all scenario parameters; only allow requests from localhost."""
+    client = request.client
+    try:
+        is_local = client is not None and ip_address(client.host).is_loopback
+    except ValueError:
+        is_local = False
+
+    if not is_local:
+        raise HTTPException(status_code=403, detail="Admin endpoint is available only from localhost")
+
+    scenario = scenario_manager.get_scenario(scenario_id)
+    if scenario is None:
+        raise HTTPException(status_code=404, detail="Scenario not found")
+
+    return {
+        "scenario_id": scenario.scenario_id,
+        "scenario_type": scenario.scenario_type.value,
+        "description": scenario.description,
+        "seed": scenario.seed,
+        "users": {
+            user_id: {
+                "n": key.n,
+                "e": key.e,
+                "d": key.d,
+                "p": key.p,
+                "q": key.q,
+                "message": scenario.messages.get(user_id),
+                "ciphertext": scenario.ciphertexts.get(user_id),
+            }
+            for user_id, key in scenario.keys.items()
+        },
+    }
 
 
 @app.get("/scenarios/{scenario_id}/users/{user_id}/public_key")
