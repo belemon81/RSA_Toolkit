@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S7_3078",
+  "scenario_code": "S7",
+  "scenario_type": "S7",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "wiener",
+    "time_elapsed": 0.0023051449097692966,
+    "iterations": 4
+  },
+  "all_attacks": [
+    {
+      "attack_name": "wiener",
+      "success": true,
+      "time_elapsed": 0.0023051449097692966,
+      "iterations": 4,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "No obvious vulnerabilities"
+  },
+  "total_attack_time": 0.011593412142246962,
+  "run_number": 3,
+  "seed": 3000,
+  "total_time": 0.021734242793172598
+}

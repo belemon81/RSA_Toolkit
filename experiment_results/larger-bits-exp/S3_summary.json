@@ -1,0 +1,302 @@
+[
+  {
+    "scenario_id": "S3_8028",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.006288769189268351,
+      "iterations": 3058
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.006288769189268351,
+        "iterations": 3058,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (88 bits) - may be factorable"
+    },
+    "total_attack_time": 0.011784473899751902,
+    "run_number": 1,
+    "seed": 1000,
+    "total_time": 0.022012545727193356
+  },
+  {
+    "scenario_id": "S3_8347",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.010082300752401352,
+      "iterations": 5619
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.010082300752401352,
+        "iterations": 5619,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (87 bits) - may be factorable"
+    },
+    "total_attack_time": 0.01524430513381958,
+    "run_number": 2,
+    "seed": 2000,
+    "total_time": 0.025173581205308437
+  },
+  {
+    "scenario_id": "S3_3078",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.0037488280795514584,
+      "iterations": 2989
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.0037488280795514584,
+        "iterations": 2989,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (88 bits) - may be factorable"
+    },
+    "total_attack_time": 0.011207131203263998,
+    "run_number": 3,
+    "seed": 3000,
+    "total_time": 0.017867211252450943
+  },
+  {
+    "scenario_id": "S3_7717",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.002517499029636383,
+      "iterations": 2170
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.002517499029636383,
+        "iterations": 2170,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (88 bits) - may be factorable"
+    },
+    "total_attack_time": 0.006487318314611912,
+    "run_number": 4,
+    "seed": 4000,
+    "total_time": 0.012695768848061562
+  },
+  {
+    "scenario_id": "S3_4818",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.003983103670179844,
+      "iterations": 3255
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.003983103670179844,
+        "iterations": 3255,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (88 bits) - may be factorable"
+    },
+    "total_attack_time": 0.010255412198603153,
+    "run_number": 5,
+    "seed": 5000,
+    "total_time": 0.016420812346041203
+  },
+  {
+    "scenario_id": "S3_3849",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.000638206023722887,
+      "iterations": 501
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.000638206023722887,
+        "iterations": 501,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (87 bits) - may be factorable"
+    },
+    "total_attack_time": 0.004583369009196758,
+    "run_number": 6,
+    "seed": 6000,
+    "total_time": 0.010730054695159197
+  },
+  {
+    "scenario_id": "S3_6283",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.0027213580906391144,
+      "iterations": 2157
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.0027213580906391144,
+        "iterations": 2157,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (87 bits) - may be factorable"
+    },
+    "total_attack_time": 0.006682792212814093,
+    "run_number": 7,
+    "seed": 7000,
+    "total_time": 0.012824357952922583
+  },
+  {
+    "scenario_id": "S3_6790",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.004717086907476187,
+      "iterations": 3903
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.004717086907476187,
+        "iterations": 3903,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (88 bits) - may be factorable"
+    },
+    "total_attack_time": 0.008667990565299988,
+    "run_number": 8,
+    "seed": 8000,
+    "total_time": 0.014909442979842424
+  },
+  {
+    "scenario_id": "S3_6635",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.0037537170574069023,
+      "iterations": 3022
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.0037537170574069023,
+        "iterations": 3022,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (87 bits) - may be factorable"
+    },
+    "total_attack_time": 0.007696124725043774,
+    "run_number": 9,
+    "seed": 9000,
+    "total_time": 0.013837028760463
+  },
+  {
+    "scenario_id": "S3_5887",
+    "scenario_code": "S3",
+    "scenario_type": "S3",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_rho",
+      "time_elapsed": 0.009485190734267235,
+      "iterations": 7735
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_rho",
+        "success": true,
+        "time_elapsed": 0.009485190734267235,
+        "iterations": 7735,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Medium modulus (88 bits) - may be factorable"
+    },
+    "total_attack_time": 0.020772952120751143,
+    "run_number": 10,
+    "seed": 10000,
+    "total_time": 0.02689459966495633
+  }
+]

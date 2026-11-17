@@ -1,0 +1,302 @@
+[
+  {
+    "scenario_id": "S4_8028",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.036306474823504686,
+      "iterations": 6
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.036306474823504686,
+        "iterations": 6,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.04030015738680959,
+    "run_number": 1,
+    "seed": 1000,
+    "total_time": 0.04648742824792862
+  },
+  {
+    "scenario_id": "S4_8347",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.0811588536016643,
+      "iterations": 7
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.0811588536016643,
+        "iterations": 7,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.08520837035030127,
+    "run_number": 2,
+    "seed": 2000,
+    "total_time": 0.09136667801067233
+  },
+  {
+    "scenario_id": "S4_3078",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.08452916936948895,
+      "iterations": 7
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.08452916936948895,
+        "iterations": 7,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.08876545168459415,
+    "run_number": 3,
+    "seed": 3000,
+    "total_time": 0.09522766433656216
+  },
+  {
+    "scenario_id": "S4_7717",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.056475653778761625,
+      "iterations": 6
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.056475653778761625,
+        "iterations": 6,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.061009741853922606,
+    "run_number": 4,
+    "seed": 4000,
+    "total_time": 0.06732494989410043
+  },
+  {
+    "scenario_id": "S4_4818",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.04058127198368311,
+      "iterations": 6
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.04058127198368311,
+        "iterations": 6,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.04779365798458457,
+    "run_number": 5,
+    "seed": 5000,
+    "total_time": 0.05394884804263711
+  },
+  {
+    "scenario_id": "S4_3849",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.050411843694746494,
+      "iterations": 6
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.050411843694746494,
+        "iterations": 6,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.05446144100278616,
+    "run_number": 6,
+    "seed": 6000,
+    "total_time": 0.0606720857322216
+  },
+  {
+    "scenario_id": "S4_6283",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.04050536034628749,
+      "iterations": 6
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.04050536034628749,
+        "iterations": 6,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.044484796933829784,
+    "run_number": 7,
+    "seed": 7000,
+    "total_time": 0.05065108882263303
+  },
+  {
+    "scenario_id": "S4_6790",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.08239180874079466,
+      "iterations": 7
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.08239180874079466,
+        "iterations": 7,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.08660381799563766,
+    "run_number": 8,
+    "seed": 8000,
+    "total_time": 0.09307422395795584
+  },
+  {
+    "scenario_id": "S4_6635",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.06125237513333559,
+      "iterations": 6
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.06125237513333559,
+        "iterations": 6,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.06546924263238907,
+    "run_number": 9,
+    "seed": 9000,
+    "total_time": 0.07176504516974092
+  },
+  {
+    "scenario_id": "S4_5887",
+    "scenario_code": "S4",
+    "scenario_type": "S4",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "pollards_p1",
+      "time_elapsed": 0.08212766796350479,
+      "iterations": 7
+    },
+    "all_attacks": [
+      {
+        "attack_name": "pollards_p1",
+        "success": true,
+        "time_elapsed": 0.08212766796350479,
+        "iterations": 7,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.089244045317173,
+    "run_number": 10,
+    "seed": 10000,
+    "total_time": 0.09558080323040485
+  }
+]

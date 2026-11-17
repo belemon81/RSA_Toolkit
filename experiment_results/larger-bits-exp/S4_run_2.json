@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S4_8347",
+  "scenario_code": "S4",
+  "scenario_type": "S4",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "pollards_p1",
+    "time_elapsed": 0.0811588536016643,
+    "iterations": 7
+  },
+  "all_attacks": [
+    {
+      "attack_name": "pollards_p1",
+      "success": true,
+      "time_elapsed": 0.0811588536016643,
+      "iterations": 7,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "No obvious vulnerabilities"
+  },
+  "total_attack_time": 0.08520837035030127,
+  "run_number": 2,
+  "seed": 2000,
+  "total_time": 0.09136667801067233
+}

@@ -1,0 +1,302 @@
+[
+  {
+    "scenario_id": "S1_8028",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.03676940407603979,
+      "iterations": 2552
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.03676940407603979,
+        "iterations": 2552,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.04353206418454647,
+    "run_number": 1,
+    "seed": 1000,
+    "total_time": 0.0504418071359396
+  },
+  {
+    "scenario_id": "S1_8347",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.037985123228281736,
+      "iterations": 3650
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.037985123228281736,
+        "iterations": 3650,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (55 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.04486578283831477,
+    "run_number": 2,
+    "seed": 2000,
+    "total_time": 0.05177204869687557
+  },
+  {
+    "scenario_id": "S1_3078",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.03870731499046087,
+      "iterations": 4916
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.03870731499046087,
+        "iterations": 4916,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.04297208320349455,
+    "run_number": 3,
+    "seed": 3000,
+    "total_time": 0.04918843787163496
+  },
+  {
+    "scenario_id": "S1_7717",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.03580473084002733,
+      "iterations": 1248
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.03580473084002733,
+        "iterations": 1248,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.041605712845921516,
+    "run_number": 4,
+    "seed": 4000,
+    "total_time": 0.048306327778846025
+  },
+  {
+    "scenario_id": "S1_4818",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.03525781398639083,
+      "iterations": 1650
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.03525781398639083,
+        "iterations": 1650,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.0393446097150445,
+    "run_number": 5,
+    "seed": 5000,
+    "total_time": 0.0454603279940784
+  },
+  {
+    "scenario_id": "S1_3849",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.035237476229667664,
+      "iterations": 1636
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.035237476229667664,
+        "iterations": 1636,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (55 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.03931207908317447,
+    "run_number": 6,
+    "seed": 6000,
+    "total_time": 0.047655828297138214
+  },
+  {
+    "scenario_id": "S1_6283",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.034905079286545515,
+      "iterations": 994
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.034905079286545515,
+        "iterations": 994,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (55 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.03919504163786769,
+    "run_number": 7,
+    "seed": 7000,
+    "total_time": 0.04542668489739299
+  },
+  {
+    "scenario_id": "S1_6790",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.03595277573913336,
+      "iterations": 2768
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.03595277573913336,
+        "iterations": 2768,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.04000545805320144,
+    "run_number": 8,
+    "seed": 8000,
+    "total_time": 0.046733074355870485
+  },
+  {
+    "scenario_id": "S1_6635",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.035428501199930906,
+      "iterations": 1996
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.035428501199930906,
+        "iterations": 1996,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (55 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.03948927903547883,
+    "run_number": 9,
+    "seed": 9000,
+    "total_time": 0.045713056810200214
+  },
+  {
+    "scenario_id": "S1_5887",
+    "scenario_code": "S1",
+    "scenario_type": "S1",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "brute_force",
+      "time_elapsed": 0.03705042600631714,
+      "iterations": 3395
+    },
+    "all_attacks": [
+      {
+        "attack_name": "brute_force",
+        "success": true,
+        "time_elapsed": 0.03705042600631714,
+        "iterations": 3395,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "Small modulus (56 bits) - vulnerable to brute force"
+    },
+    "total_attack_time": 0.04111229628324509,
+    "run_number": 10,
+    "seed": 10000,
+    "total_time": 0.04730428475886583
+  }
+]

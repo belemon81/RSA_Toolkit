@@ -1,0 +1,70 @@
+{
+  "scenario_id": "S5_7717",
+  "scenario_code": "S5",
+  "scenario_type": "S5",
+  "success": false,
+  "successful_attack": null,
+  "all_attacks": [
+    {
+      "attack_name": "shared_modulus_internal",
+      "success": false,
+      "time_elapsed": 0.28360285283997655,
+      "iterations": 0,
+      "error_message": null
+    },
+    {
+      "attack_name": "shared_modulus_external",
+      "success": false,
+      "time_elapsed": 8.134637027978897e-06,
+      "iterations": 0,
+      "error_message": null
+    },
+    {
+      "attack_name": "cube_root",
+      "success": false,
+      "time_elapsed": 1.9441358745098114e-06,
+      "iterations": 0,
+      "error_message": null
+    },
+    {
+      "attack_name": "fermat",
+      "success": false,
+      "time_elapsed": 0.16809040494263172,
+      "iterations": 0,
+      "error_message": null
+    },
+    {
+      "attack_name": "pollards_rho",
+      "success": false,
+      "time_elapsed": 0.05822568293660879,
+      "iterations": 0,
+      "error_message": null
+    },
+    {
+      "attack_name": "pollards_p1",
+      "success": false,
+      "time_elapsed": 0.33635702822357416,
+      "iterations": 0,
+      "error_message": null
+    },
+    {
+      "attack_name": "wiener",
+      "success": false,
+      "time_elapsed": 5.882885307073593e-05,
+      "iterations": 0,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "attacker",
+    "victim"
+  ],
+  "analysis": {
+    "attacker": "Small public exponent e=7 - vulnerable to small e attacks; Shared modulus with victim",
+    "victim": "Small public exponent e=7 - vulnerable to small e attacks; Shared modulus with attacker"
+  },
+  "total_attack_time": 0.851163815241307,
+  "run_number": 4,
+  "seed": 4000,
+  "total_time": 0.8597549237310886
+}

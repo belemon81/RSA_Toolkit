@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S1_8028",
+  "scenario_code": "S1",
+  "scenario_type": "S1",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "brute_force",
+    "time_elapsed": 0.03676940407603979,
+    "iterations": 2552
+  },
+  "all_attacks": [
+    {
+      "attack_name": "brute_force",
+      "success": true,
+      "time_elapsed": 0.03676940407603979,
+      "iterations": 2552,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "Small modulus (56 bits) - vulnerable to brute force"
+  },
+  "total_attack_time": 0.04353206418454647,
+  "run_number": 1,
+  "seed": 1000,
+  "total_time": 0.0504418071359396
+}

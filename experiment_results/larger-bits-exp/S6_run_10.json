@@ -1,0 +1,32 @@
+{
+  "scenario_id": "S6_5887",
+  "scenario_code": "S6",
+  "scenario_type": "S6",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "shared_modulus_external",
+    "time_elapsed": 0.00013149389997124672,
+    "iterations": 1
+  },
+  "all_attacks": [
+    {
+      "attack_name": "shared_modulus_external",
+      "success": true,
+      "time_elapsed": 0.00013149389997124672,
+      "iterations": 1,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1",
+    "user2"
+  ],
+  "analysis": {
+    "user1": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with user2",
+    "user2": "Shared modulus with user1"
+  },
+  "total_attack_time": 0.010241097304970026,
+  "run_number": 10,
+  "seed": 10000,
+  "total_time": 0.02048330707475543
+}

@@ -1,0 +1,30 @@
+{
+  "scenario_id": "S3_3849",
+  "scenario_code": "S3",
+  "scenario_type": "S3",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "pollards_rho",
+    "time_elapsed": 0.000638206023722887,
+    "iterations": 501
+  },
+  "all_attacks": [
+    {
+      "attack_name": "pollards_rho",
+      "success": true,
+      "time_elapsed": 0.000638206023722887,
+      "iterations": 501,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "user1"
+  ],
+  "analysis": {
+    "user1": "Medium modulus (87 bits) - may be factorable"
+  },
+  "total_attack_time": 0.004583369009196758,
+  "run_number": 6,
+  "seed": 6000,
+  "total_time": 0.010730054695159197
+}

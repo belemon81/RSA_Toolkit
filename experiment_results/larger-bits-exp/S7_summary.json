@@ -1,0 +1,302 @@
+[
+  {
+    "scenario_id": "S7_8028",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.002134577836841345,
+      "iterations": 2
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.002134577836841345,
+        "iterations": 2,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.0076507022604346275,
+    "run_number": 1,
+    "seed": 1000,
+    "total_time": 0.017977449111640453
+  },
+  {
+    "scenario_id": "S7_8347",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.002421701792627573,
+      "iterations": 4
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.002421701792627573,
+        "iterations": 4,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.007828263100236654,
+    "run_number": 2,
+    "seed": 2000,
+    "total_time": 0.018014407716691494
+  },
+  {
+    "scenario_id": "S7_3078",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.0023051449097692966,
+      "iterations": 4
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.0023051449097692966,
+        "iterations": 4,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.011593412142246962,
+    "run_number": 3,
+    "seed": 3000,
+    "total_time": 0.021734242793172598
+  },
+  {
+    "scenario_id": "S7_7717",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.0013228096067905426,
+      "iterations": 4
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.0013228096067905426,
+        "iterations": 4,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.005251641850918531,
+    "run_number": 4,
+    "seed": 4000,
+    "total_time": 0.011491952929645777
+  },
+  {
+    "scenario_id": "S7_4818",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.005455631762742996,
+      "iterations": 4
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.005455631762742996,
+        "iterations": 4,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.01033264771103859,
+    "run_number": 5,
+    "seed": 5000,
+    "total_time": 0.016746362205594778
+  },
+  {
+    "scenario_id": "S7_3849",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.0024535907432436943,
+      "iterations": 4
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.0024535907432436943,
+        "iterations": 4,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.007131458260118961,
+    "run_number": 6,
+    "seed": 6000,
+    "total_time": 0.013571149203926325
+  },
+  {
+    "scenario_id": "S7_6283",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.0021543349139392376,
+      "iterations": 4
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.0021543349139392376,
+        "iterations": 4,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.007710111793130636,
+    "run_number": 7,
+    "seed": 7000,
+    "total_time": 0.017938346602022648
+  },
+  {
+    "scenario_id": "S7_6790",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.001399270724505186,
+      "iterations": 4
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.001399270724505186,
+        "iterations": 4,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.0054270485416054726,
+    "run_number": 8,
+    "seed": 8000,
+    "total_time": 0.011699869763106108
+  },
+  {
+    "scenario_id": "S7_6635",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.0012505953200161457,
+      "iterations": 6
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.0012505953200161457,
+        "iterations": 6,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.005190629046410322,
+    "run_number": 9,
+    "seed": 9000,
+    "total_time": 0.011423585936427116
+  },
+  {
+    "scenario_id": "S7_5887",
+    "scenario_code": "S7",
+    "scenario_type": "S7",
+    "success": true,
+    "successful_attack": {
+      "attack_name": "wiener",
+      "time_elapsed": 0.0012270007282495499,
+      "iterations": 4
+    },
+    "all_attacks": [
+      {
+        "attack_name": "wiener",
+        "success": true,
+        "time_elapsed": 0.0012270007282495499,
+        "iterations": 4,
+        "error_message": null
+      }
+    ],
+    "users": [
+      "user1"
+    ],
+    "analysis": {
+      "user1": "No obvious vulnerabilities"
+    },
+    "total_attack_time": 0.00791595596820116,
+    "run_number": 10,
+    "seed": 10000,
+    "total_time": 0.014063933864235878
+  }
+]

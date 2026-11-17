@@ -1,0 +1,39 @@
+{
+  "scenario_id": "S5_6283",
+  "scenario_code": "S5",
+  "scenario_type": "S5",
+  "success": true,
+  "successful_attack": {
+    "attack_name": "shared_modulus_external",
+    "time_elapsed": 7.734401151537895e-05,
+    "iterations": 1
+  },
+  "all_attacks": [
+    {
+      "attack_name": "shared_modulus_internal",
+      "success": false,
+      "time_elapsed": 0.284137770999223,
+      "iterations": 0,
+      "error_message": null
+    },
+    {
+      "attack_name": "shared_modulus_external",
+      "success": true,
+      "time_elapsed": 7.734401151537895e-05,
+      "iterations": 1,
+      "error_message": null
+    }
+  ],
+  "users": [
+    "attacker",
+    "victim"
+  ],
+  "analysis": {
+    "attacker": "Small public exponent e=11 - vulnerable to small e attacks; Shared modulus with victim",
+    "victim": "Small public exponent e=17 - vulnerable to small e attacks; Shared modulus with attacker"
+  },
+  "total_attack_time": 0.2900680648162961,
+  "run_number": 7,
+  "seed": 7000,
+  "total_time": 0.29645118908956647
+}
